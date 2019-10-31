@@ -3,18 +3,19 @@ import { GameEngine } from './engine.js';
 class InitGame {
     constructor() {
         this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+
         this.canvas.id = 'pandaIddleGame'
         this.canvas.width = 400;
         this.canvas.height = 700;
+
         document.body.appendChild(this.canvas);
 
-        this.ctx = this.canvas.getContext('2d');
-
-        this.gameEngine = new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
+        new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
     }
 }
 
-const initGame = new InitGame();
+new InitGame();
 
 
 
