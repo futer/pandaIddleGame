@@ -1,3 +1,39 @@
+class InitGame {
+    constructor() {
+        const canvas = document.createElement('canvas');
+        canvas.id = 'pandaIddleGame'
+        canvas.width = 400;
+        canvas.height = 700;
+        document.body.appendChild(canvas);
+    }
+}
+
+const initGame = new InitGame();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { iddlespeed, gameTimeData, userData } from './config.js';
 
 const gameTime = setInterval(() => {
