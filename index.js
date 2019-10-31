@@ -1,10 +1,16 @@
 class InitGame {
     constructor() {
-        const canvas = document.createElement('canvas');
-        canvas.id = 'pandaIddleGame'
-        canvas.width = 400;
-        canvas.height = 700;
-        document.body.appendChild(canvas);
+        this.canvas = document.createElement('canvas');
+        this.canvas.id = 'pandaIddleGame'
+        this.canvas.width = 400;
+        this.canvas.height = 700;
+        document.body.appendChild(this.canvas);
+
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.save();
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.restore();
     }
 }
 
