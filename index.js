@@ -1,5 +1,6 @@
 import { GameEngine } from './engine.js';
 import { LoadImages, gameImages } from './utils/loadImages.js';
+import { background_images } from './utils/images_list.js';
 
 class InitGame {
     constructor() {
@@ -15,18 +16,21 @@ class InitGame {
         document.body.appendChild(this.canvas);
 
         new LoadImages();
-        console.log(gameImages);
-        setInterval(() => {
+        
+        let checkImages = setInterval(() => {
             const kets = Object.entries(gameImages);
             this.loadedImages = [];
             kets.forEach(element => {
                 if (element[1].isLoaded) {
                     this.loadedImages.push(element[1].isLoaded);
                 }
-                console.log(this.loadedImages);
             });
+
+            if (this.loadedImages.length === background_images.length) {
+                new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
+                clearInterval(checkImages);
+            }
         }, 2000);
-        new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
     }
 }
 

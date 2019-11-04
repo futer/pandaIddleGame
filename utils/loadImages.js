@@ -15,10 +15,7 @@ export class LoadImages {
                 image.onload = () => {
                     gameImages[element.image_name].isLoaded = true;
                     total += 1;
-                    console.log(total);
-
                 };
         });
-        console.log(gameImages);
     }
 }
