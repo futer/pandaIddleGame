@@ -8,7 +8,8 @@ export class GameEngine {
         this.height = height;
         
         
-        drawImage(this.ctx, 'game_background', 0, 0, 100, 120);
+        drawImage(this.ctx, 'game_background', 0, 0, 480, 700);
+        drawImage(this.ctx, 'enemy_island', 0, 0, 100, 100);
 
         // new DrawImages(this.ctx, '', 123, 123, 1);
     }
