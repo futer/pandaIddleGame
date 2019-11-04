@@ -11,10 +11,8 @@ export class DrawImage {
 }
 
 export function drawImage(ctx, image_name, x, y, width, height) {
-    console.log(gameImages[image_name]);
     if (gameImages[image_name]['isLoaded']) {
         ctx.drawImage(gameImages[image_name], x, y);
         console.log(ctx);
-    }
-    
+    };
 }
