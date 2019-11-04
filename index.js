@@ -10,10 +10,22 @@ class InitGame {
         this.canvas.width = 400;
         this.canvas.height = 700;
 
+        this.loadedImages = [];
+
         document.body.appendChild(this.canvas);
 
         new LoadImages();
         console.log(gameImages);
+        setInterval(() => {
+            const kets = Object.entries(gameImages);
+            this.loadedImages = [];
+            kets.forEach(element => {
+                if (element[1].isLoaded) {
+                    this.loadedImages.push(element[1].isLoaded);
+                }
+                console.log(this.loadedImages);
+            });
+        }, 2000);
         new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
     }
 }
