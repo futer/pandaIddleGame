@@ -9,7 +9,8 @@ export class GameEngine {
         this.width = width;
         this.height = height;
         new DrawRectangle(this.ctx, 0, 0, this.width, this.height, 'black', 1, true);
-        new LoadImages();
+        let loadImage = new LoadImages();
+        loadImage.getNumberOfImageLoaded();
         // new DrawImages(this.ctx, '', 123, 123, 1);
     }
 }
