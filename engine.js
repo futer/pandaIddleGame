@@ -1,6 +1,6 @@
 import { DrawImages } from './utils/drawImages.js';
 import { DrawRectangle } from './utils/drawRectangle.js';
-import { LoadImages, totalImageLoaded } from './utils/loadImages.js';
+import { LoadImages } from './utils/loadImages.js';
 
 
 export class GameEngine {
@@ -9,22 +9,10 @@ export class GameEngine {
         this.width = width;
         this.height = height;
         new DrawRectangle(this.ctx, 0, 0, this.width, this.height, 'black', 1, true);
-        let loadImage = new LoadImages();
-        const observer = new MutationObserver(function (event) {
-            console.log(event)
-        });
+        
+        new LoadImages();
+        DrawImages.drawImage();
 
-        observer.observe(e, {
-            attributes: true,
-            attributeFilter: ['class'],
-            childList: false,
-            characterData: false
-        });
-        setTimeout(function () {
-            e.className = 'hello'
-          }, 1000)
-
-        console.log(totalImageLoaded);
         // new DrawImages(this.ctx, '', 123, 123, 1);
     }
 }
