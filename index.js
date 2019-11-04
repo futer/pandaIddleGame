@@ -1,5 +1,5 @@
 import { GameEngine } from './engine.js';
-import { LoadImages } from './utils/loadImages.js';
+import { LoadImages, gameImages } from './utils/loadImages.js';
 
 class InitGame {
     constructor() {
@@ -11,8 +11,9 @@ class InitGame {
         this.canvas.height = 700;
 
         document.body.appendChild(this.canvas);
-        new LoadImages();
 
+        new LoadImages();
+        console.log(gameImages);
         new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
     }
 }

@@ -1,4 +1,5 @@
 import { drawImage } from './utils/drawImages.js';
+import { LoadImages } from './utils/loadImages.js';
 
 export class GameEngine {
     constructor(ctx, width, height) {
