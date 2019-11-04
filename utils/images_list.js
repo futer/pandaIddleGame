@@ -12,6 +12,10 @@ export const achivment_images = {
     '': '',
 };
 
-export const background_images = {
-    'game_background': assets_url + 'main_background.png',
-};
+export const background_images = [
+    {
+        'image_name': 'game_background',
+        'image_format': 'png',
+        'image_url': assets_url + 'main_background.png',
+    }
+];

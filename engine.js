@@ -1,5 +1,7 @@
 import { DrawImages } from './utils/drawImages.js';
 import { DrawRectangle } from './utils/drawRectangle.js';
+import { LoadImages } from './utils/loadImages.js';
+
 
 export class GameEngine {
     constructor(ctx, width, height) {
@@ -7,7 +9,7 @@ export class GameEngine {
         this.width = width;
         this.height = height;
         new DrawRectangle(this.ctx, 0, 0, this.width, this.height, 'black', 1, true);
-
-        new DrawImages(this.ctx, '', 123, 123, 1);
+        new LoadImages();
+        // new DrawImages(this.ctx, '', 123, 123, 1);
     }
 }

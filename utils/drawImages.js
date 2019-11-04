@@ -1,7 +1,7 @@
 export class DrawImages {
-    constructor(ctx, imageUrl, imageWidth, imageHeight, scale) {
+    constructor(ctx, imageName, imageWidth, imageHeight, scale) {
         this.ctx = ctx;
-        this.imageUrl = imageUrl;
+        this.imageName = imageName;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
         this.scale = scale;
@@ -12,4 +12,5 @@ export class DrawImages {
     drawImage() {
         console.log(123);
     }
+
 }
