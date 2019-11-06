@@ -11,7 +11,6 @@ export class GameEngine {
         
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
         // drawImage(this.ctx, 'enemy_island', 0, 0, 100, 100), null;
-        let test = new DrawMonster(this.ctx, 'red_monster', (this.width  * 0.4 + this.width) / 2 - 150 , (this.height  * 0.3 + this.height) - 150, 990, 681, 0.3, {});
-        console.log(test.monsterOption);
+        new DrawMonster(this.ctx, 'red_monster', (this.width  * 0.4 + this.width) / 2 - 150 , (this.height  * 0.3 + this.height) - 150, 990, 681, 0.3, {});
     }
 }
