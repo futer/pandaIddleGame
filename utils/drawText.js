@@ -11,6 +11,7 @@ export class DrawText {
         this.ctx.textAlign = "center";
 
         if (isBorder) {
+            this.ctx.strokeStyle = fontColor;
             this.ctx.strokeText(text, this.posX, this.posY);
         } else {
             this.ctx.fillText(text, this.posX, this.posY);
