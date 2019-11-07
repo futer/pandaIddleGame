@@ -10,7 +10,8 @@ export class DrawMonster {
         this.imageHeight = imageHeight;
         this.scale = scale;
         this.monsterOption = monsterOption;
-
+        
+        
         new drawImage(this.ctx, this.imageName, this.x, this.y, this.imageWidth, this.imageHeight, this.scale);
     }
 }
