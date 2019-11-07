@@ -27,7 +27,7 @@ class InitGame {
             });
 
             if (this.loadedImages.length === background_images.length) {
-                new GameEngine(this.ctx, this.canvas.width, this.canvas.height);
+                new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }
         }, 2000);
