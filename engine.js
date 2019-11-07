@@ -11,10 +11,12 @@ export class GameEngine {
         
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
         // drawImage(this.ctx, 'enemy_island', 0, 0, 100, 100), null;
+        new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - 125 , (this.height / 2) - 75, 239, 152, null, {});
+
 
         enemy_list.forEach(element => {
-            console.log(element);
-            new DrawMonster(this.ctx, 'red_monster', (this.width  * 0.4 + this.width) / 2 - 150 , (this.height  * 0.3 + this.height) - 150, 990, 681, 0.3, {});
+            new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (element.width / 2) , (this.height / 2) - (element.height / 2), element.width, element.height, null, {element});
+            console.log(element.hp);
         });
     }
 }
