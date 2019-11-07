@@ -14,7 +14,10 @@ export class GameEngine {
         new DrawRectangle(this.ctx, 75, 180, (this.width / 1.5), (this.height / 2), 'black', 0.4, true);
 
         this.canvas.addEventListener('click', (event) => {
-            console.log(event);
+            if (event.layerX >= 75 && event.layerX <= 340 && event.layerY >= 180 && event.layerY <= 530) {
+                console.log(event.layerY);
+
+            }
         });
 
         enemy_list.forEach(element => {
