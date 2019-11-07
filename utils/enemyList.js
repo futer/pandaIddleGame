@@ -1,5 +1,6 @@
 export const enemy_list = [
     {
+        losthp: 0,
         hp: 100,
         min_gold: 1,
         max_gold: 3,
@@ -7,6 +8,7 @@ export const enemy_list = [
         height: 152,
     },
     {
+        losthp: 0,
         hp: 100,
         min_gold: 1,
         max_gold: 3,
@@ -14,6 +16,7 @@ export const enemy_list = [
         height: 152,
     },
     {
+        losthp: 0,
         hp: 120,
         min_gold: 3,
         max_gold: 5,
@@ -21,6 +24,7 @@ export const enemy_list = [
         height: 152,
     },
     {
+        losthp: 0,
         hp: 140,
         min_gold: 4,
         max_gold: 5,
@@ -28,6 +32,7 @@ export const enemy_list = [
         height: 152,
     },
     {
+        losthp: 0,
         hp: 200,
         min_gold: 10,
         max_gold: 15,

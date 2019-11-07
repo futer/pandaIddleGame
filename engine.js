@@ -12,20 +12,20 @@ export class GameEngine {
         this.height = height;
         
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
-        new DrawRectangle(this.ctx, 75, 180, (this.width / 1.5), (this.height / 2), 'black', 0.4, true);
 
         this.canvas.addEventListener('click', (event) => {
             if (event.layerX >= 75 && event.layerX <= 340 && event.layerY >= 180 && event.layerY <= 530) {
-                console.log(event.layerY);
+                console.log('attacked');
             }
         });
 
 
         enemy_list.forEach(element => {
             new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (element.width / 2) , (this.height / 2) - (element.height / 2), element.width, element.height, null, {element});
+            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${element.losthp}/${element.hp}`, 'black', 'Arial', 40, false);
         });
 
-        new DrawText(this.ctx, 200, 300).drawText('test', 'red', 'Arial', 40, true);
+        
 
     }
 }
