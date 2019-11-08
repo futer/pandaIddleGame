@@ -3,9 +3,11 @@ import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { DrawText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
+import { getFromLocalStorage } from './utils/localStorage.js';
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
+        this.getLocalLevel();
         this.ctx = ctx;
         this.canvas = canvas;
         this.width = width;
@@ -16,7 +18,7 @@ export class GameEngine {
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
         this.canvas.addEventListener('click', (event) => {
-            actionManagement(event, 'attack_monster');
+            this.actionMgnFc(event, 'attack_monster');
         });
 
         this.nextMonster();
@@ -28,5 +30,16 @@ export class GameEngine {
 
     nextMonster() {
         new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
+    }
+
+    actionMgnFc(event, action) {
+        actionManagement(event, action);
+    }
+
+    getLocalLevel() {
+        // if() {
+
+        // }
+        console.log(getFromLocalStorage('level'));
     }
 }
