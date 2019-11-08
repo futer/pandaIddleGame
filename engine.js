@@ -11,6 +11,7 @@ export class GameEngine {
         this.canvas = canvas;
         this.width = width;
         this.height = height;
+        
         this.monsterNumber = this.getLocalLevel();
         console.log(this.monsterNumber);
         this.interval = 1000/60
@@ -41,8 +42,7 @@ export class GameEngine {
             saveToLocalStorage('level', 0);
             this.monsterNumber = 0;
         } else {
-            this.monsterNumber = getFromLocalStorage('level');
-            console.log(this.monsterNumber);          
+            return getFromLocalStorage('level');
         }
     }
 }
