@@ -3,16 +3,16 @@ import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { DrawText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
-import { getFromLocalStorage } from './utils/localStorage.js';
+import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 
 export class GameEngine {
-    constructor(ctx, canvas, width, height) {
-        this.getLocalLevel();
+    constructor(ctx, canvas, width, height) {   
         this.ctx = ctx;
         this.canvas = canvas;
         this.width = width;
         this.height = height;
-        this.monsterNumber = 0;
+        this.monsterNumber = this.getLocalLevel();
+        console.log(this.monsterNumber);
         this.interval = 1000/60
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
@@ -37,9 +37,12 @@ export class GameEngine {
     }
 
     getLocalLevel() {
-        // if() {
-
-        // }
-        console.log(getFromLocalStorage('level'));
+        if(getFromLocalStorage('level') === undefined || getFromLocalStorage('level') === null) {
+            saveToLocalStorage('level', 0);
+            this.monsterNumber = 0;
+        } else {
+            this.monsterNumber = getFromLocalStorage('level');
+            console.log(this.monsterNumber);          
+        }
     }
 }

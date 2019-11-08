@@ -7,5 +7,5 @@ export function removeFromLocalStorage(varName) {
 }
 
 export function getFromLocalStorage(varName) {
-    localStorage.getItem(varName);
+    return localStorage.getItem(varName);
 }
