@@ -10,6 +10,7 @@ export class GameEngine {
         this.canvas = canvas;
         this.width = width;
         this.height = height;
+        this.monsterNumber = 0;
         this.interval = 1000/60
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
@@ -18,19 +19,14 @@ export class GameEngine {
             actionManagement(event, 'attack_monster');
         });
 
+        this.nextMonster();
+
         setInterval(() => {
-
-            
-            enemy_list.forEach(element => {
-                new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (element.width / 2) , (this.height / 2) - (element.height / 2), element.width, element.height, null, {element});
-                new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${element.losthp}/${element.hp}`, 'black', 'Arial', 40, false);
-            });
+            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
         }, this.interval);
+    }
 
-
-        
-
-        
-
+    nextMonster() {
+        new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
     }
 }
