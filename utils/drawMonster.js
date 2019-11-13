@@ -16,6 +16,6 @@ export class DrawMonster {
     }
 
     drawMonsterImage(shift, frameWidth, frameHeight) {
-        this.ctx.drawImage(gameImages[this.imageName]['image'], shift, 0, frameWidth, frameHeight,120, 25, frameWidth, frameHeight);
+        this.ctx.drawImage(gameImages[this.imageName]['image'], shift, 0, frameWidth, frameHeight, 35, 220, frameWidth, frameHeight);
     }
 }

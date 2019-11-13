@@ -35,7 +35,6 @@ export class GameEngine {
 
         this.canvas.addEventListener('click', (event) => {
             this.actionMgnFc(event, 'attack_monster');
-            console.log(this.monsterNumber);
         });
 
         setInterval(() => {
@@ -49,7 +48,7 @@ export class GameEngine {
             this.drawMonster();
 
             new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
-            new DrawText(this.ctx, 60, 28).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
+            new DrawText(this.ctx, 70, 28).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
         }, this.interval);
     }
 
