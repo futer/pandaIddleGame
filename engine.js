@@ -37,7 +37,7 @@ export class GameEngine {
             this.drawMonster();
 
             new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
-            new DrawText(this.ctx, 80, 27).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
+            new DrawText(this.ctx, 60, 28).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
         }, this.interval);
     }
 
@@ -51,6 +51,7 @@ export class GameEngine {
 
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
+            this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
             this.setLocalLevel();
             this.getLocalLevel();
             this.setMonsterInstance();
@@ -72,5 +73,10 @@ export class GameEngine {
 
     setLocalLevel() {
         saveToLocalStorage('level', this.monsterNumber = parseInt(this.monsterNumber) + 1); 
+    }
+
+    setPlayerGold(minGold, maxGold) {
+        const gold = Math.floor(Math.random() * maxGold) + minGold
+        playerOptions.gold += gold;
     }
 }
