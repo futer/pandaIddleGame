@@ -16,8 +16,8 @@ export class GameEngine {
         this.height = height;
 
         this.counter = 0;
-        this.frame_width = 990;
-        this.frame_height = 681;
+        this.frame_width = 300;
+        this.frame_height = 206.33;
 
         //restart game
         this.setGameData(false);
@@ -40,7 +40,7 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
-            drawImage(this.ctx, 'monster1', 10, 10, 25, 25, null);
+            drawImage(this.ctx, 'red_monster', 10, 10, 25, 25, null);
 
             this.nextLevel();
 
@@ -52,7 +52,7 @@ export class GameEngine {
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, 'monster1', 100, 100, enemy_list[this.monsterNumber]);
+        drawedMonster = new DrawMonster(this.ctx, 'red_monster', 100, 100, enemy_list[this.monsterNumber]);
     }
 
     drawMonster() {
