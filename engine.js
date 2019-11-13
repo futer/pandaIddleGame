@@ -15,9 +15,9 @@ export class GameEngine {
         this.width = width;
         this.height = height;
 
-        let counter = 0,
-            frame_width = 990,
-            frame_height = 681;
+        this.counter = 0;
+        this.frame_width = 990;
+        this.frame_height = 681;
 
         //restart game
         this.setGameData(false);
@@ -56,9 +56,9 @@ export class GameEngine {
     }
 
     drawMonster() {
-        let frame = Math.floor(counter % 8);
-        drawedMonster.drawMonsterImage(frame, frame_width, frame_height);
-        counter = counter + .25;
+        let frame = Math.floor(this.counter % 4);
+        drawedMonster.drawMonsterImage(frame, this.frame_width, this.frame_height);
+        this.counter = this.counter + .25;
     }
 
     nextLevel() {
