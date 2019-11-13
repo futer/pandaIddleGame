@@ -17,17 +17,20 @@ export class GameEngine {
         this.monsterNumber = this.getLocalLevel();
         this.interval = 1000/60
 
+
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
         this.canvas.addEventListener('click', (event) => {
             this.actionMgnFc(event, 'attack_monster');
         });
 
-        this.nextMonster();
+        monsterLostHp = drawedMonster.monsterOption.hp;
 
         setInterval(() => {
-            drawedMonster.losthp = monsterLostHp;
-            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+            this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
+            this.nextMonster();
+            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${monsterLostHp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
         }, this.interval);
     }
 
