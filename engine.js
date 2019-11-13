@@ -17,7 +17,9 @@ export class GameEngine {
 
         //restart game
         this.setGameData(false);
+
         this.monsterNumber = JSON.parse(this.getGamaData()).level;
+        playerOptions.gold = JSON.parse(this.getGamaData()).gold;
 
         this.interval = 1000 / 60
 
