@@ -2,7 +2,7 @@ import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { DrawText } from './utils/drawText.js';
-import { actionManagement, monsterLostHp } from './utils/actionManagement.js';
+import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 
 export let drawedMonster = null;
@@ -24,19 +24,26 @@ export class GameEngine {
             this.actionMgnFc(event, 'attack_monster');
         });
 
-        monsterLostHp = drawedMonster.monsterOption.hp;
-
         setInterval(() => {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
-            this.nextMonster();
-            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${monsterLostHp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+            this.drawMonster();
+
+            if (drawedMonster.monsterOption.losthp <= 0) {
+                this.monsterNumber += 1;
+            }
+
+            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
         }, this.interval);
     }
 
-    nextMonster() {
+    drawMonster() {
         drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
     }
+
+    nextLevel() {
+
+    };
 
     actionMgnFc(event, action) {
         actionManagement(event, action);
