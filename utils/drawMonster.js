@@ -17,7 +17,7 @@ export class DrawMonster {
     }
 
     drawMonsterImage(frame, frame_width, frame_height) {
-        this.ctx.drawImage(gameImages[this.image_name].image, frame * frame_width, 0, frame_width, frame_height, 0, 0, frame_width, frame_height);
+        this.ctx.drawImage(gameImages[this.imageName]['image'], frame * frame_width, 0, frame_width, frame_height, 0, 0, frame_width, frame_height);
         // new drawAnimation(this.ctx, this.imageName, this.frame, this.frame_width, this.frame_height);
     }
 }
