@@ -15,6 +15,10 @@ export class GameEngine {
         this.width = width;
         this.height = height;
 
+        let counter = 0,
+            frame_width = 990,
+            frame_height = 681;
+
         //restart game
         this.setGameData(false);
 
@@ -48,11 +52,13 @@ export class GameEngine {
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2), (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
+        drawedMonster = new DrawMonster(this.ctx, 'monster1', 100, 100, enemy_list[this.monsterNumber]);
     }
 
     drawMonster() {
-        drawedMonster.drawMonsterImage();
+        let frame = Math.floor(counter % 8);
+        drawedMonster.drawMonsterImage(frame, frame_width, frame_height);
+        counter = counter + .25;
     }
 
     nextLevel() {

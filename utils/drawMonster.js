@@ -1,20 +1,22 @@
-import { drawImage } from './drawImages.js';
+import { drawAnimation } from './drawAnimation.js';
 
 export class DrawMonster {
-    constructor(ctx, imageName, x, y, imageWidth, imageHeight, scale, monsterOption) {
+    constructor(
+        ctx,
+        imageName,
+        x,
+        y, 
+        monsterOption
+    ) {
         this.ctx = ctx;
         this.imageName = imageName;
         this.x = x;
         this.y = y;
-        this.imageWidth = imageWidth;
-        this.imageHeight = imageHeight;
-        this.scale = scale;
         this.monsterOption = monsterOption;
-        
-        
     }
 
-    drawMonsterImage() {
-        new drawImage(this.ctx, this.imageName, this.x, this.y, this.imageWidth, this.imageHeight, this.scale);
+    drawMonsterImage(frame, frame_width, frame_height) {
+        this.ctx.drawImage(this.imageName, frame * frame_width, 0, frame_width, frame_height, 0, 0, frame_width, frame_height);
+        // new drawAnimation(this.ctx, this.imageName, this.frame, this.frame_width, this.frame_height);
     }
 }
