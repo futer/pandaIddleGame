@@ -9,17 +9,20 @@ import { playerOptions } from './utils/playerOptions.js';
 export let drawedMonster = null;
 
 export class GameEngine {
-    constructor(ctx, canvas, width, height) {   
+    constructor(ctx, canvas, width, height) {
         this.ctx = ctx;
         this.canvas = canvas;
         this.width = width;
         this.height = height;
-        
-        this.monsterNumber = this.getLocalLevel();
-        this.interval = 1000/60
 
+        //restart game
+        this.setGameData(true);
+        this.monsterNumber = this.setGameData().level;
+
+        this.interval = 1000 / 60
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
+
         this.setMonsterInstance();
 
         this.canvas.addEventListener('click', (event) => {
@@ -31,18 +34,18 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
-            
+
             this.nextLevel();
 
             this.drawMonster();
 
-            new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+            new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
             new DrawText(this.ctx, 60, 28).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
         }, this.interval);
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
+        drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2), (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
     }
 
     drawMonster() {
@@ -52,8 +55,7 @@ export class GameEngine {
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
             this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
-            this.setLocalLevel();
-            this.getLocalLevel();
+            this.killMonster();
             this.setMonsterInstance();
         }
     };
@@ -62,18 +64,60 @@ export class GameEngine {
         actionManagement(event, action);
     }
 
-    getLocalLevel() {
-        if(getFromLocalStorage('level') === undefined || getFromLocalStorage('level') === null) {
-            saveToLocalStorage('level', 0);
-            this.monsterNumber = 0;
+    setGameData(restart) {
+        if (restart) {
+            saveToLocalStorage('player_data', {
+                level: 0,
+                gold: 0,
+                achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+            });
         } else {
-            return getFromLocalStorage('level');
+            if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
+                saveToLocalStorage('player_data', {
+                    level: 0,
+                    gold: 0,
+                    achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+                });
+            }
         }
     }
 
-    setLocalLevel() {
-        saveToLocalStorage('level', this.monsterNumber = parseInt(this.monsterNumber) + 1); 
+    getGamaData() {
+        return getFromLocalStorage('player_data');
     }
+
+    killMonster() {
+        playerData = this.getGamaData();
+        saveToLocalStorage('player_data', {
+            ...playerData,
+            level: this.monsterNumber = parseInt(this.monsterNumber) + 1,
+            gold: playerOptions.gold,
+        });
+        this.getGamaData();
+        console.log()
+    }
+
+
+    // getLocalLevel() {
+    //     if(getFromLocalStorage('level') === undefined || getFromLocalStorage('level') === null) {
+    //         saveToLocalStorage('level', 0);
+    //         saveToLocalStorage('player_data', {
+    //             level: 0,
+    //             gold: 0,
+    //         });
+    //         this.monsterNumber = 0;
+    //     } else {
+    //         return getFromLocalStorage('player_data');
+    //     }
+    // }
+
+    // setLocalLevel() {
+    //     saveToLocalStorage('level', this.monsterNumber = parseInt(this.monsterNumber) + 1); 
+    //     saveToLocalStorage('player_data', {
+    //         level: this.monsterNumber = parseInt(this.monsterNumber) + 1,
+    //         gold: playerOptions.gold,
+    //     });
+    // }
 
     setPlayerGold(minGold, maxGold) {
         const gold = Math.floor(Math.random() * maxGold) + minGold
