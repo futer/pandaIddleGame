@@ -53,7 +53,7 @@ export class GameEngine {
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, 'red_monster', 100, 100, enemy_list[this.monsterNumber]);
+        drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber]);
     }
 
     drawMonster() {
