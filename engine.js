@@ -16,8 +16,8 @@ export class GameEngine {
         this.height = height;
 
         //restart game
-        this.setGameData(true);
-        this.monsterNumber = this.setGameData().level;
+        this.setGameData(false);
+        this.monsterNumber = JSON.parse(this.getGamaData()).level;
 
         this.interval = 1000 / 60
 
@@ -66,18 +66,20 @@ export class GameEngine {
 
     setGameData(restart) {
         if (restart) {
-            saveToLocalStorage('player_data', {
+            saveToLocalStorage('player_data', JSON.stringify({
                 level: 0,
                 gold: 0,
                 achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-            });
+            }));
         } else {
             if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
-                saveToLocalStorage('player_data', {
+                saveToLocalStorage('player_data', JSON.stringify({
                     level: 0,
                     gold: 0,
                     achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                });
+                }));
+            } else {
+                this.getGamaData()
             }
         }
     }
@@ -87,37 +89,14 @@ export class GameEngine {
     }
 
     killMonster() {
-        playerData = this.getGamaData();
-        saveToLocalStorage('player_data', {
+        const playerData = JSON.parse(this.getGamaData());
+        saveToLocalStorage('player_data', JSON.stringify({
             ...playerData,
             level: this.monsterNumber = parseInt(this.monsterNumber) + 1,
             gold: playerOptions.gold,
-        });
+        }));
         this.getGamaData();
-        console.log()
     }
-
-
-    // getLocalLevel() {
-    //     if(getFromLocalStorage('level') === undefined || getFromLocalStorage('level') === null) {
-    //         saveToLocalStorage('level', 0);
-    //         saveToLocalStorage('player_data', {
-    //             level: 0,
-    //             gold: 0,
-    //         });
-    //         this.monsterNumber = 0;
-    //     } else {
-    //         return getFromLocalStorage('player_data');
-    //     }
-    // }
-
-    // setLocalLevel() {
-    //     saveToLocalStorage('level', this.monsterNumber = parseInt(this.monsterNumber) + 1); 
-    //     saveToLocalStorage('player_data', {
-    //         level: this.monsterNumber = parseInt(this.monsterNumber) + 1,
-    //         gold: playerOptions.gold,
-    //     });
-    // }
 
     setPlayerGold(minGold, maxGold) {
         const gold = Math.floor(Math.random() * maxGold) + minGold
