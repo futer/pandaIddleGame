@@ -2,7 +2,7 @@ import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { DrawText } from './utils/drawText.js';
-import { actionManagement } from './utils/actionManagement.js';
+import { actionManagement, monsterLostHp } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 
 export let drawedMonster = null;
@@ -26,6 +26,7 @@ export class GameEngine {
         this.nextMonster();
 
         setInterval(() => {
+            drawedMonster.losthp = monsterLostHp;
             new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
         }, this.interval);
     }
