@@ -6,6 +6,7 @@ export const enemy_list = [
         max_gold: 3,
         width: 239,
         height: 152,
+        platform_number: 0,
     },
     {
         losthp: 100,
@@ -14,6 +15,7 @@ export const enemy_list = [
         max_gold: 3,
         width: 239,
         height: 152,
+        platform_number: 1,
     },
     {
         losthp: 120,
@@ -22,6 +24,7 @@ export const enemy_list = [
         max_gold: 5,
         width: 239,
         height: 152,
+        platform_number: 0,
     },
     {
         losthp: 140,
@@ -30,6 +33,7 @@ export const enemy_list = [
         max_gold: 5,
         width: 239,
         height: 152,
+        platform_number: 1,
     },
     {
         losthp: 200,
@@ -38,5 +42,6 @@ export const enemy_list = [
         max_gold: 15,
         width: 239,
         height: 152,
+        platform_number: 2,
     },
 ];

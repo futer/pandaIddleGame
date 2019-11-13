@@ -4,6 +4,7 @@ import { DrawMonster } from './utils/drawMonster.js';
 import { DrawText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
+import { playerOptions } from './utils/playerOptions.js';
 
 export let drawedMonster = null;
 
@@ -29,11 +30,14 @@ export class GameEngine {
         setInterval(() => {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
+            drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
+            
             this.nextLevel();
 
             this.drawMonster();
 
             new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+            new DrawText(this.ctx, 80, 27).drawText(`Gold: ${playerOptions.gold}`, 'black', 'Arial', 15, false);
         }, this.interval);
     }
 

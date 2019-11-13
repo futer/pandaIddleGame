@@ -20,5 +20,10 @@ export const background_images = [
         'image_name': 'red_monster',
         'image_format': 'png',
         'image_url': assets_url + 'monster_1.png'
-    }
+    },
+    {
+        'image_name': 'coin',
+        'image_format': 'png',
+        'image_url': assets_url + 'coin.png'
+    },
 ];
