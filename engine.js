@@ -18,7 +18,7 @@ export class GameEngine {
         this.shift = 0;
         this.frameWidth = 300;
         this.frameHeight = 206.33;
-        this.totalFrames = 24;
+        this.totalFrames = 4;
         this.currentFrame = 0;
 
         //restart game
@@ -27,7 +27,7 @@ export class GameEngine {
         this.monsterNumber = JSON.parse(this.getGamaData()).level;
         playerOptions.gold = JSON.parse(this.getGamaData()).gold;
 
-        this.interval = 150;
+        this.interval = 100;
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
@@ -42,7 +42,7 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
-            drawImage(this.ctx, 'red_monster', 10, 10, 25, 25, null);
+            // drawImage(this.ctx, 'red_monster', 10, 10, 25, 25, null);
 
             this.nextLevel();
 
@@ -60,7 +60,7 @@ export class GameEngine {
     drawMonster() {
         drawedMonster.drawMonsterImage(this.shift, this.frameWidth, this.frameHeight);
         this.shift += this.frameWidth + 1;
-        if (this.currentFrame === this.totalFrames) {
+        if (this.currentFrame == this.totalFrames) {
             this.shift = 0;
             this.currentFrame = 0;
         }
