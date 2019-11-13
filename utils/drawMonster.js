@@ -1,4 +1,3 @@
-import { drawAnimation } from './drawAnimation.js';
 import { gameImages } from './loadImages.js';
 
 export class DrawMonster {
@@ -16,8 +15,7 @@ export class DrawMonster {
         this.monsterOption = monsterOption;
     }
 
-    drawMonsterImage(frame, frame_width, frame_height) {
-        this.ctx.drawImage(gameImages[this.imageName]['image'], frame * frame_width, 0, frame_width, frame_height, 0, 0, frame_width, frame_height);
-        // new drawAnimation(this.ctx, this.imageName, this.frame, this.frame_width, this.frame_height);
+    drawMonsterImage(shift, frameWidth, frameHeight) {
+        this.ctx.drawImage(gameImages[this.imageName]['image'], shift, 0, frameWidth, frameHeight,120, 25, frameWidth, frameHeight);
     }
 }

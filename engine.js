@@ -15,9 +15,11 @@ export class GameEngine {
         this.width = width;
         this.height = height;
 
-        this.counter = 0;
-        this.frame_width = 300;
-        this.frame_height = 206.33;
+        this.shift = 0;
+        this.frameWidth = 300;
+        this.frameHeight = 206.33;
+        this.totalFrames = 24;
+        this.currentFrame = 0;
 
         //restart game
         this.setGameData(false);
@@ -25,7 +27,7 @@ export class GameEngine {
         this.monsterNumber = JSON.parse(this.getGamaData()).level;
         playerOptions.gold = JSON.parse(this.getGamaData()).gold;
 
-        this.interval = 1000 / 60
+        this.interval = 150;
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
@@ -56,9 +58,14 @@ export class GameEngine {
     }
 
     drawMonster() {
-        let frame = Math.floor(this.counter % 4);
-        drawedMonster.drawMonsterImage(frame, this.frame_width, this.frame_height);
-        this.counter = this.counter + .25;
+        drawedMonster.drawMonsterImage(this.shift, this.frameWidth, this.frameHeight);
+        this.shift += this.frameWidth + 1;
+        if (this.currentFrame === this.totalFrames) {
+            this.shift = 0;
+            this.currentFrame = 0;
+        }
+
+        this.currentFrame++;
     }
 
     nextLevel() {
