@@ -5,6 +5,8 @@ import { DrawText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 
+export let drawedMonster = null;
+
 export class GameEngine {
     constructor(ctx, canvas, width, height) {   
         this.ctx = ctx;
@@ -13,7 +15,6 @@ export class GameEngine {
         this.height = height;
         
         this.monsterNumber = this.getLocalLevel();
-        console.log(this.monsterNumber);
         this.interval = 1000/60
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
@@ -30,7 +31,7 @@ export class GameEngine {
     }
 
     nextMonster() {
-        new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
+        drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
     }
 
     actionMgnFc(event, action) {
