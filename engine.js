@@ -47,7 +47,10 @@ export class GameEngine {
 
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
-            this.monsterNumber += 1;
+            this.setLocalLevel();
+            this.getLocalLevel();
+            console.log(this.getLocalLevel());
+            // this.monsterNumber += 1;
             this.setMonsterInstance();
         }
     };
@@ -63,5 +66,9 @@ export class GameEngine {
         } else {
             return getFromLocalStorage('level');
         }
+    }
+
+    setLocalLevel() {
+        saveToLocalStorage('level', this.monsterNumber = this.monsterNumber + 1); 
     }
 }
