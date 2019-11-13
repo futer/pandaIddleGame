@@ -19,30 +19,37 @@ export class GameEngine {
 
 
         drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
+        this.setMonsterInstance();
 
         this.canvas.addEventListener('click', (event) => {
             this.actionMgnFc(event, 'attack_monster');
+            console.log(this.monsterNumber);
         });
 
         setInterval(() => {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
-            this.drawMonster();
+            this.nextLevel();
 
-            if (drawedMonster.monsterOption.losthp <= 0) {
-                this.monsterNumber += 1;
-            }
+            this.drawMonster();
 
             new DrawText(this.ctx, (this.width / 2), (this.height /1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
         }, this.interval);
     }
 
-    drawMonster() {
+    setMonsterInstance() {
         drawedMonster = new DrawMonster(this.ctx, 'red_monster', (this.width / 2) - (enemy_list[this.monsterNumber].width / 2) , (this.height / 2) - (enemy_list[this.monsterNumber].height / 2), enemy_list[this.monsterNumber].width, enemy_list[this.monsterNumber].height, null, enemy_list[this.monsterNumber]);
     }
 
-    nextLevel() {
+    drawMonster() {
+        drawedMonster.drawMonsterImage();
+    }
 
+    nextLevel() {
+        if (drawedMonster.monsterOption.losthp <= 0) {
+            this.monsterNumber += 1;
+            this.setMonsterInstance();
+        }
     };
 
     actionMgnFc(event, action) {
