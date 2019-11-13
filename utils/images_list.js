@@ -26,4 +26,9 @@ export const background_images = [
         'image_format': 'png',
         'image_url': assets_url + 'coin.png'
     },
+    {
+        image_name: 'monster1',
+        image_format: 'png',
+        image_url: assets_url + 'red_monster/Idle/Idle_Spritesheet.png'
+    }
 ];

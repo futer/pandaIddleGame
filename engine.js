@@ -36,6 +36,7 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
+            drawImage(this.ctx, 'monster1', 10, 10, 25, 25, null);
 
             this.nextLevel();
 
