@@ -26,6 +26,8 @@ export class GameEngine {
 
         this.monsterNumber = JSON.parse(this.getGamaData()).level;
         playerOptions.gold = JSON.parse(this.getGamaData()).gold;
+        playerOptions.attack = JSON.parse(this.getGamaData()).attack;
+        playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
 
         this.interval = 100;
 
