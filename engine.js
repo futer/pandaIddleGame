@@ -43,16 +43,16 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'panel_up', 0, -58, 400, 150, null);
-            drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
-            drawImage(this.ctx, 'attack', 120, 10, 25, 25, null);
+            drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+            drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
 
             this.nextLevel();
 
             this.drawMonster();
 
             new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
-            new DrawText(this.ctx, 70, 28).drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 15, false);
-            new DrawText(this.ctx, 180, 28).drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 15, false);
+            new DrawText(this.ctx, 70, 22).drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
+            new DrawText(this.ctx, 340, 22).drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
 
         }, this.interval);
     }
