@@ -44,6 +44,7 @@ export class GameEngine {
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
             drawImage(this.ctx, 'coin', 10, 10, 25, 25, null);
             drawImage(this.ctx, 'attack', 120, 10, 25, 25, null);
+            drawImage(this.ctx, 'panel_up', 0, 0, 390, 130, null);
 
             this.nextLevel();
 
@@ -89,6 +90,7 @@ export class GameEngine {
                 level: 0,
                 gold: 0,
                 achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+                attack: 10,
             }));
         } else {
             if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
@@ -96,6 +98,7 @@ export class GameEngine {
                     level: 0,
                     gold: 0,
                     achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+                    attack: 10,
                 }));
             } else {
                 this.getGamaData()

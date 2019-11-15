@@ -27,8 +27,13 @@ export const background_images = [
         'image_url': assets_url + 'coin.png'
     },
     {
-            image_name: 'attack',
-            image_format: 'png',
-            image_url: assets_url + 'attack.png',
+        image_name: 'attack',
+        image_format: 'png',
+        image_url: assets_url + 'attack.png',
+    },
+    {
+        image_name: 'panel_up',
+        image_format: 'png',
+        image_url: assets_url + 'up.png',
     }
 ];
