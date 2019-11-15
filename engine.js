@@ -5,6 +5,8 @@ import { DrawText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 import { playerOptions } from './utils/playerOptions.js';
+import { DrawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
+
 
 export let drawedMonster = null;
 
@@ -41,8 +43,8 @@ export class GameEngine {
 
         setInterval(() => {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
-            drawImage(this.ctx, 'panel_up', 0, -58, 400, 150, null);
+            new DrawAllBackgroundImage(this.ctx);
+
             drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
             drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
 
