@@ -60,6 +60,11 @@ export class GameEngine {
         this.playerAttack = new DrawText(this.ctx, 340, 22);
         this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
 
+        this.buttonOne = new DrawText(this.ctx, 110, 650);
+        this.buttonTwo = new DrawText(this.ctx, 160, 650);
+        this.buttonThree = new DrawText(this.ctx, 210, 650);
+        this.buttonFour = new DrawText(this.ctx, 260, 650);
+
         this.interval = 100;
 
         this.setMonsterInstance();
@@ -69,7 +74,7 @@ export class GameEngine {
         });
 
         document.addEventListener('keydown', (key) => {
-            this.actionMgnFc(key, 'attack_monster');
+            this.actionMgnFc(key, 'attack_monster', keyDown);
         });
         this.generateButton();
 
@@ -126,8 +131,8 @@ export class GameEngine {
         }
     };
 
-    actionMgnFc(event, action) {
-        actionManagement(event, action);
+    actionMgnFc(event, action, truekey) {
+        actionManagement(event, action, truekey);
     }
 
     setGameData(restart) {
@@ -201,16 +206,17 @@ export class GameEngine {
     generateButton() {
         greenButton = Math.floor(Math.random() * 4) + 0;
         for (let index = 0; index < 4; index++) {
-            fourChoosenKey.push(Math.floor(Math.random() * keyCodeTable.length) + 0);
+            fourChoosenKey.push(keyCodeTable[Math.floor(Math.random() * keyCodeTable.length) + 0]);
         }
-        console.log(fourChoosenKey);
-
+        keyDown = keyCodeTable[Math.floor(Math.random() * fourChoosenKey.length) + 0];
+        console.log(keyDown);
     }
 
     drawKeyButton() {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
+
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
             }
