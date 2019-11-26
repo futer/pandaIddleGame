@@ -60,8 +60,6 @@ export class GameEngine {
                 this.nextLevel();
                 this.drawMonster();        
                 
-                this.finishGame();
-
                 if (drawedMonster.monsterOption.bossFight) {
                     this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
                 }
@@ -69,7 +67,6 @@ export class GameEngine {
                 this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
-                console.log(playerOptions.attack);
             }
 
         }, this.interval);
@@ -159,11 +156,14 @@ export class GameEngine {
     finishGame() {
         const finishGameText = new DrawText(this.ctx, (this.width /2), 200);
         finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
+       
+        const finishGameGold = new DrawText(this.ctx, (this.width /2), 310);
         drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
-        finishGameText.drawText(`Your collected gold is ${playerOptions.gold}`, 'black', 'Bubbleboddy', 36, false);
+        finishGameGold.drawText(`Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 22, false);
 
+        const finishGameAttack = new DrawText(this.ctx, (this.width /2), 410);
         drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
-        finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
-
+        finishGameAttack.drawText(`Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 22, false);
+        console.clear();
     }
 }
