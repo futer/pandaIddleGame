@@ -30,6 +30,8 @@ const buttonPlacement = [
 export let drawedMonster = null;
 export let gameEnd = false;
 export let keyDown = null;
+export let greenButton = null;
+export let fourChoosenKey = [];
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -197,13 +199,21 @@ export class GameEngine {
     }
 
     generateButton() {
-        const activeButton = Math.floor(Math.random() * 4) + 0;
-        console.log(activeButton);
+        greenButton = Math.floor(Math.random() * 4) + 0;
+        for (let index = 0; index < 4; index++) {
+            fourChoosenKey.push(Math.floor(Math.random() * keyCodeTable.length) + 0);
+        }
+        console.log(fourChoosenKey);
+
     }
 
     drawKeyButton() {
-        buttonPlacement.forEach((btn) => {
-            drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
+        buttonPlacement.forEach((btn, index) => {
+            if (index === greenButton) {
+                drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
+            } else {
+                drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
+            }
         });
     }
 
