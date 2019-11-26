@@ -70,18 +70,20 @@ export class GameEngine {
 
         document.addEventListener('keydown', (key) => {
             this.actionMgnFc(key, 'attack_monster', keyDown);
+            this.generateButton();
         });
         this.generateButton();
 
         let update = setInterval(() => {
             if (!gameEnd) {
-                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawAllBackgroundImage(this.ctx);
-
                 if (this.monsterNumber === enemy_list.length) {
                     clearInterval(update);
                     this.finishGame();
                 }
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawAllBackgroundImage(this.ctx);
+
+                
 
                 drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
@@ -136,15 +138,15 @@ export class GameEngine {
                 level: 0,
                 gold: 0,
                 achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                attack: 10,
+                attack: playerOptions.attack,
             }));
         } else {
             if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
                 saveToLocalStorage('player_data', JSON.stringify({
                     level: 0,
-                    gold: 0,
+                    gold: playerOptions.gold,
                     achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                    attack: 10,
+                    attack: playerOptions.attack,
                 }));
             } else {
                 this.getGamaData()
@@ -164,7 +166,6 @@ export class GameEngine {
             gold: playerOptions.gold,
         }));
         this.getGamaData();
-        this.generateButton();
     }
 
     setPlayerGold(minGold, maxGold) {
@@ -199,11 +200,12 @@ export class GameEngine {
     }
 
     generateButton() {
+        fourChoosenKey = [];
         greenButton = Math.floor(Math.random() * 4) + 0;
         for (let index = 0; index < 4; index++) {
             fourChoosenKey.push(keyCodeTable[Math.floor(Math.random() * keyCodeTable.length) + 0]);
         }
-        keyDown = keyCodeTable[Math.floor(Math.random() * fourChoosenKey.length) + 0];
+        keyDown = fourChoosenKey[Math.floor(Math.random() * fourChoosenKey.length) + 0];
         console.log(keyDown, fourChoosenKey);
     }
 
@@ -211,7 +213,7 @@ export class GameEngine {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown, 'red', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[keyDown.length-1], 'red', 'Bubbleboddy', 22);
 
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
