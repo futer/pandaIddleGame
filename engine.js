@@ -46,7 +46,7 @@ export class GameEngine {
             drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
             drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
             
-            if (drawedMonster.monsterOption.losthp <= 0 && drawedMonster.monsterOption.monster_name !== undefined) {
+            if (drawedMonster.monsterOption.losthp <= 0) {
                 this.nextLevel();
                 console.log(drawedMonster);
             }
