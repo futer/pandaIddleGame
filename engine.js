@@ -10,20 +10,20 @@ import { keyCodeTable } from './utils/eventCodeKeys.js';
 
 const buttonPlacement = [
     {
-        x: 200,
-        y: 400,
+        x: 110,
+        y: 650,
     },
     {
-        x: 200,
-        y: 400,
+        x: 160,
+        y: 650,
     },
     {
-        x: 200,
-        y: 400,
+        x: 210,
+        y: 650,
     },
     {
-        x: 200,
-        y: 400,
+        x: 260,
+        y: 650,
     },
 ];
 
@@ -93,10 +93,8 @@ export class GameEngine {
                 this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
-                const activeButton = Math.floor(Math.random() * 4) + 0;
-                buttonPlacement.forEach((btn) => {
-                    drawImage(this.ctx, 'button_false', btn.x, btn.y, 35, 35, null);
-                })
+
+                this.drawKeyButton();
             }
 
         }, this.interval);
@@ -199,9 +197,14 @@ export class GameEngine {
     }
 
     generateButton() {
-        
+        const activeButton = Math.floor(Math.random() * 4) + 0;
+        console.log(activeButton);
+    }
 
-        
+    drawKeyButton() {
+        buttonPlacement.forEach((btn) => {
+            drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
+        });
     }
 
 
