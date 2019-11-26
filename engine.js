@@ -9,6 +9,7 @@ import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
+export let keyDown = null;
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -48,6 +49,7 @@ export class GameEngine {
         document.addEventListener('keydown', (key) => {
             this.actionMgnFc(key, 'attack_monster');
         });
+        this.generateButton();
 
         let update = setInterval(() => {
             if (!gameEnd) {
@@ -63,7 +65,6 @@ export class GameEngine {
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
                 this.nextLevel();
                 this.drawMonster();
-                this.generateButton();
 
                 if (drawedMonster.monsterOption.bossFight) {
                     this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
@@ -139,6 +140,7 @@ export class GameEngine {
             gold: playerOptions.gold,
         }));
         this.getGamaData();
+        this.generateButton();
     }
 
     setPlayerGold(minGold, maxGold) {
@@ -193,12 +195,11 @@ export class GameEngine {
         ];
 
         const activeButton = Math.floor(Math.random() * 4) + 0;
-
-        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-
+        buttonPlacement.forEach((btn) => {
+            this.ctx.save();
+            drawImage(this.ctx, 'button_false', btn.x, btn.y, 25, 25, null);
+            this.ctx.restore();
+        })
     }
 
 
