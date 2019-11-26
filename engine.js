@@ -23,6 +23,7 @@ export class GameEngine {
         this.totalFrames = 4;
         this.currentFrame = 0;
 
+
         //restart game
         this.setGameData(false);
 
@@ -57,7 +58,9 @@ export class GameEngine {
                 drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
                 this.nextLevel();
-                this.drawMonster();
+                this.drawMonster();        
+                
+                this.finishGame();
 
                 if (drawedMonster.monsterOption.bossFight) {
                     this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
@@ -156,5 +159,11 @@ export class GameEngine {
     finishGame() {
         const finishGameText = new DrawText(this.ctx, (this.width /2), 200);
         finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
+        drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
+        finishGameText.drawText(`Your collected gold is ${playerOptions.gold}`, 'black', 'Bubbleboddy', 36, false);
+
+        drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
+        finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
+
     }
 }

@@ -40,6 +40,21 @@ export const background_images = [
         image_name: 'panel_down',
         image_format: 'png',
         image_url: generateUrlToFile('down', 'png'),
+    },
+    {
+        image_name: 'button_true',
+        image_format: 'png',
+        image_url: generateUrlToFile('button_true', 'png')
+    },
+    {
+        image_name: 'button_false',
+        image_format: 'png',
+        image_url: generateUrlToFile('button_false', 'png')
+    },
+    {
+        image_name: 'table',
+        image_format: 'png',
+        image_url: generateUrlToFile('table', 'png')
     }
 ];
 
