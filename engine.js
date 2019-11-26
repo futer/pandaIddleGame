@@ -34,6 +34,8 @@ export class GameEngine {
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
         this.playerGold = new DrawText(this.ctx, 70, 22);
         this.playerAttack = new DrawText(this.ctx, 340, 22);
+        this.bossFightText = new DrawText(this.ctx, (this.width /2), 200);
+
         this.interval = 100;
 
         this.setMonsterInstance();
@@ -48,7 +50,7 @@ export class GameEngine {
                 drawAllBackgroundImage(this.ctx);
                 console.log(drawedMonster);
 
-                if (this.monsterNumber === enemy_list.length) {
+                if ((this.monsterNumber + 1) === enemy_list.length) {
                     console.log(this.monsterNumber, enemy_list.length);
                     clearInterval(update);
                 }
@@ -57,6 +59,11 @@ export class GameEngine {
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
                 this.nextLevel();
                 this.drawMonster();
+
+                if (drawedMonster.monsterOption.bossFight) {
+                    this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
+                }
+
                 this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
@@ -66,7 +73,7 @@ export class GameEngine {
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber],this.monsterNumber);
+        drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber], this.monsterNumber);
     }
 
     drawMonster() {
@@ -81,9 +88,11 @@ export class GameEngine {
     }
 
     nextLevel() {
+        if (drawedMonster.monsterOption.losthp <= 0) {
             this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
             this.killMonster();
             this.setMonsterInstance();
+        }
     };
 
     actionMgnFc(event, action) {

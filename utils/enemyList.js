@@ -48,6 +48,7 @@ export const enemy_list = [
         height: 206.33,
         monster_name: 'red_monster',
         platform_number: 2,
+        bossFight: true,
     },
     {
         losthp: 160,
