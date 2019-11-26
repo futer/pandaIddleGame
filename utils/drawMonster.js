@@ -6,13 +6,15 @@ export class DrawMonster {
         imageName,
         x,
         y, 
-        monsterOption
+        monsterOption,
+        level
     ) {
         this.ctx = ctx;
         this.imageName = imageName;
         this.x = x;
         this.y = y;
         this.monsterOption = monsterOption;
+        this.level = level;
     }
 
     drawMonsterImage(shift, frameWidth, frameHeight) {
