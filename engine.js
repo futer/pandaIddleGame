@@ -211,7 +211,7 @@ export class GameEngine {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[index][keyDown[index].length -1], 'white', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown, 'red', 'Bubbleboddy', 22);
 
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
