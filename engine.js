@@ -50,9 +50,10 @@ export class GameEngine {
                 drawAllBackgroundImage(this.ctx);
                 console.log(drawedMonster);
 
-                if ((this.monsterNumber + 1) === enemy_list.length) {
+                if (this.monsterNumber === enemy_list.length) {
                     console.log(this.monsterNumber, enemy_list.length);
                     clearInterval(update);
+                    this.finishGame();
                 }
 
                 drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
@@ -89,6 +90,9 @@ export class GameEngine {
 
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
+            if (drawedMonster.monsterOption.bossFight) {
+                this.addPlayerAttack(15);
+            }
             this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
             this.killMonster();
             this.setMonsterInstance();
@@ -138,5 +142,21 @@ export class GameEngine {
     setPlayerGold(minGold, maxGold) {
         const gold = Math.floor(Math.random() * maxGold) + minGold
         playerOptions.gold += gold;
+    }
+
+    addPlayerAttack(attackDamage) {
+        const playerData = JSON.parse(this.getGamaData());
+        const addedAttack = playerOptions.attack + attackDamage;
+
+        saveToLocalStorage('player_data', JSON.stringify({
+            ...playerData,
+            attack: addedAttack,
+        }));
+        this.getGamaData();
+    }
+
+    finishGame() {
+        const finishGameText = new DrawText(this.ctx, (this.width /2), 200);
+        finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
     }
 }
