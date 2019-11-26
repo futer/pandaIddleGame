@@ -35,14 +35,18 @@ export class GameEngine {
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
         this.playerGold = new DrawText(this.ctx, 70, 22);
         this.playerAttack = new DrawText(this.ctx, 340, 22);
-        this.bossFightText = new DrawText(this.ctx, (this.width /2), 200);
+        this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
 
         this.interval = 100;
 
         this.setMonsterInstance();
 
         this.canvas.addEventListener('click', (event) => {
-            this.actionMgnFc(event, 'attack_monster');
+            // this.actionMgnFc(event, 'attack_monster');
+        });
+
+        document.addEventListener('keydown', (key) => {
+            this.actionMgnFc(key, 'attack_monster');
         });
 
         let update = setInterval(() => {
@@ -58,8 +62,9 @@ export class GameEngine {
                 drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
                 this.nextLevel();
-                this.drawMonster();        
-                
+                this.drawMonster();
+                this.generateButton();
+
                 if (drawedMonster.monsterOption.bossFight) {
                     this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
                 }
@@ -154,16 +159,47 @@ export class GameEngine {
     }
 
     finishGame() {
-        const finishGameText = new DrawText(this.ctx, (this.width /2), 200);
+        const finishGameText = new DrawText(this.ctx, (this.width / 2), 200);
         finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
-       
-        const finishGameGold = new DrawText(this.ctx, (this.width /2), 310);
+
+        const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
         drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
         finishGameGold.drawText(`Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 22, false);
 
-        const finishGameAttack = new DrawText(this.ctx, (this.width /2), 410);
+        const finishGameAttack = new DrawText(this.ctx, (this.width / 2), 410);
         drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
         finishGameAttack.drawText(`Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 22, false);
         console.clear();
     }
+
+    generateButton() {
+        const buttonPlacement = [
+            {
+                x: 200,
+                y: 400,
+            },
+            {
+                x: 200,
+                y: 400,
+            },
+            {
+                x: 200,
+                y: 400,
+            },
+            {
+                x: 200,
+                y: 400,
+            },
+        ];
+
+        const activeButton = Math.floor(Math.random() * 4) + 0;
+
+        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+        drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+
+    }
+
+
 }

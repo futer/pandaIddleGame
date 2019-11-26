@@ -1,11 +1,12 @@
 import { drawedMonster } from '../engine.js';
 import { playerOptions } from './playerOptions.js';
 
-export function actionManagement(event, type) {
+export function actionManagement(key, type) {
+    console.log(key.code);
 
     switch (true) {
         case type === 'attack_monster':
-            if (event.layerX >= 75 && event.layerX <= 340 && event.layerY >= 180 && event.layerY <= 530) {
+            if (key.code === 'KeyA') {
                 drawedMonster.monsterOption.losthp -= playerOptions.attack;
             };
             break;
