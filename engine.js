@@ -45,8 +45,11 @@ export class GameEngine {
 
             drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
             drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
-
-            this.nextLevel();
+            
+            if (drawedMonster.monsterOption.losthp <= 0 && drawedMonster.monsterOption.monster_name !== undefined) {
+                this.nextLevel();
+                console.log(drawedMonster);
+            }
 
             this.drawMonster();
 
@@ -73,11 +76,9 @@ export class GameEngine {
     }
 
     nextLevel() {
-        if (drawedMonster.monsterOption.losthp <= 0) {
-            this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
-            this.killMonster();
-            this.setMonsterInstance();
-        }
+        this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
+        this.killMonster();
+        this.setMonsterInstance();
     };
 
     actionMgnFc(event, action) {
