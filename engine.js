@@ -32,7 +32,7 @@ export class GameEngine {
         playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
 
         this.interval = 100;
-        
+
         this.setMonsterInstance();
 
         this.canvas.addEventListener('click', (event) => {
@@ -45,23 +45,29 @@ export class GameEngine {
 
             drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
             drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
-            
-            if (drawedMonster.monsterOption.losthp <= 0) {
+
+            if (drawedMonster !== null) {
                 this.nextLevel();
+                this.drawMonster();
+                new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+                new DrawText(this.ctx, 70, 22).drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
+                new DrawText(this.ctx, 340, 22).drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
+    
                 console.log(drawedMonster);
+            } else {
+                console.log(123);
             }
 
-            this.drawMonster();
 
-            new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
-            new DrawText(this.ctx, 70, 22).drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
-            new DrawText(this.ctx, 340, 22).drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
-
+            
         }, this.interval);
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber]);
+        console.log(this.monsterNumber);
+        if (this.monsterNumber < enemy_list.length) {
+            drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber]);
+        }
     }
 
     drawMonster() {
@@ -76,9 +82,12 @@ export class GameEngine {
     }
 
     nextLevel() {
-        this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
-        this.killMonster();
-        this.setMonsterInstance();
+        if (this.monsterNumber < enemy_list.length) {
+            this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
+            this.killMonster();
+            this.setMonsterInstance();
+        }
+        
     };
 
     actionMgnFc(event, action) {
