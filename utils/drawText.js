@@ -19,3 +19,12 @@ export class DrawText {
         }
     }
 }
+
+export function DrawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
+    ctx.save();
+    ctx.font = `${fontSize}px ${fontName}`;
+    ctx.fillStyle = color;
+    ctx.textAlign = "center";
+    ctx.fillText(text, posx, posy);
+    ctx.restore();
+}

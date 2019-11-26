@@ -1,7 +1,7 @@
 import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
-import { DrawText } from './utils/drawText.js';
+import { DrawText, DrawOnlyText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 import { playerOptions } from './utils/playerOptions.js';
@@ -59,11 +59,6 @@ export class GameEngine {
         this.playerGold = new DrawText(this.ctx, 70, 22);
         this.playerAttack = new DrawText(this.ctx, 340, 22);
         this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
-
-        this.buttonOne = new DrawText(this.ctx, 110, 650);
-        this.buttonTwo = new DrawText(this.ctx, 160, 650);
-        this.buttonThree = new DrawText(this.ctx, 210, 650);
-        this.buttonFour = new DrawText(this.ctx, 260, 650);
 
         this.interval = 100;
 
@@ -209,16 +204,18 @@ export class GameEngine {
             fourChoosenKey.push(keyCodeTable[Math.floor(Math.random() * keyCodeTable.length) + 0]);
         }
         keyDown = keyCodeTable[Math.floor(Math.random() * fourChoosenKey.length) + 0];
-        console.log(keyDown);
+        console.log(keyDown, fourChoosenKey);
     }
 
     drawKeyButton() {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[index][keyDown[index].length -1], 'white', 'Bubbleboddy', 22);
 
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length -1], 'black', 'Bubbleboddy', 22);
             }
         });
     }
