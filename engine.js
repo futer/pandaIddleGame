@@ -7,8 +7,8 @@ import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js
 import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
 
-
 export let drawedMonster = null;
+export let gameEnd = false;
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -31,6 +31,9 @@ export class GameEngine {
         playerOptions.attack = JSON.parse(this.getGamaData()).attack;
         playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
 
+        this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
+        this.playerGold = new DrawText(this.ctx, 70, 22);
+        this.playerAttack = new DrawText(this.ctx, 340, 22);
         this.interval = 100;
 
         this.setMonsterInstance();
@@ -39,32 +42,30 @@ export class GameEngine {
             this.actionMgnFc(event, 'attack_monster');
         });
 
-        setInterval(() => {
-            this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawAllBackgroundImage(this.ctx);
+        let update = setInterval(() => {
+            if (!gameEnd) {
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawAllBackgroundImage(this.ctx);
 
-            drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-            drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
-
-            if (drawedMonster !== null) {
-                this.nextLevel();
-                this.drawMonster();
-                new DrawText(this.ctx, (this.width / 2), (this.height / 1.3)).drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
-                new DrawText(this.ctx, 70, 22).drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
-                new DrawText(this.ctx, 340, 22).drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
-    
-                console.log(drawedMonster);
+                if (drawedMonster !== null) {
+                    drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+                    drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
+                    this.nextLevel();
+                    this.drawMonster();
+                    this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+                    this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
+                    this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
+                } else {
+                    gameEnd = true;
+                }
             } else {
-                console.log(123);
+                clearInterval(update);
             }
 
-
-            
         }, this.interval);
     }
 
     setMonsterInstance() {
-        console.log(this.monsterNumber);
         if (this.monsterNumber < enemy_list.length) {
             drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber]);
         }
@@ -87,7 +88,6 @@ export class GameEngine {
             this.killMonster();
             this.setMonsterInstance();
         }
-        
     };
 
     actionMgnFc(event, action) {
