@@ -149,6 +149,7 @@ export class GameEngine {
             ...playerData,
             attack: addedAttack,
         }));
+        playerOptions.attack = addedAttack;
         this.getGamaData();
     }
 
