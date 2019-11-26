@@ -48,10 +48,8 @@ export class GameEngine {
             if (!gameEnd) {
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawAllBackgroundImage(this.ctx);
-                console.log(drawedMonster);
 
                 if (this.monsterNumber === enemy_list.length) {
-                    console.log(this.monsterNumber, enemy_list.length);
                     clearInterval(update);
                     this.finishGame();
                 }
@@ -68,6 +66,7 @@ export class GameEngine {
                 this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
+                console.log(playerOptions.attack);
             }
 
         }, this.interval);
@@ -90,9 +89,7 @@ export class GameEngine {
 
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
-            if (drawedMonster.monsterOption.bossFight) {
-                this.addPlayerAttack(15);
-            }
+            drawedMonster.monsterOption.bossFight ? this.addPlayerAttack(15) : false;
             this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
             this.killMonster();
             this.setMonsterInstance();
