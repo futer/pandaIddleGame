@@ -140,7 +140,7 @@ export class GameEngine {
     }
 
     setPlayerGold(minGold, maxGold) {
-        const gold = Math.floor(Math.random() * maxGold) + minGold
+        const gold = Math.floor(Math.random() * maxGold) + minGold;
         playerOptions.gold += gold;
     }
 
