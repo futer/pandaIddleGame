@@ -5,7 +5,6 @@ export function drawImage(ctx, image_name, x, y, width, height, scale) {
         ctx.save();
 
         if (scale !== null && scale !== undefined) {
-            console.log(scale);
             ctx.scale(scale, scale);
         }
 

@@ -76,17 +76,17 @@ export class GameEngine {
 
         let update = setInterval(() => {
             if (!gameEnd) {
+                
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawAllBackgroundImage(this.ctx);
+
+                drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+                drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
+
                 if (this.monsterNumber === enemy_list.length) {
                     clearInterval(update);
                     this.finishGame();
                 }
-                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawAllBackgroundImage(this.ctx);
-
-                
-
-                drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-                drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
                 this.nextLevel();
                 this.drawMonster();
 
