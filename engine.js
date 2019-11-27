@@ -61,6 +61,7 @@ export class GameEngine {
         this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
 
         this.interval = 100;
+        this.showRestartGameAfterFinishAndLoad()
 
         this.setMonsterInstance();
 
@@ -76,7 +77,7 @@ export class GameEngine {
 
         let update = setInterval(() => {
             if (!gameEnd) {
-                
+
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawAllBackgroundImage(this.ctx);
 
@@ -213,13 +214,27 @@ export class GameEngine {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[keyDown.length-1], 'red', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[keyDown.length - 1], 'red', 'Bubbleboddy', 22);
 
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length -1], 'black', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
             }
         });
+    }
+
+    showRestartGameAfterFinishAndLoad() {
+            console.log(1);
+        if (this.monsterNumber === enemy_list.length) {
+            console.log(2)
+            this.ctx.clearRect(0, 0, this.width, this.height);
+            drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
+
+            const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
+            drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
+            finishGameGold.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+        }
+
     }
 
 
