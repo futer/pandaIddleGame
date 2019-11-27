@@ -50,11 +50,18 @@ export class GameEngine {
         //restart game
         this.setGameData(false);
 
-        this.monsterNumber = JSON.parse(this.getGamaData()).level;
-        playerOptions.gold = JSON.parse(this.getGamaData()).gold;
-        playerOptions.attack = JSON.parse(this.getGamaData()).attack;
-        playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
-        playerOptions.items = JSON.parse(this.getGamaData()).items;
+        // this.monsterNumber = JSON.parse(this.getGamaData()).level;
+
+        // playerOptions.level = JSON.parse(this.getGamaData()).level;
+        // playerOptions.gold = JSON.parse(this.getGamaData()).gold;
+        // playerOptions.attack = JSON.parse(this.getGamaData()).attack;
+        // playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
+        // playerOptions.items = JSON.parse(this.getGamaData()).items;
+
+        for(var propt in playerOptions){
+            playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
+            console.log(propt);
+        }
 
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
         this.playerGold = new DrawText(this.ctx, 70, 22);
@@ -81,7 +88,7 @@ export class GameEngine {
                 drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                 drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
 
-                if (this.monsterNumber === enemy_list.length) {
+                if (playerOptions.level === enemy_list.length) {
                     clearInterval(update);
                     this.finishGame();
                 }
@@ -92,7 +99,7 @@ export class GameEngine {
                     this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
                 }
 
-                this.monsterHPText.drawText(`${enemy_list[this.monsterNumber].losthp}/${enemy_list[this.monsterNumber].hp}`, 'black', 'Arial', 40, false);
+                this.monsterHPText.drawText(`${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Arial', 40, false);
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
 
@@ -103,7 +110,7 @@ export class GameEngine {
     }
 
     setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, enemy_list[this.monsterNumber].monster_name, 100, 100, enemy_list[this.monsterNumber], this.monsterNumber);
+        drawedMonster = new DrawMonster(this.ctx, enemy_list[playerOptions.level].monster_name, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
     }
 
     drawMonster() {
@@ -120,7 +127,7 @@ export class GameEngine {
     nextLevel() {
         if (drawedMonster.monsterOption.losthp <= 0) {
             drawedMonster.monsterOption.bossFight ? this.addPlayerAttack(15) : false;
-            this.setPlayerGold(enemy_list[this.monsterNumber].min_gold, enemy_list[this.monsterNumber].max_gold);
+            this.setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
             this.killMonster();
             this.setMonsterInstance();
         }
@@ -150,7 +157,7 @@ export class GameEngine {
         const playerData = JSON.parse(this.getGamaData());
         saveToLocalStorage('player_data', JSON.stringify({
             ...playerData,
-            level: this.monsterNumber = parseInt(this.monsterNumber) + 1,
+            level: playerOptions.level = parseInt(playerOptions.level) + 1,
             gold: playerOptions.gold,
         }));
         this.getGamaData();
@@ -228,7 +235,7 @@ export class GameEngine {
 
     showRestartGameAfterFinishAndLoad() {
             console.log(1);
-        if (this.monsterNumber === enemy_list.length) {
+        if (playerOptions.level === enemy_list.length) {
             console.log(2)
             this.ctx.clearRect(0, 0, this.width, this.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
