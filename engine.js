@@ -65,10 +65,6 @@ export class GameEngine {
 
         this.setMonsterInstance();
 
-        this.canvas.addEventListener('click', (event) => {
-            // this.actionMgnFc(event, 'attack_monster');
-        });
-
         document.addEventListener('keydown', (key) => {
             this.actionMgnFc(key, 'attack_monster', keyDown);
             this.generateButton();
@@ -233,6 +229,11 @@ export class GameEngine {
             const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
             drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
             finishGameGold.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+            this.canvas.addEventListener('click', (event) => {
+                console.log(123);
+                // this.actionMgnFc(event, 'attack_monster');
+            });
+
         }
 
     }

@@ -11,6 +11,11 @@ export function actionManagement(key, type, truekey) {
             };
             break;
 
+        case type === 'restart_game':
+            localStorage.removeItem('player_data');
+            location.reload;
+            break;
+
         default:
             break;
     }
