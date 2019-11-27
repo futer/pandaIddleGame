@@ -131,20 +131,10 @@ export class GameEngine {
 
     setGameData(restart) {
         if (restart) {
-            saveToLocalStorage('player_data', JSON.stringify({
-                level: 0,
-                gold: 0,
-                achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                attack: playerOptions.attack,
-            }));
+            saveToLocalStorage('player_data', JSON.stringify(playerOptions));
         } else {
             if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
-                saveToLocalStorage('player_data', JSON.stringify({
-                    level: 0,
-                    gold: playerOptions.gold,
-                    achivment: '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                    attack: playerOptions.attack,
-                }));
+                saveToLocalStorage('player_data', JSON.stringify(playerOptions));
             } else {
                 this.getGamaData()
             }
@@ -193,6 +183,23 @@ export class GameEngine {
         const finishGameAttack = new DrawText(this.ctx, (this.width / 2), 410);
         drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
         finishGameAttack.drawText(`Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 22, false);
+
+        const restartGameText = new DrawText(this.ctx, (this.width / 2), 510);
+        drawImage(this.ctx, 'table', 60, 480, 280, 45, null);
+        restartGameText.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+
+        const clickCords = {
+            x: 60,
+            y: 280,
+            endX: 540,
+            endY: 325,
+        }
+
+        this.canvas.addEventListener('click', (event) => {
+            console.log(event);
+            this.actionMgnFc(event, 'restart_game', clickCords);
+        });
+
         console.clear();
     }
 
@@ -235,7 +242,6 @@ export class GameEngine {
                 endY: 325,
             }
             this.canvas.addEventListener('click', (event) => {
-                console.log(123);
                 this.actionMgnFc(event, 'restart_game', clickCords);
             });
 

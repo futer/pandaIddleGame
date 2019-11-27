@@ -11,10 +11,9 @@ export function actionManagement(action, type, param) {
             break;
 
         case type === 'restart_game':
-            if (event.layerX > param.x && event.layerX < param.endX) {
-                console.log(event, param);
-                // localStorage.removeItem('player_data');
-                // location.reload;
+            if (event.layerX > param.x && event.layerX < param.endX && event.layerY > param.y && event.layerY < param.endY) {
+                localStorage.removeItem('player_data');
+                location.reload;
             }
             
             break;
