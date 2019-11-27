@@ -7,25 +7,7 @@ import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js
 import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
 import { keyCodeTable } from './utils/eventCodeKeys.js';
-
-const buttonPlacement = [
-    {
-        x: 110,
-        y: 650,
-    },
-    {
-        x: 160,
-        y: 650,
-    },
-    {
-        x: 210,
-        y: 650,
-    },
-    {
-        x: 260,
-        y: 650,
-    },
-];
+import { buttonPlacement } from './utils/buttonPlacement.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
@@ -46,21 +28,11 @@ export class GameEngine {
         this.totalFrames = 4;
         this.currentFrame = 0;
 
-
         //restart game
         this.setGameData(false);
 
-        // this.monsterNumber = JSON.parse(this.getGamaData()).level;
-
-        // playerOptions.level = JSON.parse(this.getGamaData()).level;
-        // playerOptions.gold = JSON.parse(this.getGamaData()).gold;
-        // playerOptions.attack = JSON.parse(this.getGamaData()).attack;
-        // playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
-        // playerOptions.items = JSON.parse(this.getGamaData()).items;
-
         for(var propt in playerOptions){
             playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
-            console.log(propt);
         }
 
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
@@ -68,7 +40,6 @@ export class GameEngine {
         this.playerAttack = new DrawText(this.ctx, 340, 22);
         this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
 
-        this.interval = 100;
         this.showRestartGameAfterFinishAndLoad()
 
         this.setMonsterInstance();
@@ -77,6 +48,7 @@ export class GameEngine {
             this.actionMgnFc(key, 'attack_monster', keyDown);
             this.generateButton();
         });
+
         this.generateButton();
 
         let update = setInterval(() => {
@@ -106,7 +78,7 @@ export class GameEngine {
                 this.drawKeyButton();
             }
 
-        }, this.interval);
+        }, 100);
     }
 
     setMonsterInstance() {
@@ -120,7 +92,6 @@ export class GameEngine {
             this.shift = 0;
             this.currentFrame = 0;
         }
-
         this.currentFrame++;
     }
 
@@ -234,9 +205,7 @@ export class GameEngine {
     }
 
     showRestartGameAfterFinishAndLoad() {
-            console.log(1);
         if (playerOptions.level === enemy_list.length) {
-            console.log(2)
             this.ctx.clearRect(0, 0, this.width, this.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
