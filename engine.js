@@ -54,6 +54,7 @@ export class GameEngine {
         playerOptions.gold = JSON.parse(this.getGamaData()).gold;
         playerOptions.attack = JSON.parse(this.getGamaData()).attack;
         playerOptions.achivment = JSON.parse(this.getGamaData()).achivment;
+        playerOptions.items = JSON.parse(this.getGamaData()).items;
 
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
         this.playerGold = new DrawText(this.ctx, 70, 22);
@@ -190,9 +191,9 @@ export class GameEngine {
 
         const clickCords = {
             x: 60,
-            y: 280,
+            y: 480,
             endX: 540,
-            endY: 325,
+            endY: 525,
         }
 
         this.canvas.addEventListener('click', (event) => {
