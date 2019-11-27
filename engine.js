@@ -125,8 +125,8 @@ export class GameEngine {
         }
     };
 
-    actionMgnFc(event, action, truekey) {
-        actionManagement(event, action, truekey);
+    actionMgnFc(event, action, param) {
+        actionManagement(event, action, param);
     }
 
     setGameData(restart) {
@@ -203,7 +203,6 @@ export class GameEngine {
             fourChoosenKey.push(keyCodeTable[Math.floor(Math.random() * keyCodeTable.length) + 0]);
         }
         keyDown = fourChoosenKey[Math.floor(Math.random() * fourChoosenKey.length) + 0];
-        console.log(keyDown, fourChoosenKey);
     }
 
     drawKeyButton() {
@@ -229,9 +228,15 @@ export class GameEngine {
             const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
             drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
             finishGameGold.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+            const clickCords = {
+                x: 60,
+                y: 280,
+                endX: 340,
+                endY: 325,
+            }
             this.canvas.addEventListener('click', (event) => {
                 console.log(123);
-                // this.actionMgnFc(event, 'attack_monster');
+                this.actionMgnFc(event, 'restart_game', clickCords);
             });
 
         }
