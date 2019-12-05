@@ -61,29 +61,28 @@ export class GameEngine {
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 drawAllBackgroundImage(this.ctx);
 
-                drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
-                drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
-
                 if (playerOptions.level === enemy_list.length) {
                     clearInterval(update);
                     this.finishGame();
+                } else {
+                    drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
+                    drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
+                    
+                    this.nextLevel();
+                    this.drawMonster();
+
+                    if (drawedMonster.monsterOption.bossFight) {
+                        DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
+                    }
+
+                    DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
+
+                    DrawOnlyText(this.ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
+                    DrawOnlyText(this.ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
+
+                    this.drawShopButton();
+                    this.drawKeyButton();
                 }
-                this.nextLevel();
-                this.drawMonster();
-
-                if (drawedMonster.monsterOption.bossFight) {
-                    DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
-                }
-
-                DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
-
-                DrawOnlyText(this.ctx, 40, 22 ,`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
-                DrawOnlyText(this.ctx, 305, 22 ,`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
-
-                this.drawShopButton();
-                this.drawKeyButton();
-
-                console.log(shopProp.isOpen);
             }
 
         }, 100);
@@ -160,16 +159,16 @@ export class GameEngine {
     }
 
     finishGame() {
-        DrawOnlyText(this.ctx, 50, 200, 'You finished game!!', 'black', 'Bubbleboddy', 36);
+        DrawOnlyText(this.ctx, 60, 200, 'You finished game!!', 'black', 'Bubbleboddy', 36);
 
-        drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
-        DrawOnlyText(this.ctx, 185, 280, `Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 36);
+        drawImage(this.ctx, 'table', 65, 270, 280, 45, null);
+        DrawOnlyText(this.ctx, 80, 300, `Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
 
         drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
-        DrawOnlyText(this.ctx, 185, 380, `Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 36);
+        DrawOnlyText(this.ctx, 80, 410, `Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
 
         drawImage(this.ctx, 'table', 60, 480, 280, 45, null);
-        DrawOnlyText(this.ctx, 185, 480, `Restart game``Restart game`, 'white', 'Bubbleboddy', 36);
+        DrawOnlyText(this.ctx, 150, 510, `Restart game`, 'white', 'Bubbleboddy', 22);
 
         const clickCords = {
             x: 60,
@@ -219,7 +218,7 @@ export class GameEngine {
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
             drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
-            
+
             DrawOnlyText(this.ctx, 150, 310, 'Restart Game', 'white', 'Bubbleboddy', 22);
 
             const clickCords = {
