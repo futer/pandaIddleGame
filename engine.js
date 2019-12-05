@@ -17,7 +17,6 @@ export let fourChoosenKey = [];
 export let shopProp = {
     isOpen: false,
 };
-export let isListnerActive = true;
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -44,10 +43,8 @@ export class GameEngine {
         this.setMonsterInstance();
 
         document.addEventListener('keydown', (key) => {
-            if (isListnerActive) {
-                this.actionMgnFc(key, 'attack_monster', keyDown);
-                this.generateButton();
-            }
+            this.actionMgnFc(key, 'attack_monster', keyDown);
+            this.generateButton();
         });
 
         document.addEventListener('click', (event) => {
@@ -58,7 +55,7 @@ export class GameEngine {
 
         this.generateButton();
 
-        this.update = setInterval(() => {
+        let update = setInterval(() => {
             if (!gameEnd) {
 
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
