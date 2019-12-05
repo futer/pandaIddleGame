@@ -49,6 +49,12 @@ export class GameEngine {
             this.generateButton();
         });
 
+        document.addEventListener('click', (event) => {
+            if (event.layerX > 140 && event.layerX < 400) {
+                this.actionMgnFc(event, 'openShop', null);
+            }
+        });
+
         this.generateButton();
 
         let update = setInterval(() => {
@@ -206,8 +212,8 @@ export class GameEngine {
     }
 
     drawShopButton() {
-        drawImage(this.ctx, 'button_true', 340, 30, 60, 60, null);
-        DrawOnlyText(this.ctx, 370, 130, 'S', 'black', 'Bubbleboddy', 22);
+        drawImage(this.ctx, 'table', 140, 30, 120, 40, null);
+        DrawOnlyText(this.ctx, 200, 57, 'SHOP', 'white', 'Bubbleboddy', 22);
     }
 
     showRestartGameAfterFinishAndLoad() {

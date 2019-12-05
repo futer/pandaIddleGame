@@ -11,14 +11,15 @@ export function actionManagement(action, type, param) {
             break;
 
         case type === 'restart_game':
-                console.log(1);
             if (event.layerX > param.x && event.layerX < param.endX && event.layerY > param.y && event.layerY < param.endY) {
-                console.log(2);
-
                 localStorage.removeItem('player_data');
                 location.reload(true);
             }
             
+            break;
+
+        case type === 'openShop':
+                console.log(action, type);
             break;
 
         default:
