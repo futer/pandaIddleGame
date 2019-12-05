@@ -245,6 +245,7 @@ export class GameEngine {
         });
         
         this.canvas.addEventListener('click', (event) => {
+            console.log(event);
             if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
                 actionManagement(event, 'closeShop', null);
             }
