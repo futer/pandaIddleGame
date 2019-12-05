@@ -38,10 +38,6 @@ export class GameEngine {
             playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
         }
 
-        this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
-        this.playerGold = new DrawText(this.ctx, 70, 22);
-        this.playerAttack = new DrawText(this.ctx, 340, 22);
-
         this.showRestartGameAfterFinishAndLoad()
 
         this.setMonsterInstance();
@@ -81,11 +77,8 @@ export class GameEngine {
 
                 DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
 
-                DrawOnlyText(this.ctx, 70, 70 ,`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
-
-                DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
-
-                this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
+                DrawOnlyText(this.ctx, 40, 22 ,`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
+                DrawOnlyText(this.ctx, 305, 22 ,`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
 
                 this.drawShopButton();
                 this.drawKeyButton();
@@ -167,20 +160,16 @@ export class GameEngine {
     }
 
     finishGame() {
-        const finishGameText = new DrawText(this.ctx, (this.width / 2), 200);
-        finishGameText.drawText('You finished game!!', 'black', 'Bubbleboddy', 36, false);
+        DrawOnlyText(this.ctx, 50, 200, 'You finished game!!', 'black', 'Bubbleboddy', 36);
 
-        const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
         drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
-        finishGameGold.drawText(`Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 22, false);
+        DrawOnlyText(this.ctx, 185, 280, `Your collected gold is ${playerOptions.gold}`, 'white', 'Bubbleboddy', 36);
 
-        const finishGameAttack = new DrawText(this.ctx, (this.width / 2), 410);
         drawImage(this.ctx, 'table', 60, 380, 280, 45, null);
-        finishGameAttack.drawText(`Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 22, false);
+        DrawOnlyText(this.ctx, 185, 380, `Your attack is ${playerOptions.attack}`, 'white', 'Bubbleboddy', 36);
 
-        const restartGameText = new DrawText(this.ctx, (this.width / 2), 510);
         drawImage(this.ctx, 'table', 60, 480, 280, 45, null);
-        restartGameText.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+        DrawOnlyText(this.ctx, 185, 480, `Restart game``Restart game`, 'white', 'Bubbleboddy', 36);
 
         const clickCords = {
             x: 60,
@@ -229,9 +218,10 @@ export class GameEngine {
             this.ctx.clearRect(0, 0, this.width, this.height);
             drawImage(this.ctx, 'game_background', 0, 0, 480, 700, null);
 
-            const finishGameGold = new DrawText(this.ctx, (this.width / 2), 310);
             drawImage(this.ctx, 'table', 60, 280, 280, 45, null);
-            finishGameGold.drawText(`Restart game`, 'white', 'Bubbleboddy', 22, false);
+            
+            DrawOnlyText(this.ctx, 150, 310, 'Restart Game', 'white', 'Bubbleboddy', 22);
+
             const clickCords = {
                 x: 60,
                 y: 280,
