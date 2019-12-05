@@ -67,6 +67,11 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('closeCircleButton', 'png'),
         
+    },
+    {
+        image_name: 'button',
+        image_format: 'png',
+        image_url: generateUrlToFile('button', 'png'),
     }
 ];
 

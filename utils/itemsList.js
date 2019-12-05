@@ -5,7 +5,7 @@ export const itemsList = [
         costs: 100
     },
     {
-        name: 'copper_sword',
+        name: 'bronze_sword',
         damage: 25,
         costs: 250,
     }
