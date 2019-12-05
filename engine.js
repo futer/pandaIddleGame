@@ -233,6 +233,13 @@ export class GameEngine {
             drawImage(this.ctx, buttonColor, x, newRow, 65, 65, null);
             drawImage(this.ctx, element.name, x + 15, newRow + 15, 30, 30, null);
             DrawOnlyText(this.ctx, x + 15, newRow + 80, `${element.costs}$`, 'white', 'Arial', 16);
+            itemsList[index] = {
+                ...itemsList[index],
+                startX: x,
+                endX: x + 65,
+                startY: newRow,
+                endY: newRow + 65,
+            };
 
             if (divided) {
                 newRow += 100;
@@ -245,7 +252,7 @@ export class GameEngine {
         });
         
         this.canvas.addEventListener('click', (event) => {
-            console.log(event);
+            console.log(itemsList);
             if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
                 actionManagement(event, 'closeShop', null);
             }
