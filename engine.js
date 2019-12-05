@@ -1,7 +1,7 @@
 import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
-import { DrawText, DrawOnlyText } from './utils/drawText.js';
+import { DrawOnlyText } from './utils/drawText.js';
 import { actionManagement } from './utils/actionManagement.js';
 import { getFromLocalStorage, saveToLocalStorage } from './utils/localStorage.js';
 import { playerOptions } from './utils/playerOptions.js';
@@ -53,8 +53,6 @@ export class GameEngine {
             }
         });
 
-        
-
         this.generateButton();
 
         this.update = setInterval(() => {
@@ -85,11 +83,6 @@ export class GameEngine {
                     this.drawShopButton();
                     this.drawKeyButton();
 
-                    if(!shopProp.isOpen) {
-                        setInterval(this.update);
-                    } else {
-                        this.showShopMenu();
-                    }
                 }
             }
 
@@ -221,17 +214,11 @@ export class GameEngine {
     }
 
     showShopMenu() {
-        console.log(123);
-        clearInterval(this.update);
-
-        setTimeout(() => {
-            this.closeShopMenu();
-        }, 1000);
+        shopProp.isOpen = true;
     }
 
     closeShopMenu() {
         shopProp.isOpen = false;
-        setInterval(this.update);
     }
 
     showRestartGameAfterFinishAndLoad() {
