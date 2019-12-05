@@ -72,6 +72,16 @@ export const background_images = [
         image_name: 'button',
         image_format: 'png',
         image_url: generateUrlToFile('button', 'png'),
+    },
+    {
+        image_name: 'bronze_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('bronze_sword', 'png'),
+    },
+    {
+        image_name: 'wooden_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('wooden_sword', 'png'),
     }
 ];
 

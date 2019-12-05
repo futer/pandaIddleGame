@@ -9,6 +9,8 @@ import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
 import { keyCodeTable } from './utils/eventCodeKeys.js';
 import { buttonPlacement } from './utils/buttonPlacement.js';
 
+import { itemsList } from './utils/itemsList.js';
+
 export let drawedMonster = null;
 export let gameEnd = false;
 export let keyDown = null;
@@ -221,11 +223,13 @@ export class GameEngine {
         drawImage(this.ctx, 'shopTable', 50, 90, 300, 500, null);
         drawImage(this.ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
+        itemsList.forEach((element, index) => {
+            console.log(element.name + ' ' + index);
+        });
+        
         this.canvas.addEventListener('click', (event) => {
             if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
-                console.log(event.layerX, event.layerY);
-
-                this.actionMgnFc(event, 'closeShop', clickCords);
+                actionManagement(event, 'closeShop', null);
             }
         });
 
