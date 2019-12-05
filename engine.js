@@ -228,12 +228,16 @@ export class GameEngine {
         this.canvas.addEventListener('click', (evt) => {
             itemsList.forEach((element, index) => {
                 if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
-                    itemsList[index] = {
-                        ...element,
-                        isBought: true,
-                    };
-                    this.drawAllItems();
-                    playerOptions.attack += element.damage;
+                    if (playerOptions.gold >= element.costs) {
+                        itemsList[index] = {
+                            ...element,
+                            isBought: true,
+                        };
+                        playerOptions.attack += element.damage;
+                        playerOptions.gold -= element.costs;
+                    } else {
+                        console.log("niestać");
+                    }                   
                 }
             });
         });
@@ -299,5 +303,10 @@ export class GameEngine {
                 x += 85;
             }
         });
+    }
+
+    showNotification(text) {
+        drawImage(this.ctx, 'table', 100, 100, 300, 200, null);
+        DrawOnlyText(this.ctx, 115, 110, text, 'white', 'Arial', 16);
     }
 }
