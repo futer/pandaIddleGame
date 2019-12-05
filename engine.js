@@ -55,7 +55,7 @@ export class GameEngine {
 
         this.generateButton();
 
-        let update = setInterval(() => {
+        const update = setInterval(() => {
             if (!gameEnd) {
 
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -215,6 +215,10 @@ export class GameEngine {
 
     showShopMenu() {
         shopProp.isOpen = true;
+
+        drawImage(this.ctx, 'shopTable', 50, 50, 300, 400, null);
+
+
     }
 
     closeShopMenu() {
