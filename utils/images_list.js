@@ -55,6 +55,18 @@ export const background_images = [
         image_name: 'table',
         image_format: 'png',
         image_url: generateUrlToFile('table', 'png')
+    },
+    {
+        image_name: 'shopTable',
+        image_format: 'png',
+        image_url: generateUrlToFile('shopTable', 'png'),
+
+    },
+    {
+        image_name: 'closeCircleButton',
+        image_format: 'png',
+        image_url: generateUrlToFile('closeCircleButton', 'png'),
+        
     }
 ];
 

@@ -31,7 +31,7 @@ export class GameEngine {
         //restart game
         this.setGameData(false);
 
-        for(var propt in playerOptions){
+        for (var propt in playerOptions) {
             playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
         }
 
@@ -75,6 +75,7 @@ export class GameEngine {
                 this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
 
+                this.drawShopButton();
                 this.drawKeyButton();
             }
 
@@ -202,6 +203,11 @@ export class GameEngine {
                 DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
             }
         });
+    }
+
+    drawShopButton() {
+        drawImage(this.ctx, 'button_true', 340, 30, 60, 60, null);
+        DrawOnlyText(this.ctx, 370, 130, 'S', 'black', 'Bubbleboddy', 22);
     }
 
     showRestartGameAfterFinishAndLoad() {
