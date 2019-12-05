@@ -225,8 +225,19 @@ export class GameEngine {
 
         itemsList.forEach((element, index) => {
             let divided = index % 3 === 0;
-            drawImage(this.ctx, 'button_false', 85 + (index * 80), 130, 65, 65, null);
-            drawImage(this.ctx, element.name, 100 + (index * 80), 143, 30, 30, null);
+            let x = 0;
+
+            let newRow = 0;
+
+            if (divided) {
+                newRow += 80;
+                x = 85;
+            } else {
+                x += 85;
+            }
+
+            drawImage(this.ctx, 'button_false', x, 130 + newRow, 65, 65, null);
+            drawImage(this.ctx, element.name, x + 15, 143 + newRow, 30, 30, null);
         });
         
         this.canvas.addEventListener('click', (event) => {
