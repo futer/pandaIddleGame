@@ -67,7 +67,7 @@ export class GameEngine {
                 } else {
                     drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                     drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
-                    
+
                     this.nextLevel();
                     this.drawMonster();
 
@@ -76,12 +76,15 @@ export class GameEngine {
                     }
 
                     DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
-
                     DrawOnlyText(this.ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
                     DrawOnlyText(this.ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
 
                     this.drawShopButton();
                     this.drawKeyButton();
+
+                    if (shopProp.isOpen) {
+                        this.showShopMenu();
+                    }
 
                 }
             }
@@ -179,7 +182,6 @@ export class GameEngine {
         }
 
         this.canvas.addEventListener('click', (event) => {
-            console.log(event);
             this.actionMgnFc(event, 'restart_game', clickCords);
         });
 
@@ -216,8 +218,16 @@ export class GameEngine {
     showShopMenu() {
         shopProp.isOpen = true;
 
-        drawImage(this.ctx, 'shopTable', 50, 50, 300, 400, null);
+        drawImage(this.ctx, 'shopTable', 50, 90, 300, 500, null);
+        drawImage(this.ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
+        this.canvas.addEventListener('click', (event) => {
+            if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
+                console.log(event.layerX, event.layerY);
+
+                this.actionMgnFc(event, 'closeShop', clickCords);
+            }
+        });
 
     }
 
