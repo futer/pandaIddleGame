@@ -224,11 +224,9 @@ export class GameEngine {
         drawImage(this.ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
         itemsList.forEach((element, index) => {
-            let newRow = index * 80;
-            let newColumn = index * 80;
-
-            drawImage(this.ctx, 'button_false', 85 + newColumn, 130 + newRow, 65, 65, null);
-            drawImage(this.ctx, element.name, 100 + newColumn, 143 + newRow, 30, 30, null);
+            let divided = index % 3 === 0;
+            drawImage(this.ctx, 'button_false', 85 + (index * 80), 130, 65, 65, null);
+            drawImage(this.ctx, element.name, 100 + (index * 80), 143, 30, 30, null);
         });
         
         this.canvas.addEventListener('click', (event) => {
