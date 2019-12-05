@@ -225,15 +225,14 @@ export class GameEngine {
 
         this.drawAllItems();
 
-        itemsList.forEach((element, index) => {
-            this.canvas.addEventListener('click', (evt) => {
+        this.canvas.addEventListener('click', (evt) => {
+            itemsList.forEach((element, index) => {
                 if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
                     itemsList[index] = {
                         ...element,
                         isBought: true,
                     };
                     this.drawAllItems();
-                    console.log(itemsList[index]);
                     playerOptions.attack += element.damage;
                 }
             });
