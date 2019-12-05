@@ -1,5 +1,6 @@
 import { drawedMonster } from '../engine.js';
 import { playerOptions } from './playerOptions.js';
+import { shopProp } from '../engine.js';
 
 export function actionManagement(action, type, param) {
 
@@ -19,7 +20,11 @@ export function actionManagement(action, type, param) {
             break;
 
         case type === 'openShop':
-                console.log(action, type);
+                shopProp.isOpen = true;
+            break;
+
+        case type === 'closeShop':
+                shopProp.isOpen = false;
             break;
 
         default:

@@ -14,6 +14,9 @@ export let gameEnd = false;
 export let keyDown = null;
 export let greenButton = null;
 export let fourChoosenKey = [];
+export let shopProp = {
+    isOpen: false,
+};
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -50,7 +53,7 @@ export class GameEngine {
         });
 
         document.addEventListener('click', (event) => {
-            if (event.layerX > 140 && event.layerX < 400) {
+            if (event.layerX > 140 && event.layerX < 260 && event.layerY > 30 && event.layerY < 60) {
                 this.actionMgnFc(event, 'openShop', null);
             }
         });
@@ -83,6 +86,8 @@ export class GameEngine {
 
                 this.drawShopButton();
                 this.drawKeyButton();
+
+                console.log(shopProp.isOpen);
             }
 
         }, 100);
@@ -212,8 +217,8 @@ export class GameEngine {
     }
 
     drawShopButton() {
-        drawImage(this.ctx, 'table', 140, 30, 120, 40, null);
-        DrawOnlyText(this.ctx, 200, 57, 'SHOP', 'white', 'Bubbleboddy', 22);
+        drawImage(this.ctx, 'table', 140, 30, 120, 30, null);
+        DrawOnlyText(this.ctx, 200, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
     }
 
     showRestartGameAfterFinishAndLoad() {
