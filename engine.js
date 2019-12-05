@@ -41,7 +41,6 @@ export class GameEngine {
         this.monsterHPText = new DrawText(this.ctx, (this.width / 2), (this.height / 1.3));
         this.playerGold = new DrawText(this.ctx, 70, 22);
         this.playerAttack = new DrawText(this.ctx, 340, 22);
-        this.bossFightText = new DrawText(this.ctx, (this.width / 2), 200);
 
         this.showRestartGameAfterFinishAndLoad()
 
@@ -77,11 +76,15 @@ export class GameEngine {
                 this.drawMonster();
 
                 if (drawedMonster.monsterOption.bossFight) {
-                    this.bossFightText.drawText(`BOSS FIGHT`, 'blue', 'Bubbleboddy', 36, false);
+                    DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
                 }
 
-                this.monsterHPText.drawText(`${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Arial', 40, false);
-                this.playerGold.drawText(`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18, false);
+                DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
+
+                DrawOnlyText(this.ctx, 70, 70 ,`Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
+
+                DrawOnlyText(this.ctx, 140, (this.height / 1.5), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
+
                 this.playerAttack.drawText(`Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18, false);
 
                 this.drawShopButton();
@@ -207,18 +210,18 @@ export class GameEngine {
         buttonPlacement.forEach((btn, index) => {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, keyDown[keyDown.length - 1], 'red', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, keyDown[keyDown.length - 1], 'red', 'Bubbleboddy', 22);
 
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 20, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
+                DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
             }
         });
     }
 
     drawShopButton() {
         drawImage(this.ctx, 'table', 140, 30, 120, 30, null);
-        DrawOnlyText(this.ctx, 200, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
+        DrawOnlyText(this.ctx, 185, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
     }
 
     showRestartGameAfterFinishAndLoad() {

@@ -8,7 +8,6 @@ export class DrawText {
     drawText(text, fontColor, fontName, fontSize, isBorder) {
         this.ctx.font = `${fontSize}px ${fontName}`;
         this.ctx.fillStyle = fontColor;
-        this.ctx.textAlign = "center";
 
         if (isBorder) {
             this.ctx.lineWidth = 2;
@@ -24,7 +23,6 @@ export function DrawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
     ctx.save();
     ctx.font = `${fontSize}px ${fontName}`;
     ctx.fillStyle = color;
-    ctx.textAlign = "center";
     ctx.fillText(text, posx, posy);
     ctx.restore();
 }
