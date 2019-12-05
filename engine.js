@@ -53,9 +53,11 @@ export class GameEngine {
             }
         });
 
+        
+
         this.generateButton();
 
-        let update = setInterval(() => {
+        this.update = setInterval(() => {
             if (!gameEnd) {
 
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -82,6 +84,12 @@ export class GameEngine {
 
                     this.drawShopButton();
                     this.drawKeyButton();
+
+                    if(!shopProp.isOpen) {
+                        setInterval(this.update);
+                    } else {
+                        this.showShopMenu();
+                    }
                 }
             }
 
@@ -210,6 +218,20 @@ export class GameEngine {
     drawShopButton() {
         drawImage(this.ctx, 'table', 140, 30, 120, 30, null);
         DrawOnlyText(this.ctx, 185, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
+    }
+
+    showShopMenu() {
+        console.log(123);
+        clearInterval(this.update);
+
+        setTimeout(() => {
+            this.closeShopMenu();
+        }, 1000);
+    }
+
+    closeShopMenu() {
+        shopProp.isOpen = false;
+        setInterval(this.update);
     }
 
     showRestartGameAfterFinishAndLoad() {
