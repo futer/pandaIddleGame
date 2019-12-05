@@ -250,12 +250,20 @@ export class GameEngine {
 
             
         });
+
+        itemsList.forEach((element, index) => {
+              this.canvas.addEventListener('click', (evt) => {
+                  if(evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
+                    console.log(element);
+                    playerOptions.attack += element.damage;
+                  }
+              });  
+        });
         
         this.canvas.addEventListener('click', (event) => {
-            console.log(itemsList);
             if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
                 actionManagement(event, 'closeShop', null);
-            }
+            }   
         });
 
     }
