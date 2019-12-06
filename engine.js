@@ -40,6 +40,7 @@ export class GameEngine {
         for (var propt in playerOptions) {
             playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
         }
+        console.log(playerOptions);
 
         this.showRestartGameAfterFinishAndLoad()
 
@@ -233,12 +234,18 @@ export class GameEngine {
             itemsList.forEach((element, index) => {
                 if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
                     if (playerOptions.gold >= element.costs) {
+                        const playerData = JSON.parse(this.getGamaData());
+
                         itemsList[index] = {
                             ...element,
                             isBought: true,
                         };
                         playerOptions.attack += element.damage;
                         playerOptions.gold -= element.costs;
+                        saveToLocalStorage('player_data', JSON.stringify({
+                            ...playerData,
+                            items: [...playerData.items, element],
+                        }));
                     } else {
                         this.notificationText = 'Not enought of gold';
                         setTimeout(() => {
