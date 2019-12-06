@@ -313,7 +313,7 @@ export class GameEngine {
     }
 
     showNotification(text) {
-        drawImage(this.ctx, 'table', 100, 100, 300, 200, null);
-        DrawOnlyText(this.ctx, 115, 110, text, 'white', 'Bubbleboddy', 16);
+        drawImage(this.ctx, 'table', 100, 240, 200, 40, null);
+        DrawOnlyText(this.ctx, 115, 265, text, 'white', 'Bubbleboddy', 16);
     }
 }
