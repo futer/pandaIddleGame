@@ -13,6 +13,7 @@ import { itemsList } from './utils/itemsList.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
+export let notificationText;
 export let keyDown = null;
 export let greenButton = null;
 export let fourChoosenKey = [];
@@ -88,6 +89,9 @@ export class GameEngine {
                         this.showShopMenu();
                     }
 
+                    if(this.notificationText) {
+                        this.showNotification(this.notificationText);
+                    }
                 }
             }
 
@@ -236,7 +240,10 @@ export class GameEngine {
                         playerOptions.attack += element.damage;
                         playerOptions.gold -= element.costs;
                     } else {
-                        console.log("niestać");
+                        this.notificationText = 'Not enought of gold';
+                        setTimeout(() => {
+                            this.notificationText = null;
+                        }, 3000);
                     }                   
                 }
             });
@@ -307,6 +314,6 @@ export class GameEngine {
 
     showNotification(text) {
         drawImage(this.ctx, 'table', 100, 100, 300, 200, null);
-        DrawOnlyText(this.ctx, 115, 110, text, 'white', 'Arial', 16);
+        DrawOnlyText(this.ctx, 115, 110, text, 'white', 'Bubbleboddy', 16);
     }
 }
