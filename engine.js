@@ -242,10 +242,12 @@ export class GameEngine {
                         };
                         playerOptions.attack += element.damage;
                         playerOptions.gold -= element.costs;
+
                         saveToLocalStorage('player_data', JSON.stringify({
                             ...playerData,
-                            items: [...playerData.items, element],
+                            items: [...playerData.items, itemsList[index]],
                         }));
+
                     } else {
                         this.notificationText = 'Not enought of gold';
                         setTimeout(() => {
@@ -295,23 +297,17 @@ export class GameEngine {
         let newRow = 130;
         let x = 85;
 
-        const itemList = [];
-
-        itemsList.forEach((listElement)=> {
-            playerOptions.items.forEach((playerElement) => {
-                if(playerElement.isBought) {
-                    console.log(playerElement);
-                    itemList.push(playerElement);
-                } else {
-                    console.log(listElement);
-                    itemList.push(listElement);
+        itemsList.forEach((ele, index) => {
+            playerOptions.items.forEach((ele2, index) => {
+                if (ele2.isBought && ele.name === ele2.name) {
+                    itemsList[index] = ele2;
                 }
             });
         });
 
 
 
-        itemList.forEach((element, index) => {
+        itemsList.forEach((element, index) => {
             let divided = (index + 1) % 3 === 0;
 
             let buttonColor = element.isBought ? 'button_true' : 'button_false';
@@ -319,8 +315,8 @@ export class GameEngine {
             drawImage(this.ctx, buttonColor, x, newRow, 65, 65, null);
             drawImage(this.ctx, element.name, x + 15, newRow + 15, 30, 30, null);
             DrawOnlyText(this.ctx, x + 15, newRow + 80, `${element.costs}$`, 'white', 'Arial', 16);
-            itemList[index] = {
-                ...itemList[index],
+            itemsList[index] = {
+                ...itemsList[index],
                 startX: x,
                 endX: x + 65,
                 startY: newRow,
