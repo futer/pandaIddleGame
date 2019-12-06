@@ -10,5 +10,5 @@ export const itemsList = [
         damage: 25,
         costs: 250,
         isBought: false,
-    }
+    },
 ];

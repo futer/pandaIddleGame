@@ -245,6 +245,7 @@ export class GameEngine {
 
                         saveToLocalStorage('player_data', JSON.stringify({
                             ...playerData,
+                            attack: playerOptions.attack,
                             items: [...playerData.items, itemsList[index]],
                         }));
 
@@ -298,7 +299,7 @@ export class GameEngine {
         let x = 85;
 
         itemsList.forEach((ele, index) => {
-            playerOptions.items.forEach((ele2, index) => {
+            playerOptions.items.forEach((ele2) => {
                 if (ele2.isBought && ele.name === ele2.name) {
                     itemsList[index] = ele2;
                 }
