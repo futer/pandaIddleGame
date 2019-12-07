@@ -34,9 +34,6 @@ export class GameEngine {
         this.totalFrames = 4;
         this.currentFrame = 0;
 
-        //restart game
-        this.setGameData(false);
-
         for (var propt in playerOptions) {
             playerOptions[propt] = JSON.parse(this.getGamaData())[propt];
         }
