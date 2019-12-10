@@ -93,7 +93,7 @@ export class GameEngine {
                         drawImage(this.ctx, 'splash-blood', 125, 270, 150, 150, null);
                         setTimeout(() => {
                             drawedMonster.monsterOption.isBlood = false;
-                        }, 300);
+                        }, 100);
                     }
 
                     if (shopProp.isOpen) {
