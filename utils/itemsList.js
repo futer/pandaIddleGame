@@ -12,9 +12,15 @@ export const itemsList = [
         isBought: false,
     },
     {
+        name: 'orc_sword',
+        damage: 10,
+        costs: 1000,
+        isBought: false,
+    },
+    {
         name: 'golden_sword',
         damage: 25,
-        costs: 1000,
+        costs: 2500,
         isBought: false,
     },
 ];

@@ -84,6 +84,11 @@ export const background_images = [
         image_url: generateUrlToFile('wooden_sword', 'png'),
     },
     {
+        image_name: 'orc_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('orc_sword', 'png'),
+    },
+    {
         image_name: 'golden_sword',
         image_format: 'png',
         image_url: generateUrlToFile('golden_sword', 'png'),
