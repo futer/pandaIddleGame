@@ -82,7 +82,18 @@ export const background_images = [
         image_name: 'wooden_sword',
         image_format: 'png',
         image_url: generateUrlToFile('wooden_sword', 'png'),
-    }
+    },
+    {
+        image_name: 'isle_1',
+        image_format: 'png',
+        image_url: generateUrlToFile('isle_1', 'png'),
+    },
+    {
+        image_name: 'isle_2',
+        image_format: 'png',
+        image_url: generateUrlToFile('isle_2', 'png'),
+    },
+    
 ];
 
 function generateUrlToFile(fileName, format) {

@@ -1,4 +1,6 @@
 import { gameImages } from './loadImages.js';
+import { drawImage } from './drawImages.js';
+
 
 export class DrawMonster {
     constructor(
@@ -18,6 +20,7 @@ export class DrawMonster {
     }
 
     drawMonsterImage(shift, frameWidth, frameHeight) {
+        drawImage(this.ctx, this.monsterOption.platform_number, 90, 370, 200, 70, null);
         this.ctx.drawImage(gameImages[this.imageName]['image'], shift, 0, frameWidth, frameHeight, 35, 220, frameWidth, frameHeight);
     }
 }

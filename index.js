@@ -18,19 +18,20 @@ class InitGame {
         new LoadImages();
         
         let checkImages = setInterval(() => {
-            const kets = Object.entries(gameImages);
+            const keys = Object.entries(gameImages);
             this.loadedImages = [];
-            kets.forEach(element => {
+            keys.forEach(element => {
                 if (element[1].isLoaded) {
                     this.loadedImages.push(element[1].isLoaded);
                 }
+
             });
 
             if (this.loadedImages.length === background_images.length) {
                 new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }
-        }, 2000);
+        }, 100);
     }
 }
 

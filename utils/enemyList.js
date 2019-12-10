@@ -1,63 +1,33 @@
-export const enemy_list = [
-    {
-        losthp: 100,
-        hp: 100,
-        min_gold: 1,
-        max_gold: 3,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 0,
-    },
-    {
-        losthp: 100,
-        hp: 100,
-        min_gold: 1,
-        max_gold: 3,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 1,
-    },
-    {
-        losthp: 120,
-        hp: 120,
-        min_gold: 3,
-        max_gold: 5,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 0,
-    },
-    {
-        losthp: 140,
-        hp: 140,
-        min_gold: 4,
-        max_gold: 5,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 1,
-    },
-    {
-        losthp: 200,
-        hp: 200,
-        min_gold: 10,
-        max_gold: 15,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 2,
-        bossFight: true,
-    },
-    {
-        losthp: 160,
-        hp: 160,
-        min_gold: 14,
-        max_gold: 15,
-        width: 300,
-        height: 206.33,
-        monster_name: 'red_monster',
-        platform_number: 1,
-    },
-];
+import { getFromLocalStorage } from './localStorage.js';
+
+let enemys_list;
+
+if (getFromLocalStorage('monster_list') !== null) {
+    enemys_list = JSON.parse(getFromLocalStorage('monster_list'));
+} else {
+    enemys_list = [
+        {
+            losthp: 50,
+            hp: 50,
+            min_gold: 1,
+            max_gold: 3,
+            width: 300,
+            height: 206.33,
+            monster_name: 'red_monster',
+            platform_number: 'isle_1',
+        },
+        {
+            losthp: 60,
+            hp: 60,
+            min_gold: 1,
+            max_gold: 3,
+            width: 300,
+            height: 206.33,
+            monster_name: 'red_monster',
+            platform_number: 'isle_2',
+        }
+    ];
+}
+
+export let enemy_list = enemys_list;
+
