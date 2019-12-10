@@ -27,6 +27,7 @@ export function generateRandomLevel() {
         monster_name: 'red_monster',
         platform_number: `isle_${platform_number}`,
         bossFight: isBooss ? true : false,
+        isBlood: false,
     }
 
     enemy_list.push(newLevel);

@@ -8,6 +8,7 @@ export function actionManagement(action, type, param) {
         case type === 'attack_monster':
             if (action.code === param) {
                 drawedMonster.monsterOption.losthp -= playerOptions.attack;
+                drawedMonster.monsterOption.isBlood = true;
             };
             break;
 

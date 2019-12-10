@@ -15,6 +15,7 @@ if (getFromLocalStorage('monster_list') !== null) {
             height: 206.33,
             monster_name: 'red_monster',
             platform_number: 'isle_1',
+            isBlood: false,
         },
         {
             losthp: 60,
@@ -25,6 +26,7 @@ if (getFromLocalStorage('monster_list') !== null) {
             height: 206.33,
             monster_name: 'red_monster',
             platform_number: 'isle_2',
+            isBlood: false,
         }
     ];
 }

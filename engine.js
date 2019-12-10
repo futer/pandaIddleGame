@@ -89,6 +89,13 @@ export class GameEngine {
                     drawShopButton(this.ctx);
                     this.drawKeyButton();
 
+                    if(drawedMonster.monsterOption.isBlood) {
+                        drawImage(this.ctx, 'splash-blood', 125, 270, 150, 150, null);
+                        setTimeout(() => {
+                            drawedMonster.monsterOption.isBlood = false;
+                        }, 300);
+                    }
+
                     if (shopProp.isOpen) {
                         showShopMenu(this.ctx, this.canvas);
                     }
