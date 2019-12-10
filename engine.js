@@ -80,6 +80,9 @@ export class GameEngine {
                     
                     DrawOnlyText(this.ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
                     DrawOnlyText(this.ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
+
+                    DrawOnlyText(this.ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
+
                     DrawOnlyText(this.ctx, 140, (this.height / 1.4), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
                     DrawOnlyText(this.ctx, 190, 400, keyDown[keyDown.length -1], 'white', 'Bubbleboddy', 50);
 
