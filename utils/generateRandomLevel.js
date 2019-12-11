@@ -24,7 +24,7 @@ export function generateRandomLevel() {
 
         width: 300,
         height: 206.33,
-        monster_name: 'red_monster',
+        monster_name: 'goblin_1',
         platform_number: `isle_${platform_number}`,
         bossFight: isBooss ? true : false,
         isBlood: false,

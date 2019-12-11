@@ -13,7 +13,7 @@ if (getFromLocalStorage('monster_list') !== null) {
             max_gold: 3,
             width: 300,
             height: 206.33,
-            monster_name: 'red_monster',
+            monster_name: 'goblin_1',
             platform_number: 'isle_1',
             isBlood: false,
         },
@@ -24,7 +24,7 @@ if (getFromLocalStorage('monster_list') !== null) {
             max_gold: 3,
             width: 300,
             height: 206.33,
-            monster_name: 'red_monster',
+            monster_name: 'goblin_1',
             platform_number: 'isle_2',
             isBlood: false,
         }

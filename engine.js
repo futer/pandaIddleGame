@@ -31,8 +31,8 @@ export class GameEngine {
         this.height = height;
 
         this.shift = 0;
-        this.frameWidth = 300;
-        this.frameHeight = 206.33;
+        this.frameWidth = 296;
+        this.frameHeight = 296;
         this.totalFrames = 4;
         this.currentFrame = 0;
 

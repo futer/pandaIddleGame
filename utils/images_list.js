@@ -17,9 +17,9 @@ export const background_images = [
         'image_url': generateUrlToFile('enemy_platform', 'png'),
     },
     {
-        'image_name': 'red_monster',
+        'image_name': 'goblin_1',
         'image_format': 'png',
-        'image_url': generateUrlToFile('monster_1', 'png'),
+        'image_url': generateUrlToFile('goblin_1', 'png'),
     },
     {
         'image_name': 'coin',
