@@ -29,14 +29,14 @@ export const itemsList = {
         {
             name: 'background_1',
             damage: 0,
-            costs: 10,
-            isBought: false,
+            costs: 0,
+            isBought: true,
             isBackground: true,
         },
         {
             name: 'background_2',
             damage: 0,
-            costs: 10,
+            costs: 1000,
             isBought: false,
             isBackground: true,
         },

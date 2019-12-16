@@ -1,6 +1,6 @@
 export let playerOptions = {
     attack: 10,
-    gold: 50,
+    gold: 2250,
     level: 0,
     achievement: [
 

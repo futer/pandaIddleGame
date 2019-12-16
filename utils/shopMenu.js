@@ -25,10 +25,10 @@ export function showShopMenu(ctx, canvas) {
     drawAllItems(ctx);
 
     canvas.addEventListener('click', (evt) => {
+        const playerData = JSON.parse(getGamaData());
         itemsList[shopProp.tab].forEach((element, index) => {
             if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
                 if (playerOptions.gold >= element.costs) {
-                    const playerData = JSON.parse(getGamaData());
 
                     itemsList[shopProp.tab][index] = {
                         ...element,
@@ -53,6 +53,12 @@ export function showShopMenu(ctx, canvas) {
                         setNotificationText(null);
                     }, 3000);
                 }                   
+            } else if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && element.isBought & element.isBackground) {
+                playerOptions.background = element.isBackground ? element.name : playerOptions.background;
+                saveToLocalStorage('player_data', JSON.stringify({
+                    ...playerData,
+                    background: element.isBackground ? element.name : playerOptions.background
+                }));
             }
         });
     });
