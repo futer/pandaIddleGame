@@ -27,10 +27,10 @@ export const itemsList = {
     ],
     2: [
         {
-            name: 'golden_sword',
-            damage: 25,
-            costs: 2500,
-            isBought: false,
-        }, 
+            name: 'wooden_sword',
+            damage: 2,
+            costs: 10,
+            isBought: false
+        },
     ]
 };
