@@ -14,18 +14,23 @@ export function showShopMenu(ctx, canvas) {
     drawImage(ctx, 'shopTable', 50, 90, 300, 500, null);
     drawImage(ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
-    drawImage(ctx, 'prev', 50, 520, 50, 50, null);
-    drawImage(ctx, 'next', 300, 520, 50, 50, null);
+    if (shopProp.tab !== 'tab1') {
+        drawImage(ctx, 'prev', 70, 510, 50, 50, null);
+    }
+
+    if (itemsList[shopProp.tab] !== null || itemsList[shopProp.tab] !== undefined || itemsList[shopProp.tab].length === 0) {
+        drawImage(ctx, 'next', 270, 510, 50, 50, null);
+    }
 
     drawAllItems(ctx);
 
     canvas.addEventListener('click', (evt) => {
-        itemsList['tab1'].forEach((element, index) => {
+        itemsList[shopProp.tab].forEach((element, index) => {
             if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
                 if (playerOptions.gold >= element.costs) {
                     const playerData = JSON.parse(getGamaData());
 
-                    itemsList['tab1'][index] = {
+                    itemsList[shopProp.tab][index] = {
                         ...element,
                         isBought: true,
                     };
@@ -36,7 +41,7 @@ export function showShopMenu(ctx, canvas) {
                         ...playerData,
                         attack: playerOptions.attack,
                         gold: playerOptions.gold,
-                        items: [...playerData.items, itemsList['tab1'][index]],
+                        items: [...playerData.items, itemsList[shopProp.tab][index]],
                     }));
 
                 } else {
@@ -61,15 +66,15 @@ function drawAllItems(ctx) {
     let newRow = 130;
     let x = 85;
 
-    itemsList['tab1'].forEach((ele, index) => {
+    itemsList[shopProp.tab].forEach((ele, index) => {
         playerOptions.items.forEach((ele2) => {
             if (ele2.isBought && ele.name === ele2.name) {
-                itemsList['tab1'][index] = ele2;
+                itemsList[shopProp.tab][index] = ele2;
             }
         });
     });
 
-    itemsList['tab1'].forEach((element, index) => {
+    itemsList[shopProp.tab].forEach((element, index) => {
         let divided = (index + 1) % 3 === 0;
 
         let buttonColor = element.isBought ? 'button_true' : 'button_false';
@@ -77,8 +82,8 @@ function drawAllItems(ctx) {
         drawImage(ctx, buttonColor, x, newRow, 65, 65, null);
         drawImage(ctx, element.name, x + 15, newRow + 15, 30, 30, null);
         DrawOnlyText(ctx, x + 15, newRow + 80, `${element.costs}$`, 'white', 'Arial', 16);
-        itemsList['tab1'][index] = {
-            ...itemsList['tab1'][index],
+        itemsList[shopProp.tab][index] = {
+            ...itemsList[shopProp.tab][index],
             startX: x,
             endX: x + 65,
             startY: newRow,
