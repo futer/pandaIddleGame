@@ -20,7 +20,7 @@ export let fourChoosenKey = [];
 export let killBossAttackReward = 5;
 export let keyDown = null;
 export let shopProp = {
-    tab: 'tab1',
+    tab: 1,
     isOpen: false,
 };
 

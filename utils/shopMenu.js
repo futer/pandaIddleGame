@@ -14,11 +14,11 @@ export function showShopMenu(ctx, canvas) {
     drawImage(ctx, 'shopTable', 50, 90, 300, 500, null);
     drawImage(ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
-    if (shopProp.tab !== 'tab1') {
+    if (shopProp.tab !== 1) {
         drawImage(ctx, 'prev', 70, 510, 50, 50, null);
     }
 
-    if (itemsList[shopProp.tab] !== null || itemsList[shopProp.tab] !== undefined || itemsList[shopProp.tab].length === 0) {
+    if (typeof itemsList[shopProp.tab + 1] !== "undefined") {
         drawImage(ctx, 'next', 270, 510, 50, 50, null);
     }
 

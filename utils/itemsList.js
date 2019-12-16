@@ -1,5 +1,5 @@
 export const itemsList = {
-    tab1: [
+    1: [
         {
             name: 'wooden_sword',
             damage: 2,
@@ -25,5 +25,4 @@ export const itemsList = {
             isBought: false,
         },
     ],
-   
 };
