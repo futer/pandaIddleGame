@@ -57,6 +57,9 @@ export function showShopMenu(ctx, canvas) {
     canvas.addEventListener('click', (event) => {
         if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
             actionManagement(event, 'closeShop', null);
+        } else if(event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen) {
+            console.log(event);
+            actionManagement(event, 'changeTab', '+');
         }
     });
 

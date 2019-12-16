@@ -17,15 +17,23 @@ export function actionManagement(action, type, param) {
                 localStorage.removeItem('player_data');
                 location.reload(true);
             }
-            
+
             break;
 
         case type === 'openShop':
-                shopProp.isOpen = true;
+            shopProp.isOpen = true;
             break;
 
         case type === 'closeShop':
-                shopProp.isOpen = false;
+            shopProp.isOpen = false;
+            break;
+
+        case type === 'changeTab':
+            if (param === '+') {    
+                shopProp.tab += 1;
+            } else if (param === '-') {
+                shopProp.tab -= 1;
+            }
             break;
 
         default:
