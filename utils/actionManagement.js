@@ -40,7 +40,7 @@ export function actionManagement(action, type, param, ctx) {
 
         case type === 'changeTab':
             if (param === '+') {    
-                shopProp.tab += 1;
+                shopProp.tab = 2;
             } else if (param === '-') {
                 shopProp.tab -= 1;
             }

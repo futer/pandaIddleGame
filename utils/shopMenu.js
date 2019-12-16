@@ -9,6 +9,7 @@ import { saveToLocalStorage } from './localStorage.js';
 import { setNotificationText } from './notification.js';
 
 export function showShopMenu(ctx, canvas) {
+    let clickOnce = false;
     shopProp.isOpen = true;
 
     drawImage(ctx, 'shopTable', 50, 90, 300, 500, null);
@@ -24,10 +25,10 @@ export function showShopMenu(ctx, canvas) {
 
     drawAllItems(ctx);
 
-    canvas.addEventListener('click', (evt) => {
+    canvas.addEventListener('click', (event) => {
         const playerData = JSON.parse(getGamaData());
         itemsList[shopProp.tab].forEach((element, index) => {
-            if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && !element.isBought) {
+            if (event.layerX > element.startX && event.layerX < element.endX && event.layerY > element.startY && event.layerY < element.endY && !element.isBought) {
                 if (playerOptions.gold >= element.costs) {
 
                     itemsList[shopProp.tab][index] = {
@@ -53,7 +54,7 @@ export function showShopMenu(ctx, canvas) {
                         setNotificationText(null);
                     }, 3000);
                 }
-            } else if (evt.layerX > element.startX && evt.layerX < element.endX && evt.layerY > element.startY && evt.layerY < element.endY && element.isBought & element.isBackground) {
+            } else if (event.layerX > element.startX && event.layerX < element.endX && event.layerY > element.startY && event.layerY < element.endY && element.isBought & element.isBackground) {
                 playerOptions.background = element.isBackground ? element.name : playerOptions.background;
                 saveToLocalStorage('player_data', JSON.stringify({
                     ...playerData,
@@ -61,23 +62,19 @@ export function showShopMenu(ctx, canvas) {
                 }));
             }
         });
-    });
-
-    function selectOption() {
-        if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
-            actionManagement(event, 'closeShop', null);
-        } else if (event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && typeof itemsList[shopProp.tab + 1] !== "undefined") {
-            actionManagement(event, 'changeTab', '+');
-                    event.target.removeEventListener(event.type, null);
-
-        } else if (event.layerX >= 70 && event.layerX <= 120 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && shopProp.tab !== 1) {
-            actionManagement(event, 'changeTab', '-');
+        if(!clickOnce) {
+            if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
+                clickOnce = true
+                actionManagement(event, 'closeShop', null);
+            } else if (event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && typeof itemsList[shopProp.tab + 1] !== "undefined") {
+                actionManagement(event, 'changeTab', '+');
+                clickOnce = true
+            } else if (event.layerX >= 70 && event.layerX <= 120 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && shopProp.tab !== 1) {
+                actionManagement(event, 'changeTab', '-');
+                clickOnce = true
+            }
         }
-    };
-
-    // canvas.addEventListener('click', (event) => {
-    //     selectOption();
-    // });
+    });
 }
 
 function drawAllItems(ctx) {
