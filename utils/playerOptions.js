@@ -8,4 +8,5 @@ export let playerOptions = {
     items: [
 
     ],
+    background: 'background_1',
 };

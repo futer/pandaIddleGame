@@ -2,29 +2,29 @@ const assets_url = './assets/images/';
 
 export const background_images = [
     {
-        'image_name': 'game_background',
-        'image_format': 'png',
-        'image_url': generateUrlToFile('main_background', 'png'),
+        image_name: 'background_1',
+        image_format: 'png',
+        image_url: generateUrlToFile('background_1', 'png'),
     },
     {
-        'image_name': 'game_background2',
-        'image_format': 'png',
-        'image_url': generateUrlToFile('main_background', 'png'),
+        image_name: 'background_2',
+        image_format: 'png',
+        image_url: generateUrlToFile('background_2', 'png'),
     },
     {
-        'image_name': 'enemy_island',
-        'image_format': 'png',
-        'image_url': generateUrlToFile('enemy_platform', 'png'),
+        image_name: 'enemy_island',
+        image_format: 'png',
+        image_url: generateUrlToFile('enemy_platform', 'png'),
     },
     {
-        'image_name': 'goblin_1',
-        'image_format': 'png',
-        'image_url': generateUrlToFile('goblin_1', 'png'),
+        image_name: 'goblin_1',
+        image_format: 'png',
+        image_url: generateUrlToFile('goblin_1', 'png'),
     },
     {
-        'image_name': 'coin',
-        'image_format': 'png',
-        'image_url': generateUrlToFile('coin', 'png'),
+        image_name: 'coin',
+        image_format: 'png',
+        image_url: generateUrlToFile('coin', 'png'),
     },
     {
         image_name: 'attack',
