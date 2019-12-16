@@ -64,11 +64,12 @@ export function showShopMenu(ctx, canvas) {
     });
 
     canvas.addEventListener('click', (event) => {
-        console.log(shopProp.tab);
         if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
             actionManagement(event, 'closeShop', null);
         } else if (event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && typeof itemsList[shopProp.tab + 1] !== "undefined") {
             actionManagement(event, 'changeTab', '+');
+            event.target.removeEventListener(event.type, null);
+
         } else if (event.layerX >= 70 && event.layerX <= 120 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && shopProp.tab !== 1) {
             actionManagement(event, 'changeTab', '-');
         }
