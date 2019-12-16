@@ -12,10 +12,7 @@ export function actionManagement(action, type, param, ctx) {
                 drawedMonster.monsterOption.isBlood = true;
             } else {
                 let perctentage = (drawedMonster.monsterOption.hp * 30) / 100;
-                setTimeout(() => {
-                    drawImage(ctx, 'heal', 100, 100, 200, 300, null);
-
-                }, 2000) 
+                drawImage(ctx, 'heal', 100, 200, 200, 300, null);
 
                 if ((drawedMonster.monsterOption.losthp + perctentage) > drawedMonster.monsterOption.hp) {
                     drawedMonster.monsterOption.losthp = drawedMonster.monsterOption.hp;
