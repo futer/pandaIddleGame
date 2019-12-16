@@ -108,6 +108,16 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('splash-blood', 'png'),
     },
+    {
+        image_name: 'next',
+        image_format: 'png',
+        image_url: generateUrlToFile('next', 'png'),
+    },
+    {
+        image_name: 'prev',
+        image_format: 'png',
+        image_url: generateUrlToFile('prev', 'png'),
+    },
     
 ];
 

@@ -1,4 +1,5 @@
-export const itemsList = [
+export const itemsList = {
+    tab1: [
     {
         name: 'wooden_sword',
         damage: 2,
@@ -23,4 +24,4 @@ export const itemsList = [
         costs: 2500,
         isBought: false,
     },
-];
+]};
