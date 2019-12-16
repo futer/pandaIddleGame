@@ -47,5 +47,31 @@ export const itemsList = {
             isBought: false,
             isBackground: true,
         },
+    ],
+    3: [
+        {
+            name: 'star_1',
+            damage: 10,
+            costs: 1000,
+            isUnlimited: true,
+            isBought: false,
+            isBackground: false,
+        },
+        {
+            name: 'star_2',
+            damage: 20,
+            costs: 2200,
+            isUnlimited: true,
+            isBought: false,
+            isBackground: false,
+        },
+        {
+            name: 'star_3',
+            damage: 50,
+            costs: 5000,
+            isUnlimited: true,
+            isBought: false,
+            isBackground: false,
+        },
     ]
 };

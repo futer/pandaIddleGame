@@ -128,6 +128,21 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('heal', 'png'),
     },
+    {
+        image_name: 'star_1',
+        image_format: 'png',
+        image_url: generateUrlToFile('star_1', 'png'),
+    },
+    {
+        image_name: 'star_2',
+        image_format: 'png',
+        image_url: generateUrlToFile('star_2', 'png'),
+    },
+    {
+        image_name: 'star_3',
+        image_format: 'png',
+        image_url: generateUrlToFile('star_3', 'png'),
+    },
     
 ];
 
