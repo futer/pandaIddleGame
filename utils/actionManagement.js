@@ -1,8 +1,9 @@
 import { drawedMonster } from '../engine.js';
+import { drawImage } from './drawImages.js';
 import { playerOptions } from './playerOptions.js';
 import { shopProp } from '../engine.js';
 
-export function actionManagement(action, type, param) {
+export function actionManagement(action, type, param, ctx) {
 
     switch (true) {
         case type === 'attack_monster':
@@ -11,6 +12,10 @@ export function actionManagement(action, type, param) {
                 drawedMonster.monsterOption.isBlood = true;
             } else {
                 let perctentage = (drawedMonster.monsterOption.hp * 30) / 100;
+                setTimeout(() => {
+                    drawImage(ctx, 'heal', 100, 100, 200, 300, null);
+
+                }, 2000) 
 
                 if ((drawedMonster.monsterOption.losthp + perctentage) > drawedMonster.monsterOption.hp) {
                     drawedMonster.monsterOption.losthp = drawedMonster.monsterOption.hp;

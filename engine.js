@@ -47,7 +47,7 @@ export class GameEngine {
         this.setMonsterInstance();
 
         document.addEventListener('keydown', (key) => {
-            this.actionMgnFc(key, 'attack_monster', keyDown);
+            actionManagement(key, 'attack_monster', keyDown, this.ctx);
             this.generateButton();
         });
 
