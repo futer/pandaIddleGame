@@ -34,14 +34,17 @@ export function showShopMenu(ctx, canvas) {
                         ...element,
                         isBought: true,
                     };
+
                     playerOptions.attack += element.damage;
                     playerOptions.gold -= element.costs;
+                    playerOptions.background = element.isBackground ? element.name : playerOptions.background;
 
                     saveToLocalStorage('player_data', JSON.stringify({
                         ...playerData,
                         attack: playerOptions.attack,
                         gold: playerOptions.gold,
                         items: [...playerData.items, itemsList[shopProp.tab][index]],
+                        background: element.isBackground ? element.name : playerOptions.background
                     }));
 
                 } else {

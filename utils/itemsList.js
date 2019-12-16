@@ -27,10 +27,18 @@ export const itemsList = {
     ],
     2: [
         {
-            name: 'wooden_sword',
-            damage: 2,
+            name: 'background_1',
+            damage: 0,
             costs: 10,
-            isBought: false
+            isBought: false,
+            isBackground: true,
+        },
+        {
+            name: 'background_2',
+            damage: 0,
+            costs: 10,
+            isBought: false,
+            isBackground: true,
         },
     ]
 };
