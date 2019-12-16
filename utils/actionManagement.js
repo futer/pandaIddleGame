@@ -9,7 +9,15 @@ export function actionManagement(action, type, param) {
             if (action.code === param) {
                 drawedMonster.monsterOption.losthp -= playerOptions.attack;
                 drawedMonster.monsterOption.isBlood = true;
-            };
+            } else {
+                let perctentage = (drawedMonster.monsterOption.hp * 30) / 100;
+
+                if ((drawedMonster.monsterOption.losthp + perctentage) > drawedMonster.monsterOption.hp) {
+                    drawedMonster.monsterOption.losthp = drawedMonster.monsterOption.hp;
+                } else {
+                    drawedMonster.monsterOption.losthp += perctentage;
+                }
+            }
             break;
 
         case type === 'restart_game':
