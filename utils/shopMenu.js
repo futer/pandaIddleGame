@@ -29,7 +29,7 @@ export function showShopMenu(ctx, canvas) {
     canvas.addEventListener('click', (event) => {
         const playerData = JSON.parse(getGamaData());
         itemsList[shopProp.tab].forEach((element, index) => {
-            if (event.layerX > element.startX && event.layerX < element.endX && event.layerY > element.startY && event.layerY < element.endY && !element.isBought) {
+            if (event.layerX > element.startX && event.layerX < element.endX && event.layerY > element.startY && event.layerY < element.endY && !element.isBought && !element.isUnlimited) {
                 if (playerOptions.gold >= element.costs) {
 
                     itemsList[shopProp.tab][index] = {
@@ -61,6 +61,38 @@ export function showShopMenu(ctx, canvas) {
                     ...playerData,
                     background: element.isBackground ? element.name : playerOptions.background
                 }));
+            } else if (event.layerX > element.startX && event.layerX < element.endX && event.layerY > element.startY && event.layerY < element.endY && !element.isBought && element.isUnlimited) {
+                if (playerOptions.gold >= element.costs) {
+
+                    itemsList[shopProp.tab][index] = {
+                        ...element,
+                        isBought: true,
+                    };
+
+                    playerOptions.attack += element.damage;
+                    playerOptions.gold -= element.costs;
+
+                    saveToLocalStorage('player_data', JSON.stringify({
+                        ...playerData,
+                        attack: playerOptions.attack,
+                        gold: playerOptions.gold,
+                    }));
+
+                    setTimeout(() => {
+                        itemsList[shopProp.tab][index] = {
+                        ...element,
+                        isBought: false,
+                    };
+                    }, 100);
+
+
+                } else {
+                    setNotificationText('Not enought of gold');
+                    setTimeout(() => {
+                        setNotificationText(null);
+                    }, 3000);
+                }
+                console.log(123);
             }
         });
     });
