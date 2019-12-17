@@ -2,6 +2,9 @@ import { keyCodeTable } from './eventCodeKeys.js';
 import { drawImage } from './drawImages.js';
 import { DrawOnlyText } from './drawText.js';
 import { buttonPlacement } from './buttonPlacement.js';
+import { saveToLocalStorage } from './localStorage.js';
+import { playerOptions } from './playerOptions.js';
+import { getGamaData } from './gameData.js';
 
 export let greenButton = null;
 export let fourChoosenKey = [];
@@ -27,4 +30,14 @@ export function drawKeyButton(ctx) {
             DrawOnlyText(ctx, btn.x + 15, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
         }
     });
+}
+
+export function killMonster() {
+    const playerData = JSON.parse(getGamaData());
+    saveToLocalStorage('player_data', JSON.stringify({
+        ...playerData,
+        level: playerOptions.level = parseInt(playerOptions.level) + 1,
+        gold: playerOptions.gold,
+    }));
+    getGamaData();
 }

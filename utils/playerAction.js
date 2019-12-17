@@ -2,9 +2,11 @@ import { playerOptions } from './playerOptions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { getGamaData } from './gameData.js';
 
-export function addPlayerAttack(attackDamage) {
+export let killBossAttackReward = 5;
+
+export function addPlayerAttack() {
     const playerData = JSON.parse(getGamaData());
-    const addedAttack = playerOptions.attack + attackDamage;
+    const addedAttack = playerOptions.attack + killBossAttackReward;
 
     saveToLocalStorage('player_data', JSON.stringify({
         ...playerData,

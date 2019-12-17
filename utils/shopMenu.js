@@ -3,10 +3,13 @@ import { playerOptions } from './playerOptions.js';
 import { drawImage } from './drawImages.js';
 import { DrawOnlyText } from './drawText.js';
 import { getGamaData } from './gameData.js';
-import { shopProp } from '../engine.js';
-import { actionManagement } from './actionManagement.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { setNotificationText } from './notification.js';
+
+export let shopProp = {
+    tab: 1,
+    isOpen: false,
+};
 
 export function showShopMenu(ctx, canvas) {
     let clickOnce = false;

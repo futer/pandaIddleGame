@@ -2,26 +2,19 @@ import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { DrawOnlyText } from './utils/drawText.js';
-import { actionManagement } from './utils/actionManagement.js';
+import { actionManagement, clickAction } from './utils/actionManagement.js';
 import { saveToLocalStorage } from './utils/localStorage.js';
 import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
-import { buttonPlacement } from './utils/buttonPlacement.js';
 import { generateRandomLevel } from './utils/generateRandomLevel.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
-import { showShopMenu, drawShopButton } from './utils/shopMenu.js';
+import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
-import { clickAction } from './utils/clickAction.js';
 import { addPlayerAttack, setPlayerGold } from './utils/playerAction.js';
-import { generateButton, keyDown, greenButton, fourChoosenKey, drawKeyButton } from './utils/monsterAction.js';
+import { generateButton, keyDown, drawKeyButton, killMonster } from './utils/monsterAction.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
-export let killBossAttackReward = 5;
-export let shopProp = {
-    tab: 1,
-    isOpen: false,
-};
 
 export class GameEngine {
     constructor(ctx, canvas, width, height) {
@@ -124,20 +117,10 @@ export class GameEngine {
         if (drawedMonster.monsterOption.losthp <= 0) {
             generateRandomLevel();
             saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
-            drawedMonster.monsterOption.bossFight ? addPlayerAttack(killBossAttackReward) : false;
+            drawedMonster.monsterOption.bossFight ? addPlayerAttack() : false;
             setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
-            this.killMonster();
+            killMonster();
             this.setMonsterInstance();
         }
     };
-
-    killMonster() {
-        const playerData = JSON.parse(getGamaData());
-        saveToLocalStorage('player_data', JSON.stringify({
-            ...playerData,
-            level: playerOptions.level = parseInt(playerOptions.level) + 1,
-            gold: playerOptions.gold,
-        }));
-        getGamaData();
-    }
 }
