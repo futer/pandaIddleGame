@@ -1,7 +1,7 @@
 import { drawedMonster } from '../engine.js';
 import { drawImage } from './drawImages.js';
 import { playerOptions } from './playerOptions.js';
-import { shopProp } from '../engine.js';
+import { shopProp } from './shopMenu.js';
 import { itemsList } from './itemsList.js';
 
 export function actionManagement(action, type, param, ctx) {

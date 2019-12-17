@@ -1,7 +1,7 @@
 import { itemsList } from './itemsList.js';
 import { playerOptions } from './playerOptions.js';
 import { drawImage } from './drawImages.js';
-import { DrawOnlyText } from './drawText.js';
+import { DrawOnlyText } from './drawFunctions.js';
 import { getGamaData } from './gameData.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { setNotificationText } from './notification.js';

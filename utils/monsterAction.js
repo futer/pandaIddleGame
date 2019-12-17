@@ -1,7 +1,6 @@
 import { keyCodeTable } from './eventCodeKeys.js';
 import { drawImage } from './drawImages.js';
-import { DrawOnlyText } from './drawText.js';
-import { buttonPlacement } from './buttonPlacement.js';
+import { DrawOnlyText } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';
@@ -9,6 +8,25 @@ import { getGamaData } from './gameData.js';
 export let greenButton = null;
 export let fourChoosenKey = [];
 export let keyDown = null;
+
+export const buttonPlacement = [
+    {
+        x: 110,
+        y: 650,
+    },
+    {
+        x: 160,
+        y: 650,
+    },
+    {
+        x: 210,
+        y: 650,
+    },
+    {
+        x: 260,
+        y: 650,
+    },
+];
 
 export function generateButton() {
     fourChoosenKey = [];
