@@ -62,7 +62,7 @@ export class GameEngine {
 
                     DrawOnlyText(this.ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
 
-                    DrawOnlyText(this.ctx, 140, (this.height / 1.4), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
+                    DrawOnlyText(this.ctx, 140, (canvas.height / 1.4), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
                     DrawOnlyText(this.ctx, 190, 400, keyDown[keyDown.length - 1], 'white', 'Bubbleboddy', 50);
 
                     drawShopButton(this.ctx);
@@ -76,7 +76,7 @@ export class GameEngine {
                     }
 
                     if (shopProp.isOpen) {
-                        showShopMenu(this.ctx, this.canvas);
+                        showShopMenu(this.ctx, canvas);
                     }
                     if (notificationText) {
                         showNotification(this.ctx);
