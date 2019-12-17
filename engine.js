@@ -12,7 +12,8 @@ import { generateRandomLevel } from './utils/generateRandomLevel.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
-import { itemsList } from './utils/itemsList.js';
+import { clickAction } from './utils/clickAction.js';
+import { addPlayerAttack, setPlayerGold } from './utils/playerAction.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
@@ -46,6 +47,7 @@ export class GameEngine {
         }
 
         this.setMonsterInstance();
+        this.generateButton();
 
         document.addEventListener('keyup', (key) => {
             actionManagement(key, 'attack_monster', keyDown, this.ctx);
@@ -53,18 +55,8 @@ export class GameEngine {
         });
 
         document.addEventListener('click', (event) => {
-            if (event.layerX > 140 && event.layerX < 260 && event.layerY > 30 && event.layerY < 60) {
-                this.actionMgnFc(event, 'openShop', null);
-            } else if (event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && typeof itemsList[shopProp.tab + 1] !== "undefined") {
-                actionManagement(event, 'changeTab', '+');
-            } else if (event.layerX >= 70 && event.layerX <= 120 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && shopProp.tab !== 1) {
-                actionManagement(event, 'changeTab', '-');
-            } else if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
-                actionManagement(event, 'closeShop', null);
-            }
+            clickAction(event);
         });
-
-        this.generateButton();
 
         const update = setInterval(() => {
             if (!gameEnd) {
@@ -135,16 +127,12 @@ export class GameEngine {
         if (drawedMonster.monsterOption.losthp <= 0) {
             generateRandomLevel();
             saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
-            drawedMonster.monsterOption.bossFight ? this.addPlayerAttack(killBossAttackReward) : false;
-            this.setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
+            drawedMonster.monsterOption.bossFight ? addPlayerAttack(killBossAttackReward) : false;
+            setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
             this.killMonster();
             this.setMonsterInstance();
         }
     };
-
-    actionMgnFc(event, action, param) {
-        actionManagement(event, action, param);
-    }
 
     killMonster() {
         const playerData = JSON.parse(getGamaData());
@@ -153,23 +141,6 @@ export class GameEngine {
             level: playerOptions.level = parseInt(playerOptions.level) + 1,
             gold: playerOptions.gold,
         }));
-        getGamaData();
-    }
-
-    setPlayerGold(minGold, maxGold) {
-        const gold = Math.floor(Math.random() * maxGold) + minGold;
-        playerOptions.gold += gold;
-    }
-
-    addPlayerAttack(attackDamage) {
-        const playerData = JSON.parse(getGamaData());
-        const addedAttack = playerOptions.attack + attackDamage;
-
-        saveToLocalStorage('player_data', JSON.stringify({
-            ...playerData,
-            attack: addedAttack,
-        }));
-        playerOptions.attack = addedAttack;
         getGamaData();
     }
 
@@ -187,16 +158,10 @@ export class GameEngine {
             if (index === greenButton) {
                 drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
                 DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, keyDown[keyDown.length - 1], 'red', 'Bubbleboddy', 22);
-
             } else {
                 drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
                 DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
             }
         });
     }
-
-    closeShopMenu() {
-        shopProp.isOpen = false;
-    }
-
 }
