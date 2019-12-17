@@ -17,17 +17,6 @@ if (getFromLocalStorage('monster_list') !== null) {
             platform_number: 'isle_1',
             isBlood: false,
         },
-        {
-            losthp: 60,
-            hp: 60,
-            min_gold: 1,
-            max_gold: 3,
-            width: 300,
-            height: 206.33,
-            monster_name: 'goblin_1',
-            platform_number: 'isle_2',
-            isBlood: false,
-        }
     ];
 }
 

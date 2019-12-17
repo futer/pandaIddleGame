@@ -1,7 +1,6 @@
 import { itemsList } from './itemsList.js';
 import { playerOptions } from './playerOptions.js';
-import { drawImage } from './drawImages.js';
-import { DrawOnlyText } from './drawFunctions.js';
+import { DrawOnlyText, drawImage } from './drawFunctions.js';
 import { getGamaData } from './gameData.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { setNotificationText } from './notification.js';
@@ -12,7 +11,6 @@ export let shopProp = {
 };
 
 export function showShopMenu(ctx, canvas) {
-    let clickOnce = false;
     shopProp.isOpen = true;
 
     drawImage(ctx, 'shopTable', 50, 90, 300, 500, null);

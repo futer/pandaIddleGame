@@ -1,5 +1,5 @@
 import { gameImages } from './loadImages.js';
-import { drawImage } from './drawImages.js';
+import { drawImage } from './drawFunctions.js';
 
 
 export class DrawMonster {

@@ -1,4 +1,4 @@
-import { drawImage } from './drawImages.js';
+import { drawImage } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 
 export function drawAllBackgroundImage(ctx) {

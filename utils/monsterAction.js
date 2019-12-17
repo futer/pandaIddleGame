@@ -1,6 +1,5 @@
 import { keyCodeTable } from './eventCodeKeys.js';
-import { drawImage } from './drawImages.js';
-import { DrawOnlyText } from './drawFunctions.js';
+import { DrawOnlyText, drawImage } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';

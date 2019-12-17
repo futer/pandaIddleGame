@@ -1,5 +1,5 @@
 import { drawedMonster } from '../engine.js';
-import { drawImage } from './drawImages.js';
+import { drawImage } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 import { shopProp } from './shopMenu.js';
 import { itemsList } from './itemsList.js';

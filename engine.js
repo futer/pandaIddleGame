@@ -1,4 +1,3 @@
-import { drawImage } from './utils/drawImages.js';
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { actionManagement, clickAction } from './utils/actionManagement.js';
@@ -10,8 +9,7 @@ import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
 import { generateButton, keyDown, drawKeyButton, killMonster } from './utils/monsterAction.js';
-
-import { DrawOnlyText } from './utils/drawFunctions.js';
+import { DrawOnlyText, drawImage } from './utils/drawFunctions.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;

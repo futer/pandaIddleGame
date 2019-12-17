@@ -1,5 +1,4 @@
-import { drawImage } from './drawImages.js';
-import { DrawOnlyText } from './drawFunctions.js';
+import { DrawOnlyText, drawImage } from './drawFunctions.js';
 
 export let notificationText = null;
 
