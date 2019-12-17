@@ -12,6 +12,7 @@ import { generateRandomLevel } from './utils/generateRandomLevel.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
+import { itemsList } from './utils/itemsList.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
@@ -54,6 +55,12 @@ export class GameEngine {
         document.addEventListener('click', (event) => {
             if (event.layerX > 140 && event.layerX < 260 && event.layerY > 30 && event.layerY < 60) {
                 this.actionMgnFc(event, 'openShop', null);
+            } else if (event.layerX >= 270 && event.layerX <= 315 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && typeof itemsList[shopProp.tab + 1] !== "undefined") {
+                actionManagement(event, 'changeTab', '+');
+            } else if (event.layerX >= 70 && event.layerX <= 120 && event.layerY >= 510 && event.layerY <= 560 && shopProp.isOpen && shopProp.tab !== 1) {
+                actionManagement(event, 'changeTab', '-');
+            } else if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
+                actionManagement(event, 'closeShop', null);
             }
         });
 
@@ -78,19 +85,19 @@ export class GameEngine {
                     if (drawedMonster.monsterOption.bossFight) {
                         DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
                     }
-                    
+
                     DrawOnlyText(this.ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
                     DrawOnlyText(this.ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
 
                     DrawOnlyText(this.ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
 
                     DrawOnlyText(this.ctx, 140, (this.height / 1.4), `${enemy_list[playerOptions.level].losthp}/${enemy_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
-                    DrawOnlyText(this.ctx, 190, 400, keyDown[keyDown.length -1], 'white', 'Bubbleboddy', 50);
+                    DrawOnlyText(this.ctx, 190, 400, keyDown[keyDown.length - 1], 'white', 'Bubbleboddy', 50);
 
                     drawShopButton(this.ctx);
                     this.drawKeyButton();
 
-                    if(drawedMonster.monsterOption.isBlood) {
+                    if (drawedMonster.monsterOption.isBlood) {
                         drawImage(this.ctx, 'splash-blood', 125, 270, 150, 150, null);
                         setTimeout(() => {
                             drawedMonster.monsterOption.isBlood = false;
@@ -100,7 +107,7 @@ export class GameEngine {
                     if (shopProp.isOpen) {
                         showShopMenu(this.ctx, this.canvas);
                     }
-                    if(notificationText) {
+                    if (notificationText) {
                         showNotification(this.ctx);
                     }
                 }
