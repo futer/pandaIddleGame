@@ -1,17 +1,14 @@
 import { enemy_list } from './utils/enemyList.js';
 import { DrawMonster } from './utils/drawMonster.js';
 import { actionManagement, clickAction } from './utils/actionManagement.js';
-import { saveToLocalStorage } from './utils/localStorage.js';
-import { playerOptions, addPlayerAttack, setPlayerGold } from './utils/playerOptions.js';
+import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
-import { generateRandomLevel } from './utils/generateRandomLevel.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
-import { generateButton, keyDown, drawKeyButton, killMonster } from './utils/monsterAction.js';
+import { generateButton, keyDown, drawKeyButton, nextLevel, drawedMonster, setMonsterInstance, drawMonster} from './utils/monsterAction.js';
 import { DrawOnlyText, drawImage } from './utils/drawFunctions.js';
 
-export let drawedMonster = null;
 export let gameEnd = false;
 
 export class GameEngine {
@@ -21,12 +18,6 @@ export class GameEngine {
         this.width = width;
         this.height = height;
 
-        this.shift = 0;
-        this.frameWidth = 400;
-        this.frameHeight = 400;
-        this.totalFrames = 4;
-        this.currentFrame = 0;
-
         //restart game
         setGameData(false);
 
@@ -34,7 +25,7 @@ export class GameEngine {
             playerOptions[propt] = JSON.parse(getGamaData())[propt];
         }
 
-        this.setMonsterInstance();
+        setMonsterInstance(this.ctx);
         generateButton();
 
         document.addEventListener('keyup', (key) => {
@@ -59,8 +50,8 @@ export class GameEngine {
                     drawImage(this.ctx, 'coin', 14, 3, 25, 25, null);
                     drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
 
-                    this.nextLevel();
-                    this.drawMonster();
+                    nextLevel();
+                    drawMonster();
 
                     if (drawedMonster.monsterOption.bossFight) {
                         DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
@@ -95,30 +86,4 @@ export class GameEngine {
 
         }, 100);
     }
-
-    setMonsterInstance() {
-        drawedMonster = new DrawMonster(this.ctx, enemy_list[playerOptions.level].monster_name, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
-    }
-
-    drawMonster() {
-        drawedMonster.drawMonsterImage(this.shift, this.frameWidth, this.frameHeight);
-
-        this.shift += this.frameWidth + 1;
-        if (this.currentFrame == this.totalFrames) {
-            this.shift = 0;
-            this.currentFrame = 0;
-        }
-        this.currentFrame++;
-    }
-
-    nextLevel() {
-        if (drawedMonster.monsterOption.losthp <= 0) {
-            generateRandomLevel();
-            saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
-            drawedMonster.monsterOption.bossFight ? addPlayerAttack() : false;
-            setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
-            killMonster();
-            this.setMonsterInstance();
-        }
-    };
 }

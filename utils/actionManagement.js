@@ -1,4 +1,4 @@
-import { drawedMonster } from '../engine.js';
+import { drawedMonster } from './monsterAction.js';
 import { drawImage } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 import { shopProp } from './shopMenu.js';

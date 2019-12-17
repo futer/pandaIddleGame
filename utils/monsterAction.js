@@ -3,10 +3,21 @@ import { DrawOnlyText, drawImage } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';
+import { generateRandomLevel } from './generateRandomLevel.js';
+import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
+import { enemy_list } from './enemyList.js'
+import { DrawMonster } from './drawMonster.js';
 
 export let greenButton = null;
 export let fourChoosenKey = [];
 export let keyDown = null;
+export let drawedMonster = null;
+
+export let shift = 0;
+export const frameWidth = 400;
+export const frameHeight = 400;
+export const totalFrames = 4;
+export let currentFrame = 0;
 
 export const buttonPlacement = [
     {
@@ -57,4 +68,30 @@ export function killMonster() {
         gold: playerOptions.gold,
     }));
     getGamaData();
+}
+
+export function nextLevel() {
+    if (drawedMonster.monsterOption.losthp <= 0) {
+        generateRandomLevel();
+        saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
+        drawedMonster.monsterOption.bossFight ? addPlayerAttack() : false;
+        setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
+        killMonster();
+        setMonsterInstance();
+    }
+};
+
+export function setMonsterInstance(ctx) {
+    drawedMonster = new DrawMonster(ctx, enemy_list[playerOptions.level].monster_name, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
+}
+
+export function drawMonster() {
+    drawedMonster.drawMonsterImage(shift, frameWidth, frameHeight);
+
+    shift += frameWidth + 1;
+    if (currentFrame == totalFrames) {
+        shift = 0;
+        currentFrame = 0;
+    }
+    currentFrame++;
 }
