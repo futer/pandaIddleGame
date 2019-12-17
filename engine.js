@@ -51,7 +51,7 @@ export class GameEngine {
                     drawImage(this.ctx, 'attack', 280, 3, 25, 25, null);
 
                     nextLevel();
-                    drawMonster();
+                    drawMonster(this.ctx);
 
                     if (drawedMonster.monsterOption.bossFight) {
                         DrawOnlyText(this.ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);

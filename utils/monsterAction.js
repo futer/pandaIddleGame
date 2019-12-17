@@ -85,8 +85,8 @@ export function setMonsterInstance(ctx) {
     drawedMonster = new DrawMonster(ctx, enemy_list[playerOptions.level].monster_name, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
 }
 
-export function drawMonster() {
-    drawedMonster.drawMonsterImage(shift, frameWidth, frameHeight);
+export function drawMonster(ctx) {
+    drawedMonster.drawMonsterImage(ctx, shift, frameWidth, frameHeight);
 
     shift += frameWidth + 1;
     if (currentFrame == totalFrames) {
