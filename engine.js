@@ -6,7 +6,6 @@ import { actionManagement } from './utils/actionManagement.js';
 import { saveToLocalStorage } from './utils/localStorage.js';
 import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage } from './utils/drawAllBackgroundImage.js';
-import { keyCodeTable } from './utils/eventCodeKeys.js';
 import { buttonPlacement } from './utils/buttonPlacement.js';
 import { generateRandomLevel } from './utils/generateRandomLevel.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
@@ -14,13 +13,11 @@ import { showShopMenu, drawShopButton } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
 import { clickAction } from './utils/clickAction.js';
 import { addPlayerAttack, setPlayerGold } from './utils/playerAction.js';
+import { generateButton, keyDown, greenButton, fourChoosenKey, drawKeyButton } from './utils/monsterAction.js';
 
 export let drawedMonster = null;
 export let gameEnd = false;
-export let greenButton = null;
-export let fourChoosenKey = [];
 export let killBossAttackReward = 5;
-export let keyDown = null;
 export let shopProp = {
     tab: 1,
     isOpen: false,
@@ -47,11 +44,11 @@ export class GameEngine {
         }
 
         this.setMonsterInstance();
-        this.generateButton();
+        generateButton();
 
         document.addEventListener('keyup', (key) => {
             actionManagement(key, 'attack_monster', keyDown, this.ctx);
-            this.generateButton();
+            generateButton();
         });
 
         document.addEventListener('click', (event) => {
@@ -87,7 +84,7 @@ export class GameEngine {
                     DrawOnlyText(this.ctx, 190, 400, keyDown[keyDown.length - 1], 'white', 'Bubbleboddy', 50);
 
                     drawShopButton(this.ctx);
-                    this.drawKeyButton();
+                    drawKeyButton(this.ctx);
 
                     if (drawedMonster.monsterOption.isBlood) {
                         drawImage(this.ctx, 'splash-blood', 125, 270, 150, 150, null);
@@ -142,26 +139,5 @@ export class GameEngine {
             gold: playerOptions.gold,
         }));
         getGamaData();
-    }
-
-    generateButton() {
-        fourChoosenKey = [];
-        greenButton = Math.floor(Math.random() * 4) + 0;
-        for (let index = 0; index < 4; index++) {
-            fourChoosenKey.push(keyCodeTable[Math.floor(Math.random() * keyCodeTable.length) + 0]);
-        }
-        keyDown = fourChoosenKey[Math.floor(Math.random() * fourChoosenKey.length) + 0];
-    }
-
-    drawKeyButton() {
-        buttonPlacement.forEach((btn, index) => {
-            if (index === greenButton) {
-                drawImage(this.ctx, 'button_true', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, keyDown[keyDown.length - 1], 'red', 'Bubbleboddy', 22);
-            } else {
-                drawImage(this.ctx, 'button_false', btn.x, btn.y, 45, 45, null);
-                DrawOnlyText(this.ctx, btn.x + 15, btn.y + 27, fourChoosenKey[index][fourChoosenKey[index].length - 1], 'black', 'Bubbleboddy', 22);
-            }
-        });
     }
 }
