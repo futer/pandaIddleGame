@@ -17,6 +17,11 @@ export const background_images = [
         image_url: generateUrlToFile('background_3', 'png'),
     },
     {
+        image_name: 'background_4',
+        image_format: 'jpg',
+        image_url: generateUrlToFile('background_4', 'jpg'),
+    },
+    {
         image_name: 'enemy_island',
         image_format: 'png',
         image_url: generateUrlToFile('enemy_platform', 'png'),
@@ -153,8 +158,11 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('wind_sword', 'png'),
     },
-
-    
+    {
+        image_name: 'cat_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('cat_sword', 'png'),
+    }, 
 ];
 
 function generateUrlToFile(fileName, format) {

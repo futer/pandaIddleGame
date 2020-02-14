@@ -35,6 +35,12 @@ export const itemsList = {
             damage: 35,
             costs: 3000, 
             isBought: false,
+        },
+        {
+            name: 'cat_sword',
+            damage: 35,
+            costs: 3000, 
+            isBought: false,
         }
     ],
     2: [
@@ -54,6 +60,13 @@ export const itemsList = {
         },
         {
             name: 'background_3',
+            damage: 0,
+            costs: 1500,
+            isBought: false,
+            isBackground: true,
+        },
+        {
+            name: 'background_4',
             damage: 0,
             costs: 1500,
             isBought: false,
