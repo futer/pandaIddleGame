@@ -22,6 +22,21 @@ export const background_images = [
         image_url: generateUrlToFile('background_4', 'jpg'),
     },
     {
+        image_name: 'background_5',
+        image_format: 'png',
+        image_url: generateUrlToFile('background_5', 'png'),
+    },
+    {
+        image_name: 'background_6',
+        image_format: 'jpg',
+        image_url: generateUrlToFile('background_6', 'jpg'),
+    },
+    {
+        image_name: 'background_7',
+        image_format: 'jpg',
+        image_url: generateUrlToFile('background_7', 'jpg'),
+    },
+    {
         image_name: 'enemy_island',
         image_format: 'png',
         image_url: generateUrlToFile('enemy_platform', 'png'),

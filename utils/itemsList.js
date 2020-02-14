@@ -72,6 +72,27 @@ export const itemsList = {
             isBought: false,
             isBackground: true,
         },
+        {
+            name: 'background_5',
+            damage: 0,
+            costs: 1500,
+            isBought: false,
+            isBackground: true,
+        },
+        {
+            name: 'background_6',
+            damage: 0,
+            costs: 1500,
+            isBought: false,
+            isBackground: true,
+        },
+        {
+            name: 'background_7',
+            damage: 0,
+            costs: 1500,
+            isBought: false,
+            isBackground: true,
+        },
     ],
     3: [
         {
