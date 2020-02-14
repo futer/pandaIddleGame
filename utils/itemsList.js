@@ -24,6 +24,18 @@ export const itemsList = {
             costs: 2500,
             isBought: false,
         },
+        {
+            name: 'ice_sword',
+            damage: 35,
+            costs: 3000, 
+            isBought: false,
+        },
+        {
+            name: 'wind_sword',
+            damage: 35,
+            costs: 3000, 
+            isBought: false,
+        }
     ],
     2: [
         {

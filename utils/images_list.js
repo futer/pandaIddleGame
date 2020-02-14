@@ -143,6 +143,17 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('star_3', 'png'),
     },
+    {
+        image_name: 'ice_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('ice_sword', 'png'),
+    },
+    {
+        image_name: 'wind_sword',
+        image_format: 'png',
+        image_url: generateUrlToFile('wind_sword', 'png'),
+    },
+
     
 ];
 
