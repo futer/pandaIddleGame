@@ -7,16 +7,10 @@ if (getFromLocalStorage('monster_list') !== null) {
 } else {
     enemys_list = [
         {
-            losthp: 50,
-            hp: 50,
-            min_gold: 1,
-            max_gold: 3,
-            width: 300,
-            height: 206.33,
             monster_name: 'goblin_1',
-            platform_number: 'isle_1',
-            isBlood: false,
-            isBoss: false,
+        },
+        {
+            monster_name: 'goblin_2',
         },
     ];
 }
