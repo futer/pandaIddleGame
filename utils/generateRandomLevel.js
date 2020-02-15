@@ -5,7 +5,6 @@ import { playerOptions } from './playerOptions.js';
 export function generateRandomLevel() {
     const increaseHP = 10
     const _hp = 50;
-    const isBooss = (enemy_list.length + 1) % 5 === 0;
     const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
     const currentLevel = playerOptions.level;
 
@@ -14,23 +13,15 @@ export function generateRandomLevel() {
     const monsterName = monsterObject.monster_name;
     const isMonsterBoss = (enemy_list.length + 1) % 5 === 0;
 
-
-    let lastLevelHP = 0;
-
-    if () {
-        // lastLevelHP = enemy_list[enemy_list.length - 2].hp;
-    } else {
-        // lastLevelHP = enemy_list[enemy_list.length - 1].hp;
-    }
-
     console.log(enemy_list);
     const newLevel = {
 
-        losthp: isMonsterBoss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
-        hp: isBooss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
+        losthp: !isMonsterBoss ? _hp + ((currentLevel + 1 )* increaseHP) :  _hp + ((currentLevel + 1) * (increaseHP * 4))
+        // losthp: isMonsterBoss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
+        // hp: isBooss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
 
-        min_gold: isMonsterBoss ? enemy_list.length * 2 : enemy_list.length,
-        max_gold:  isMonsterBoss ? ((enemy_list.length * 2) + 10) : (enemy_list.length + 5),
+        // min_gold: isMonsterBoss ? enemy_list.length * 2 : enemy_list.length,
+        // max_gold:  isMonsterBoss ? ((enemy_list.length * 2) + 10) : (enemy_list.length + 5),
 
         width: 300,
         height: 206.33,
