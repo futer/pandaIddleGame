@@ -16,7 +16,7 @@ export let drawedMonster = null;
 export let shift = 0;
 export const frameWidth = 400;
 export const frameHeight = 400;
-export const totalFrames = 4;
+export const totalFrames = 6;
 export let currentFrame = 0;
 
 export const buttonPlacement = [
