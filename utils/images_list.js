@@ -47,6 +47,11 @@ export const background_images = [
         image_url: generateUrlToFile('goblin_1', 'png'),
     },
     {
+        image_name: 'goblin_2',
+        image_format: 'png',
+        image_url: generateUrlToFile('goblin_2', 'png'),
+    },
+    {
         image_name: 'coin',
         image_format: 'png',
         image_url: generateUrlToFile('coin', 'png'),

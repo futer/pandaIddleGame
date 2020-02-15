@@ -16,12 +16,11 @@ export function generateRandomLevel() {
     console.log(enemy_list);
     const newLevel = {
 
-        losthp: !isMonsterBoss ? _hp + ((currentLevel + 1 )* increaseHP) :  _hp + ((currentLevel + 1) * (increaseHP * 4))
-        // losthp: isMonsterBoss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
-        // hp: isBooss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
+        losthp: !isMonsterBoss ? _hp + ((currentLevel + 1 ) * increaseHP) : _hp + ((currentLevel + 1) * (increaseHP * 4)),
+        hp: !isMonsterBoss ? _hp + ((currentLevel + 1 )* increaseHP) :  _hp + ((currentLevel + 1) * (increaseHP * 4)),
 
-        // min_gold: isMonsterBoss ? enemy_list.length * 2 : enemy_list.length,
-        // max_gold:  isMonsterBoss ? ((enemy_list.length * 2) + 10) : (enemy_list.length + 5),
+        min_gold: isMonsterBoss ? currentLevel * 2 : currentLevel,
+        max_gold:  isMonsterBoss ? ((currentLevel * 2) + 10) : (currentLevel + 3),
 
         width: 300,
         height: 206.33,
