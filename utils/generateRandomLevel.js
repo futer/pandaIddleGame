@@ -14,6 +14,7 @@ export function generateRandomLevel() {
         lastLevelHP = enemy_list[enemy_list.length - 1].hp;
     }
 
+    console.log(enemy_list);
     const newLevel = {
 
         losthp: isBooss ? ((enemy_list.length + 1) * 40) : (lastLevelHP + increaseHP),
@@ -24,7 +25,7 @@ export function generateRandomLevel() {
 
         width: 300,
         height: 206.33,
-        monster_name: 'goblin_1',
+        monster_name: enemy_list[0].monster_name,
         platform_number: `isle_${platform_number}`,
         bossFight: isBooss ? true : false,
         isBlood: false,

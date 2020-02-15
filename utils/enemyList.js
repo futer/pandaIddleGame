@@ -16,6 +16,7 @@ if (getFromLocalStorage('monster_list') !== null) {
             monster_name: 'goblin_1',
             platform_number: 'isle_1',
             isBlood: false,
+            isBoss: false,
         },
     ];
 }
