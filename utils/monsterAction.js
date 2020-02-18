@@ -82,10 +82,12 @@ export function nextLevel() {
 };
 
 export function setMonsterInstance(ctx) {
-    drawedMonster = new DrawMonster(ctx, enemy_list[playerOptions.level].monster_name, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
+    drawedMonster = new DrawMonster(ctx, 'goblin_1', 100, 100, enemy_list[playerOptions.level], playerOptions.level);
 }
 
 export function drawMonster(ctx) {
+    console.log(ctx);
+
     drawedMonster.drawMonsterImage(ctx, shift, frameWidth, frameHeight);
 
     shift += frameWidth + 1;
