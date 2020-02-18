@@ -9,7 +9,6 @@ export function DrawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
 }
 
 export function drawAnimation(ctx, image_name, frame, frame_width, frame_height) {
-    console.log(gameImages);
     if (gameImages[image_name]['isLoaded']) {
         ctx.save();
 
