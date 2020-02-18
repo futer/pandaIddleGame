@@ -3,7 +3,7 @@ import { DrawOnlyText, drawImage } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';
-import { generateRandomLevel, monsterName} from './generateRandomLevel.js';
+import { generateRandomLevel, generateRandomMonster} from './generateRandomLevel.js';
 import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
 import { enemy_list } from './enemyList.js'
 import { DrawMonster } from './drawMonster.js';
@@ -82,7 +82,7 @@ export function nextLevel() {
 };
 
 export function setMonsterInstance(ctx) {
-    console.log(monsterName);
+    let monsterName = generateRandomMonster('monsterName');
     drawedMonster = new DrawMonster(ctx, monsterName, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
 }
 

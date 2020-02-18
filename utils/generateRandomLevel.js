@@ -7,11 +7,9 @@ export const monsterID = Math.floor(Math.random() * enemy_list.length);
 export const monsterObject = enemy_list[monsterID];
 export const monsterName = monsterObject.monster_name;
 
-export function generateRandomMonster() {
-    let monsterID = Math.floor(Math.random() * enemy_list.length);
-    let monsterObject = enemy_list[monsterID];
-    function genereateMonsterName() {
-        return monsterObject.monster_name;
+export function generateRandomMonster(option) {
+    if (option === 'monsterName') {
+        return enemy_list[Math.floor(Math.random() * enemy_list.length)].monster_name;
     }
 }
 
@@ -21,7 +19,6 @@ export function generateRandomLevel() {
     const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
     const currentLevel = playerOptions.level;
     const isMonsterBoss = (enemy_list.length + 1) % 5 === 0;
-    console.log(isMonsterBoss);
 
     const newLevel = {
 
