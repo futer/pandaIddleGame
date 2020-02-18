@@ -19,7 +19,6 @@ export class DrawMonster {
     }
 
     drawMonsterImage(ctx, shift, frameWidth, frameHeight) {
-        console.log(this.monsterOption);
         drawImage(ctx, this.monsterOption.platform_number, 80, 370, 200, 70, null);
         ctx.drawImage(gameImages[this.imageName]['image'], shift, 0, frameWidth, frameHeight, 15, 80, frameWidth, frameHeight);
     }
