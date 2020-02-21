@@ -5,7 +5,6 @@ import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
 import { generateButton, keyDown, drawKeyButton } from './utils/monsterAction.js';
-import { drawOnlyText, drawImage } from './utils/drawFunctions.js';
 import { drawMonster } from './utils/drawMonster.js';
 
 export let gameEnd = false;
@@ -25,7 +24,7 @@ export class GameEngine {
         generateButton();
 
         document.addEventListener('keyup', (key) => {
-            // actionManagement(key, 'attack_monster', keyDown, ctx);
+            actionManagement(key, 'attack_monster', keyDown, ctx);
             generateButton();
         });
 

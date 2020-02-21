@@ -9,16 +9,17 @@ export function actionManagement(action, type, param, ctx) {
     switch (true) {
         case type === 'attack_monster':
             if (action.code === param) {
-                drawedMonster.monsterOption.losthp -= playerOptions.attack;
-                drawedMonster.monsterOption.isBlood = true;
+                monsterProps.losthp -= playerOptions.attack;
+                monsterProps.isBlood = true;
+                console.log(monsterProps);
             } else {
-                let perctentage = (drawedMonster.monsterOption.hp * 30) / 100;
+                let perctentage = (monsterProps.hp * 30) / 100;
                 drawImage(ctx, 'heal', 100, 200, 200, 300, null);
 
-                if ((drawedMonster.monsterOption.losthp + perctentage) > drawedMonster.monsterOption.hp) {
-                    drawedMonster.monsterOption.losthp = drawedMonster.monsterOption.hp;
+                if ((monsterProps.losthp + perctentage) > monsterProps.hp) {
+                    monsterProps.losthp = monsterProps.hp;
                 } else {
-                    drawedMonster.monsterOption.losthp += perctentage;
+                    monsterProps.losthp += perctentage;
                 }
             }
             break;
