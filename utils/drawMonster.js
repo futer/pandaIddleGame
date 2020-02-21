@@ -1,9 +1,14 @@
-import { generateRandomMonster } from './generateRandomLevel.js';
+import { playerOptions } from './playerOptions.js';
+import { enemies_list } from './enemyList.js';
+
+let monsterLevel = playerOptions.level;
+let monsterName = '';
+let isGeneratedMMonsterName = false;
 
 // import { gameImages } from './loadImages.js';
 // import { drawImage } from './drawFunctions.js';
 
-// export class DrawMonster {
+// export class CreateMonster {
 //     constructor(
 //         ctx,
 //         imageName,
@@ -26,10 +31,20 @@ import { generateRandomMonster } from './generateRandomLevel.js';
 //     }
 // }
 
-export function drawMonster(isKilled) {
-    console.log(generateRandomMonster(isKilled));
+// export function createMO
+
+export function drawMonster() {
+    generateRandomLevel();
 }
 
-export function nextLevel() {
-
+function generateRandomLevel() {
+    if (isGeneratedMMonsterName) {
+        console.log(2 + ':' + monsterName);
+    }
+    else {
+        monsterName = enemies_list[Math.floor(Math.random() * enemies_list.length)].monster_name;
+        isGeneratedMMonsterName = true;
+        console.log(1 + ':' + monsterName);
+    }
+    
 }
