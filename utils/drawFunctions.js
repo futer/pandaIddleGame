@@ -1,9 +1,12 @@
 import { gameImages } from './loadImages.js'
 
-export function drawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
+export function drawOnlyText(ctx, posx, posy, text, color, fontName, fontSize, isCenter) {
     ctx.save();
     ctx.font = `${fontSize}px ${fontName}`;
     ctx.fillStyle = color;
+    if (isCenter) {
+        ctx.textAlign = 'center';
+    }
     ctx.fillText(text, posx, posy);
     ctx.restore();
 }

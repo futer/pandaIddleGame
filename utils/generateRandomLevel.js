@@ -11,8 +11,7 @@ export function generateMonsterProps() {
     const _hp = 40;
     const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
     const currentLevel = playerOptions.level;
-    const isMonsterBoss = (enemies_list.length + 1) % 5 === 0;
-
+    const isMonsterBoss = (playerOptions.level + 1) % 5 === 0;
     const newLevel = {
 
         losthp: !isMonsterBoss ? _hp + ((currentLevel + 1) * increaseHP) : _hp + ((currentLevel + 1) * (increaseHP * 4)),
