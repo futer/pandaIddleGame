@@ -5,7 +5,7 @@ import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';
 import { generateRandomLevel, generateRandomMonster} from './generateRandomLevel.js';
 import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
-import { enemy_list } from './enemyList.js'
+import { enemies_list } from './enemyList.js'
 import { DrawMonster } from './drawMonster.js';
 
 export let greenButton = null;
@@ -70,21 +70,21 @@ export function killMonster() {
     getGamaData();
 }
 
-export function nextLevel() {
-    if (drawedMonster.monsterOption.losthp <= 0) {
-        generateRandomLevel();
-        saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
-        drawedMonster.monsterOption.bossFight ? addPlayerAttack() : false;
-        setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
-        killMonster();
-        setMonsterInstance();
-    }
-};
+// export function nextLevel() {
+//     if (drawedMonster.monsterOption.losthp <= 0) {
+//         generateRandomLevel();
+//         saveToLocalStorage('monster_list', JSON.stringify(enemy_list));
+//         drawedMonster.monsterOption.bossFight ? addPlayerAttack() : false;
+//         setPlayerGold(enemy_list[playerOptions.level].min_gold, enemy_list[playerOptions.level].max_gold);
+//         killMonster();
+//         setMonsterInstance();
+//     }
+// };
 
-export function setMonsterInstance(ctx) {
-    let monsterName = generateRandomMonster('monsterName');
-    drawedMonster = new DrawMonster(ctx, monsterName, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
-}
+// export function setMonsterInstance(ctx) {
+//     let monsterName = generateRandomMonster('monsterName');
+//     drawedMonster = new DrawMonster(ctx, monsterName, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
+// }
 
 export function drawMonster(ctx) {
     drawedMonster.drawMonsterImage(ctx, shift, frameWidth, frameHeight);
