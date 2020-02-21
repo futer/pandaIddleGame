@@ -1,6 +1,5 @@
 import { drawImage, DrawOnlyText } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
-import { enemies_list } from './enemyList.js';
 
 export function drawAllBackgroundImage(ctx) {
         drawImage(ctx, playerOptions.background, 0, 0, 480, 700, null);
@@ -17,6 +16,6 @@ export function drawAllText(ctx, canvas, keyDown) {
 
         DrawOnlyText(ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
 
-        DrawOnlyText(ctx, 140, (canvas.height / 1.4), `${enemies_list[playerOptions.level].losthp}/${enemies_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
+        // DrawOnlyText(ctx, 140, (canvas.height / 1.4), `${enemies_list[playerOptions.level].losthp}/${enemies_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
         DrawOnlyText(ctx, 190, 400, keyDown[keyDown.length - 1], 'white', 'Bubbleboddy', 50);
 }

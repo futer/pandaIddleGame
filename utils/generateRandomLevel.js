@@ -7,7 +7,7 @@ export const monsterID = Math.floor(Math.random() * enemies_list.length);
 export const monsterObject = enemies_list[monsterID];
 export const monsterName = monsterObject.monster_name;
 
-export function generateRandomMonster(option) {
+export function generateRandomMonster() {
     if (option === 'monsterName') {
         return enemies_list[Math.floor(Math.random() * eenemies_list.length)].monster_name;
     }

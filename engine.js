@@ -1,12 +1,12 @@
-import { enemies_list } from './utils/enemyList.js';
 import { actionManagement, clickAction } from './utils/actionManagement.js';
 import { playerOptions } from './utils/playerOptions.js';
 import { drawAllBackgroundImage, drawAllText } from './utils/drawUIGame.js';
 import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
-import { generateButton, keyDown, drawKeyButton, drawedMonster, setMonsterInstance, drawMonster } from './utils/monsterAction.js';
+import { generateButton, keyDown, drawKeyButton } from './utils/monsterAction.js';
 import { DrawOnlyText, drawImage } from './utils/drawFunctions.js';
+import { drawMonster } from './utils/drawMonster.js';
 
 export let gameEnd = false;
 
@@ -62,6 +62,8 @@ export class GameEngine {
             if (notificationText) {
                 showNotification(ctx);
             }
+
+            drawMonster();
 
         }, 100);
     }

@@ -6,7 +6,7 @@ import { getGamaData } from './gameData.js';
 import { generateRandomLevel, generateRandomMonster} from './generateRandomLevel.js';
 import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
 import { enemies_list } from './enemyList.js'
-import { DrawMonster } from './drawMonster.js';
+// import { DrawMonster } from './drawMonster.js';
 
 export let greenButton = null;
 export let fourChoosenKey = [];
@@ -86,13 +86,13 @@ export function killMonster() {
 //     drawedMonster = new DrawMonster(ctx, monsterName, 100, 100, enemy_list[playerOptions.level], playerOptions.level);
 // }
 
-export function drawMonster(ctx) {
-    drawedMonster.drawMonsterImage(ctx, shift, frameWidth, frameHeight);
+// export function drawMonster(ctx) {
+//     drawedMonster.drawMonsterImage(ctx, shift, frameWidth, frameHeight);
 
-    shift += frameWidth + 1;
-    if (currentFrame == totalFrames) {
-        shift = 0;
-        currentFrame = 0;
-    }
-    currentFrame++;
-}
+//     shift += frameWidth + 1;
+//     if (currentFrame == totalFrames) {
+//         shift = 0;
+//         currentFrame = 0;
+//     }
+//     currentFrame++;
+// }
