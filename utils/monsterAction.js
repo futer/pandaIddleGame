@@ -3,7 +3,6 @@ import { DrawOnlyText, drawImage } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 import { getGamaData } from './gameData.js';
-import { generateRandomLevel, generateRandomMonster} from './generateRandomLevel.js';
 import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
 import { enemies_list } from './enemyList.js'
 // import { DrawMonster } from './drawMonster.js';

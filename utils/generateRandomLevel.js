@@ -1,26 +1,14 @@
 import { enemies_list } from './enemyList.js';
 import { isle_list } from './isleList.js';
 import { playerOptions } from './playerOptions.js';
-import {isKilled} from '../engine.js';
 export const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
 export const monsterID = Math.floor(Math.random() * enemies_list.length);
 
 let monsterName = '';
 
-export function generateRandomMonster(isKilled) {
-    if (isKilled) {
-        monsterName = enemies_list[Math.floor(Math.random() * enemies_list.length)].monster_name;
-        isKilled = false;
-        return monsterName;
-    } else {
-        return monsterName;
-    }
-    
-}
-
-export function generateRandomLevel() {
+export function generateMonsterProps() {
     const increaseHP = 10
-    const _hp = 50;
+    const _hp = 40;
     const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
     const currentLevel = playerOptions.level;
     const isMonsterBoss = (enemies_list.length + 1) % 5 === 0;
@@ -41,5 +29,5 @@ export function generateRandomLevel() {
         isBlood: false,
     }
 
-    // enemy_list.push(newLevel);
+    return newLevel;
 }

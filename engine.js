@@ -64,7 +64,7 @@ export class GameEngine {
                 showNotification(ctx);
             }
 
-            drawMonster(isKilled);
+            drawMonster(ctx);
 
         }, 100);
     }

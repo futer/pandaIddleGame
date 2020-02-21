@@ -1,9 +1,17 @@
 import { playerOptions } from './playerOptions.js';
 import { enemies_list } from './enemyList.js';
-
+import { generateMonsterProps } from './generateRandomLevel.js';
+import { gameImages } from './loadImages.js';
 let monsterLevel = playerOptions.level;
 let monsterName = '';
 let isGeneratedMMonsterName = false;
+let monsterProps = null;
+
+export let shift = 0;
+export const frameWidth = 400;
+export const frameHeight = 400;
+export const totalFrames = 6;
+export let currentFrame = 0;
 
 // import { gameImages } from './loadImages.js';
 // import { drawImage } from './drawFunctions.js';
@@ -33,18 +41,27 @@ let isGeneratedMMonsterName = false;
 
 // export function createMO
 
-export function drawMonster() {
-    generateRandomLevel();
+export function drawMonster(ctx) {
+    if (!isGeneratedMMonsterName) {
+        generateRandomLevel();
+    } 
+    else {
+        nextMonsterFrame();
+        ctx.drawImage(gameImages[monsterName]['image'], shift, 0, frameWidth, frameHeight, 15, 80, frameWidth, frameHeight);
+    }
 }
 
 function generateRandomLevel() {
-    if (isGeneratedMMonsterName) {
-        console.log(2 + ':' + monsterName);
-    }
-    else {
         monsterName = enemies_list[Math.floor(Math.random() * enemies_list.length)].monster_name;
+        monsterProps = generateMonsterProps();
         isGeneratedMMonsterName = true;
-        console.log(1 + ':' + monsterName);
+}
+
+export function nextMonsterFrame() {
+    shift += frameWidth + 1;
+    if (currentFrame == totalFrames) {
+        shift = 0;
+        currentFrame = 0;
     }
-    
+    currentFrame++;
 }
