@@ -20,7 +20,6 @@ export class GameEngine {
             playerOptions[propt] = JSON.parse(getGamaData())[propt];
         }
 
-        // setMonsterInstance(ctx);
         generateButton();
 
         document.addEventListener('keyup', (key) => {
@@ -36,26 +35,12 @@ export class GameEngine {
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawAllBackgroundImage(ctx);
-
-            // nextLevel();
-            // drawMonster(ctx);
-
-            // if (drawedMonster.monsterOption.bossFight) {
-            //     drawOnlyText(ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
-            // }
             drawMonster(ctx);
 
             drawAllText(ctx, canvas, keyDown);
 
             drawShopButton(ctx);
             drawKeyButton(ctx);
-
-            // if (drawedMonster.monsterOption.isBlood) {
-            //     drawImage(ctx, 'splash-blood', 125, 270, 150, 150, null);
-            //     setTimeout(() => {
-            //         drawedMonster.monsterOption.isBlood = false;
-            //     }, 100);
-            // }
 
             if (shopProp.isOpen) {
                 showShopMenu(ctx, canvas);

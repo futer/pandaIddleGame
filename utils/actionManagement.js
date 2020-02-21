@@ -11,7 +11,6 @@ export function actionManagement(action, type, param, ctx) {
             if (action.code === param) {
                 monsterProps.losthp -= playerOptions.attack;
                 monsterProps.isBlood = true;
-                console.log(monsterProps);
             } else {
                 let perctentage = (monsterProps.hp * 30) / 100;
                 drawImage(ctx, 'heal', 100, 200, 200, 300, null);

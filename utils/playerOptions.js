@@ -22,7 +22,7 @@ export function setPlayerGold(minGold, maxGold) {
 }
 
 export let playerOptions = {
-    attack: 10,
+    attack: 200,
     gold: 2250,
     level: 0,
     achievement: [
