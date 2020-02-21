@@ -1,6 +1,6 @@
 import { gameImages } from './loadImages.js'
 
-export function DrawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
+export function drawOnlyText(ctx, posx, posy, text, color, fontName, fontSize) {
     ctx.save();
     ctx.font = `${fontSize}px ${fontName}`;
     ctx.fillStyle = color;

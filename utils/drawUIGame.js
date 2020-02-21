@@ -1,4 +1,4 @@
-import { drawImage, DrawOnlyText } from './drawFunctions.js';
+import { drawImage, drawOnlyText } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 
 export function drawAllBackgroundImage(ctx) {
@@ -11,11 +11,8 @@ export function drawAllBackgroundImage(ctx) {
 }
 
 export function drawAllText(ctx, canvas, keyDown) {
-        DrawOnlyText(ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
-        DrawOnlyText(ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
+        drawOnlyText(ctx, 40, 22, `Gold: ${playerOptions.gold}`, 'white', 'Bubbleboddy', 18);
+        drawOnlyText(ctx, 305, 22, `Attack: ${playerOptions.attack}`, 'white', 'Bubbleboddy', 18);
 
-        DrawOnlyText(ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
-
-        // DrawOnlyText(ctx, 140, (canvas.height / 1.4), `${enemies_list[playerOptions.level].losthp}/${enemies_list[playerOptions.level].hp}`, 'black', 'Bubbleboddy', 40);
-        DrawOnlyText(ctx, 190, 400, keyDown[keyDown.length - 1], 'white', 'Bubbleboddy', 50);
+        drawOnlyText(ctx, 20, 60, `Level: ${playerOptions.level + 1}`, 'black', 'Bubbleboddy', 18);
 }

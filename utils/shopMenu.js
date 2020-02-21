@@ -1,6 +1,6 @@
 import { itemsList } from './itemsList.js';
 import { playerOptions } from './playerOptions.js';
-import { DrawOnlyText, drawImage } from './drawFunctions.js';
+import { drawOnlyText, drawImage } from './drawFunctions.js';
 import { getGamaData } from './gameData.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { setNotificationText } from './notification.js';
@@ -117,7 +117,7 @@ function drawAllItems(ctx) {
 
         drawImage(ctx, buttonColor, x, newRow, 65, 65, null);
         drawImage(ctx, element.name, x + 15, newRow + 15, 30, 30, null);
-        DrawOnlyText(ctx, x + 15, newRow + 80, `${element.costs}$`, 'white', 'Arial', 16);
+        drawOnlyText(ctx, x + 15, newRow + 80, `${element.costs}$`, 'white', 'Arial', 16);
         itemsList[shopProp.tab][index] = {
             ...itemsList[shopProp.tab][index],
             startX: x,
@@ -137,5 +137,5 @@ function drawAllItems(ctx) {
 
 export function drawShopButton(ctx) {
     drawImage(ctx, 'table', 140, 30, 120, 30, null);
-    DrawOnlyText(ctx, 185, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
+    drawOnlyText(ctx, 185, 52, 'SHOP', 'white', 'Bubbleboddy', 16);
 }

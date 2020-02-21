@@ -5,7 +5,7 @@ import { getGamaData, setGameData } from './utils/gameData.js';
 import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
 import { generateButton, keyDown, drawKeyButton } from './utils/monsterAction.js';
-import { DrawOnlyText, drawImage } from './utils/drawFunctions.js';
+import { drawOnlyText, drawImage } from './utils/drawFunctions.js';
 import { drawMonster } from './utils/drawMonster.js';
 
 export let gameEnd = false;
@@ -42,8 +42,9 @@ export class GameEngine {
             // drawMonster(ctx);
 
             // if (drawedMonster.monsterOption.bossFight) {
-            //     DrawOnlyText(ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
+            //     drawOnlyText(ctx, 110, 160, 'BOSS FIGHT', 'blue', 'Bubbleboddy', 40);
             // }
+            drawMonster(ctx);
 
             drawAllText(ctx, canvas, keyDown);
 
@@ -64,7 +65,6 @@ export class GameEngine {
                 showNotification(ctx);
             }
 
-            drawMonster(ctx);
 
         }, 100);
     }
