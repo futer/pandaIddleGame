@@ -1,16 +1,21 @@
 import { enemies_list } from './enemyList.js';
 import { isle_list } from './isleList.js';
 import { playerOptions } from './playerOptions.js';
-
+import {isKilled} from '../engine.js';
 export const platform_number = Math.floor(Math.random() * isle_list.length) + 1;
 export const monsterID = Math.floor(Math.random() * enemies_list.length);
-export const monsterObject = enemies_list[monsterID];
-export const monsterName = monsterObject.monster_name;
 
-export function generateRandomMonster() {
-    if (option === 'monsterName') {
-        return enemies_list[Math.floor(Math.random() * eenemies_list.length)].monster_name;
+let monsterName = '';
+
+export function generateRandomMonster(isKilled) {
+    if (isKilled) {
+        monsterName = enemies_list[Math.floor(Math.random() * enemies_list.length)].monster_name;
+        isKilled = false;
+        return monsterName;
+    } else {
+        return monsterName;
     }
+    
 }
 
 export function generateRandomLevel() {

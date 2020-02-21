@@ -9,6 +9,7 @@ import { DrawOnlyText, drawImage } from './utils/drawFunctions.js';
 import { drawMonster } from './utils/drawMonster.js';
 
 export let gameEnd = false;
+export let isKilled = false;
 
 export class GameEngine {
     constructor(ctx, canvas) {
@@ -63,7 +64,7 @@ export class GameEngine {
                 showNotification(ctx);
             }
 
-            drawMonster();
+            drawMonster(isKilled);
 
         }, 100);
     }

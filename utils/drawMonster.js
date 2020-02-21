@@ -1,6 +1,5 @@
 import { generateRandomMonster } from './generateRandomLevel.js';
 
-
 // import { gameImages } from './loadImages.js';
 // import { drawImage } from './drawFunctions.js';
 
@@ -27,8 +26,8 @@ import { generateRandomMonster } from './generateRandomLevel.js';
 //     }
 // }
 
-export function drawMonster() {
-    console.log(generateRandomMonster());
+export function drawMonster(isKilled) {
+    console.log(generateRandomMonster(isKilled));
 }
 
 export function nextLevel() {
