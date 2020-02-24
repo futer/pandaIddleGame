@@ -51,7 +51,7 @@ function generateRandomLevel() {
     isGeneratedMMonsterName = true;
 }
 
-export function nextMonsterFrame() {
+function nextMonsterFrame() {
     shift += frameWidth + 1;
     if (currentFrame == totalFrames) {
         shift = 0;
@@ -60,7 +60,7 @@ export function nextMonsterFrame() {
     currentFrame++;
 }
 
-export function killMonster() {
+function killMonster() {
     const playerData = JSON.parse(getGamaData());
     saveToLocalStorage('player_data', JSON.stringify({
         ...playerData,
@@ -70,7 +70,7 @@ export function killMonster() {
     getGamaData();
 }
 
-export function nextLevel() {
+function nextLevel() {
     generateRandomLevel();
     monsterProps.bossFight ? addPlayerAttack() : false;
     setPlayerGold(monsterProps.min_gold, monsterProps.max_gold);
