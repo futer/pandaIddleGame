@@ -54,4 +54,12 @@ label {
 button {
     margin-top: 20px;
     width: 200px;
+    height: 40px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #5bb75b;
+    border: 2px solid #1a1a1a;
+    border-radius: 5px;
 }
