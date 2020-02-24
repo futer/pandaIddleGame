@@ -21,36 +21,37 @@ body {
     background-size: cover;
 }
 
-.email_input {
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    border: 2px solid darkcyan;
+.container {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.left, .right {
+    padding: 0 100px;
 }
 
 .email_input {
-    position: absolute;
+    display: block;
     top: 560px;
     width: 200px;
     height: 30px;
-    border: 2px solid darkcyan;
 }
 
 .password_input {
-    position: absolute;
-    top: 600px;
+    display: block;
     width: 200px;
     height: 30px;
-    border: 2px solid darkcyan;
 }
 
-.register_button {
-    position: absolute;
-    top: 650px;
+label {
+    display: block;
+    color: #ffffff;
+    font-size: 16px;
+    margin: 5px 0;
+    font-family: 'Bubbleboddy', Helvetica, sans-serif;
+}
+
+button {
+    margin-top: 20px;
     width: 200px;
-    height: 30px;
-    background: darkcyan;
-    border: none;
-    outline: none;
 }
-
