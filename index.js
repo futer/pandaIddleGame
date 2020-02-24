@@ -3,7 +3,7 @@ import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
 import { createLoginPage } from './utils/loginPage.js';
-import { isLogged, deleteRegisterElement } from './utils/loginPage.js';
+import { isLogged } from './utils/loginPage.js';
 
 class InitGame {
     constructor() {
