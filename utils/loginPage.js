@@ -1,3 +1,5 @@
+export let isLogged = false;
+
 export function createLoginPage() {
     const body = document.body;
 
@@ -19,7 +21,10 @@ export function createLoginPage() {
         firebase.auth()
             .createUserWithEmailAndPassword(email, password)
             .then(function (user) {
-                alert(user);
+                if (user !== null || user !== undefined) {
+                    window.alert(`Create user : ${user.user.email}`);
+                    isLogged = true;
+                }
                 // var user = firebase.auth().currentUser;
             })
             .catch(function (error) {

@@ -3,6 +3,8 @@ import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
 import { createLoginPage } from './utils/loginPage.js';
+import { isLogged } from './utils/loginPage.js';
+
 class InitGame {
     constructor() {
 
@@ -38,6 +40,10 @@ class InitGame {
         document.body.appendChild(this.canvas);
 
         new LoadImages();
+
+        let checkIfItIsLogged = setInterval(() => {
+            console.log(isLogged);
+        }, 500)
 
         let checkImages = setInterval(() => {
             const keys = Object.entries(gameImages);
