@@ -40,3 +40,7 @@ export function createLoginPage() {
     body.appendChild(button_register);
 
 }
+
+export function deleteRegisterElement() {
+    console.log(body.parentNode);
+}

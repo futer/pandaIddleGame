@@ -41,9 +41,15 @@ class InitGame {
 
         new LoadImages();
 
+        let ifIsLogged = false;
         let checkIfItIsLogged = setInterval(() => {
-            console.log(isLogged);
+            if(isLogged) {
+                console.log(isLogged)
+                clearInterval(checkIfItIsLogged);
+            }
         }, 500)
+
+
 
         let checkImages = setInterval(() => {
             const keys = Object.entries(gameImages);
@@ -55,7 +61,8 @@ class InitGame {
 
             });
 
-            if (this.loadedImages.length === background_images.length) {
+            if (this.loadedImages.length === background_images.length && isLogged) {
+                delete window.createLoginPage;
                 new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }
