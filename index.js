@@ -10,15 +10,6 @@ class InitGame {
 
         firebase.initializeApp(firebase_config);
         firebase.analytics();
-
-        // firebase.auth()
-        //     .createUserWithEmailAndPassword('email', 'password')
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         const errorMessage = error.message;
-        //         console.log(error);
-        //     });
-
         // firebase.auth().signOut().then(function() {
         //     // Sign-out successful.
         //   }).catch(function(error) {
@@ -26,7 +17,6 @@ class InitGame {
         //   });
 
         createLoginPage();
-
 
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext('2d');
@@ -62,7 +52,6 @@ class InitGame {
             });
 
             if (this.loadedImages.length === background_images.length && isLogged) {
-                deleteRegisterElement();
                 new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }

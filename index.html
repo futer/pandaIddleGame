@@ -9,20 +9,27 @@
     <title>Panda Iddle Game</title>
 </head>
 
-<body>
+<body class="auth_background">
 
-    <form id="loginForm" action="#" class="login">
-        <input type="email" class="email_input">
-        <input type="password" class="password_input">
-        <button type="submit">Log in</button>
-    </form>
-
-    <form action="#" id="registerForm" class="register">
-        <input type="email" class="email_input">
-        <input type="password" class="password_input">
-        <input type="password" class="password_input">
-        <button type="submit">Register</button>
-    </form>
+    <div class="container">
+        <div class="left">
+            <form action="#" id="loginForm" class="login">
+                <label for="email_input">E-Mail</label>
+                <input type="email" class="email_input">
+                <label for="password_input">Password</label>
+                <input type="password" class="password_input">
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+        <div class="right">
+            <form action="#" id="registerForm" class="register">
+                <input type="email" class="email_input">
+                <input type="password" class="password_input">
+                <input type="password" class="password_input">
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
