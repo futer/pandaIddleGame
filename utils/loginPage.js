@@ -1,7 +1,9 @@
+const body = document.body;
+
+
 export let isLogged = false;
 
 export function createLoginPage() {
-    const body = document.body;
 
     const email_input = document.createElement('input');
     email_input.className = 'email_input';
@@ -42,5 +44,10 @@ export function createLoginPage() {
 }
 
 export function deleteRegisterElement() {
-    console.log(body.parentNode);
+    let elm1 = document.getElementsByClassName('email_input')[0]
+    let elm2 = document.getElementsByClassName('password_input')[0]
+    let elm3 = document.getElementsByClassName('register_button')[0]
+    elm1.parentNode.removeChild(elm1);
+    elm2.parentNode.removeChild(elm2);
+    elm3.parentNode.removeChild(elm3);
 }

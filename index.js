@@ -3,7 +3,7 @@ import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
 import { createLoginPage } from './utils/loginPage.js';
-import { isLogged } from './utils/loginPage.js';
+import { isLogged, deleteRegisterElement } from './utils/loginPage.js';
 
 class InitGame {
     constructor() {
@@ -62,7 +62,7 @@ class InitGame {
             });
 
             if (this.loadedImages.length === background_images.length && isLogged) {
-                delete window.createLoginPage;
+                deleteRegisterElement();
                 new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }
