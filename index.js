@@ -2,26 +2,28 @@ import { GameEngine } from './engine.js';
 import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
+import { createLoginPage } from './utils/loginPage.js';
 class InitGame {
     constructor() {
 
         firebase.initializeApp(firebase_config);
         firebase.analytics();
 
-        firebase.auth().createUser({
-            email: 'user@example.com',
-            emailVerified: false,
-            phoneNumber: '+11234567890',
-            password: 'secretPassword',
-            displayName: 'John Doe',
-            photoURL: 'http://www.example.com/12345678/photo.png',
-            disabled: false
-        }).then(function (userRecord) {
-            console.log('Successfully created new user:', userRecord.uid);
-        }).catch(function (error) {
-            console.log('Error creating new user:', error);
-        });
+        // firebase.auth()
+        //     .createUserWithEmailAndPassword('email', 'password')
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         const errorMessage = error.message;
+        //         console.log(error);
+        //     });
 
+        // firebase.auth().signOut().then(function() {
+        //     // Sign-out successful.
+        //   }).catch(function(error) {
+        //     // An error happened.
+        //   });
+
+        createLoginPage();
 
 
         this.canvas = document.createElement('canvas');
