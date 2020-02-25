@@ -14,7 +14,7 @@ export class GameEngine {
     constructor(ctx, canvas) {
 
         //restart game
-        setGameData(false);
+        setGameData();
 
         for (var propt in playerOptions) {
             playerOptions[propt] = JSON.parse(getGamaData())[propt];
