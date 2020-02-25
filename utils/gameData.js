@@ -3,8 +3,10 @@ import { playerOptions } from './playerOptions.js';
 
 export function getGamaData() {
     const userID = getFromLocalStorage('user');
-    let playerData = getFromDBPlayerData(userID);
-    console.log(playerData);
+    setTimeout(() => {
+        let playerData = getFromDBPlayerData(userID);
+        console.log(playerData);
+    }, 1000)
     return getFromLocalStorage('player_data');
 }
 
