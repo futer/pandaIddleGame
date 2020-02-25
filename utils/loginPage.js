@@ -15,7 +15,7 @@ export function createLoginPage() {
             .then((data) => {
                 let user = firebase.auth().currentUser;
 
-                saveToLocalStorage('user', user.email);
+                saveToLocalStorage('user', user.uid);
                 isLogged = true;
                 hideForms();
             }).catch((error) => {
@@ -41,7 +41,7 @@ export function createLoginPage() {
                         alert(`Create user : ${user.user.email}`);
                         isLogged = true;
                         hideForms();
-                        saveToLocalStorage('user', user.user.email);
+                        saveToLocalStorage('user', user.user.uid);
                     }
                 })
                 .catch(function (error) {
