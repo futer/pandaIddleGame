@@ -23,11 +23,9 @@ export function savetToDB(user, playerData) {
 
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
-
+    let item = null;
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
-        userData.push(snapshot.val());
-        console.log(userData);
-        return snapshot.val();
+        item = snapshot.val();
     });
 }
 

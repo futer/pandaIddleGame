@@ -1,12 +1,13 @@
-import { getFromLocalStorage, saveToLocalStorage, savetToDB, getFromDBPlayerData} from './localStorage.js';
+import { getFromLocalStorage, saveToLocalStorage, savetToDB, getFromDBPlayerData } from './localStorage.js';
 import { playerOptions } from './playerOptions.js';
 
 export function getGamaData() {
     const userID = getFromLocalStorage('user');
-    setTimeout(() => {
+    let getGameDataFromDB = setInterval(() => {
         let playerData = getFromDBPlayerData(userID);
         console.log(playerData);
-    }, 1000)
+
+    }, 1000);
     return getFromLocalStorage('player_data');
 }
 
