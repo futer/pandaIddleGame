@@ -20,9 +20,14 @@ export function savetToDB(user, playerData) {
 
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
+    let user = null;
 
-    return firebase.database().ref('players/' + userId).once('value').then((snapshot) => {
-        console.log(snapshot);
+    firebase.database().ref('players/' + userId).once('value').then((snapshot) => {
+        user = snapshot.val();
+        if (user !== null || user !== undefined) {
+            return user;
+            console.log(user);
+        }
     });
 }
 
