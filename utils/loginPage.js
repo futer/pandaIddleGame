@@ -41,6 +41,7 @@ export function createLoginPage() {
                         alert(`Create user : ${user.user.email}`);
                         isLogged = true;
                         hideForms();
+                        saveToLocalStorage('user', user.user.email);
                     }
                 })
                 .catch(function (error) {

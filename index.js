@@ -8,7 +8,7 @@ import { getFromLocalStorage } from './utils/localStorage.js';
 
 class InitGame {
     constructor() {
-        const userEmail = getFromLocalStorage('user');
+        let userEmail = getFromLocalStorage('user');
         let isCurrentLogged = isLogged
         firebase.initializeApp(firebase_config);
         firebase.analytics();
@@ -39,8 +39,9 @@ class InitGame {
         new LoadImages();
 
         let checkIfItIsLogged = setInterval(() => {
-            console.log(isCurrentLogged);
-            if(isCurrentLogged) {
+
+            if(isLogged) {
+                isCurrentLogged = true;
                 console.log(isCurrentLogged)
                 clearInterval(checkIfItIsLogged);
             }
