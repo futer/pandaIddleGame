@@ -10,7 +10,8 @@ export function createLoginPage() {
 
         firebase.auth()
             .signInWithEmailAndPassword(login, password)
-            .then((event) => {
+            .then((user) => {
+                console.log(user);
                 isLogged = true;
                 hideForms();
             }).catch((error) => {
