@@ -1,3 +1,6 @@
+export const userData = [];
+
+
 export function saveToLocalStorage(varNam, varValue) {
     localStorage.setItem(varNam, varValue);
 }
@@ -21,14 +24,11 @@ export function savetToDB(user, playerData) {
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
 
-    firebase.database().ref('players/' + userId).on('value', (snapshot) => {
+    firebase.database().ref('players/' + userId).once('value', (snapshot) => {
+        userData.push(snapshot.val());
+        console.log(userData);
         return snapshot.val();
     });
-
-    // const userData = [];
-    // const userId = getFromLocalStorage('user');
-
-    // console.log(userData);
 }
 
 
