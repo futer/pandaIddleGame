@@ -2,9 +2,6 @@ export let isLogged = false;
 export let isCurrenty
 
 export function createLoginPage() {
-    let usersss = firebase.auth().currentUser;
-    console.log(usersss);
-
     const loginForm = document.getElementById('loginForm');
     loginForm.addEventListener('submit', (evt) => {
         evt.preventDefault();
@@ -13,9 +10,11 @@ export function createLoginPage() {
 
         firebase.auth()
             .signInWithEmailAndPassword(login, password)
-            .then((user) => {
-                let users = firebase.auth().currentUser;
-                console.log(users);
+            .then((data) => {
+                let user = firebase.auth().currentUser;
+                window.user = user
+                console.log(window);
+                console.log(window.user);
                 isLogged = true;
                 hideForms();
             }).catch((error) => {

@@ -15,11 +15,10 @@ class InitGame {
         //   }).catch(function(error) {
         //     // An error happened.
         //   });
-        let users = firebase.auth().currentUser;
-        console.log(users);
-        if (users === null) {
-            createLoginPage();
-        }
+        console.log(window.user);
+        // if (users === null) {
+        //     createLoginPage();
+        // }
 
 
         this.canvas = document.createElement('canvas');
