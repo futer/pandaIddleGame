@@ -3,11 +3,13 @@ import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
 import { createLoginPage } from './utils/loginPage.js';
-import { isLogged } from './utils/loginPage.js';
+import { isLogged, hideForms } from './utils/loginPage.js';
+import { getFromLocalStorage } from './utils/localStorage.js';
 
 class InitGame {
     constructor() {
-
+        const userEmail = getFromLocalStorage('user');
+        let isCurrentLogged = isLogged
         firebase.initializeApp(firebase_config);
         firebase.analytics();
         // firebase.auth().signOut().then(function() {
@@ -15,10 +17,12 @@ class InitGame {
         //   }).catch(function(error) {
         //     // An error happened.
         //   });
-        console.log(window.user);
-        // if (users === null) {
-        //     createLoginPage();
-        // }
+        if (userEmail === null) {
+            createLoginPage();
+        } else {
+            hideForms();
+            isCurrentLogged = true;
+        }
 
 
         this.canvas = document.createElement('canvas');
@@ -34,10 +38,10 @@ class InitGame {
 
         new LoadImages();
 
-        let ifIsLogged = false;
         let checkIfItIsLogged = setInterval(() => {
-            if(isLogged) {
-                console.log(isLogged)
+            console.log(isCurrentLogged);
+            if(isCurrentLogged) {
+                console.log(isCurrentLogged)
                 clearInterval(checkIfItIsLogged);
             }
         }, 500)
@@ -54,7 +58,7 @@ class InitGame {
 
             });
 
-            if (this.loadedImages.length === background_images.length && isLogged) {
+            if (this.loadedImages.length === background_images.length && isCurrentLogged) {
                 new GameEngine(this.ctx, this.canvas, this.canvas.width, this.canvas.height);
                 clearInterval(checkImages);
             }

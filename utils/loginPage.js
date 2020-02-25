@@ -1,3 +1,5 @@
+import { saveToLocalStorage } from './localStorage.js';
+
 export let isLogged = false;
 export let isCurrenty
 
@@ -12,9 +14,8 @@ export function createLoginPage() {
             .signInWithEmailAndPassword(login, password)
             .then((data) => {
                 let user = firebase.auth().currentUser;
-                window.user = user
-                console.log(window);
-                console.log(window.user);
+
+                saveToLocalStorage('user', user.email);
                 isLogged = true;
                 hideForms();
             }).catch((error) => {
@@ -54,7 +55,7 @@ export function createLoginPage() {
     })
 }
 
-function hideForms() {
+export function hideForms() {
     const forms = document.getElementsByClassName('container')[0];
     forms.style.display = 'none';
     document.body.classList.remove('auth_background');
