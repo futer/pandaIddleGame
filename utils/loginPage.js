@@ -1,17 +1,21 @@
 export let isLogged = false;
+export let isCurrenty
 
 export function createLoginPage() {
+    let usersss = firebase.auth().currentUser;
+    console.log(usersss);
+
     const loginForm = document.getElementById('loginForm');
     loginForm.addEventListener('submit', (evt) => {
         evt.preventDefault();
         let login = evt.target[0].value;
         let password = evt.target[1].value
 
-
         firebase.auth()
             .signInWithEmailAndPassword(login, password)
             .then((user) => {
-                console.log(user);
+                let users = firebase.auth().currentUser;
+                console.log(users);
                 isLogged = true;
                 hideForms();
             }).catch((error) => {

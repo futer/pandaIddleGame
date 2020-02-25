@@ -15,8 +15,12 @@ class InitGame {
         //   }).catch(function(error) {
         //     // An error happened.
         //   });
+        let users = firebase.auth().currentUser;
+        console.log(users);
+        if (users === null) {
+            createLoginPage();
+        }
 
-        createLoginPage();
 
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext('2d');
