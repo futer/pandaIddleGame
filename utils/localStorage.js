@@ -28,8 +28,8 @@ export function savetToDB(user, playerData) {
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
-        if(snapshot === null) {
-            saveToLocalStorage('player_data', playerOptions);
+        if(snapshot.val() === null) {
+            saveToLocalStorage('player_data', JSON.stringify(playerOptions));
         } else {
             saveToLocalStorage('player_data', snapshot.val());
         }

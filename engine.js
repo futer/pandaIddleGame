@@ -13,7 +13,6 @@ export let isKilled = false;
 export class GameEngine {
     constructor(ctx, canvas) {
 
-        //restart game
         setGameData();
 
         for (var propt in playerOptions) {
