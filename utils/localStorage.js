@@ -26,6 +26,7 @@ export function getFromDBPlayerData() {
     let item = null;
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
         item = snapshot.val();
+        saveToLocalStorage('player_data', item);
     });
 }
 
