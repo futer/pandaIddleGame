@@ -6,11 +6,11 @@ export function getGamaData() {
 }
 
 export function setGameData() {
-    const userID = getFromLocalStorage('user');
-    if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
-        saveToLocalStorage('player_data', JSON.stringify(playerOptions));
-        savetToDB(userID, playerOptions);
-    } else {
-        getGamaData();
-    }
+    // const userID = getFromLocalStorage('user');
+    // if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
+    //     saveToLocalStorage('player_data', JSON.stringify(playerOptions));
+    //     savetToDB(userID, playerOptions);
+    // } else {
+    //     getGamaData();
+    // }
 }
