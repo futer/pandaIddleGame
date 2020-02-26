@@ -3,6 +3,10 @@ export const userData = [];
 
 export function saveToLocalStorage(varNam, varValue) {
     localStorage.setItem(varNam, varValue);
+    if (varNam === 'player_data') {
+        const userId = getFromLocalStorage('user');
+        savetToDB(userId, varValue)
+    }
 }
 
 export function removeFromLocalStorage(varName) {
