@@ -1,5 +1,5 @@
+import { playerOptions } from './playerOptions.js';
 export const userData = [];
-
 
 export function saveToLocalStorage(varNam, varValue) {
     localStorage.setItem(varNam, varValue);
@@ -27,10 +27,12 @@ export function savetToDB(user, playerData) {
 
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
-    let item = null;
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
-        item = snapshot.val();
-        saveToLocalStorage('player_data', item);
+        if(snapshot === null) {
+            saveToLocalStorage('player_data', playerOptions);
+        } else {
+            saveToLocalStorage('player_data', snapshot.val());
+        }
     });
 }
 

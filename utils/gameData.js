@@ -6,9 +6,18 @@ export function getGamaData() {
 }
 
 export function setGameData() {
-    console.log('launche');
-    const test = localStorage.getItem('user');
-    console.log(test);
+    if(getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
+        let playerData = getFromDBPlayerData();
+        if (playerData === null) {
+            console.log(123);
+            saveToLocalStorage('player_data', JSON.stringify(playerOptions));
+            savetToDB(userID, playerOptions);
+        }
+        console.log(playerData);
+        // if() {
+            
+        // }
+    }
     // if (getFromLocalStorage('player_data') === undefined || getFromLocalStorage('player_data') === null) {
     //     const playerData = getFromDBPlayerData();
     //     console.log(playerData);
