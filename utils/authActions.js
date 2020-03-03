@@ -58,7 +58,9 @@ export function createLoginPage() {
 
 export function logOut() {
     firebase.auth().signOut().then(function () {
-        alert('You are logout from game')
+        alert('You are logout from game');
+        localStorage.clear();
+        location.reload();
     }).catch(function (error) {
         console.error(error);
     });

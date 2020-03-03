@@ -183,6 +183,11 @@ export const background_images = [
         image_format: 'png',
         image_url: generateUrlToFile('cat_sword', 'png'),
     }, 
+    {
+        image_name: 'logout_button',
+        image_format: 'png',
+        image_url: generateUrlToFile('logout_button', 'png'),
+    },
 ];
 
 function generateUrlToFile(fileName, format) {

@@ -3,6 +3,7 @@ import { drawImage } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 import { shopProp } from './shopMenu.js';
 import { itemsList } from './itemsList.js';
+import { logOut } from './authActions.js';
 
 export function actionManagement(action, type, param, ctx) {
 
@@ -47,6 +48,9 @@ export function actionManagement(action, type, param, ctx) {
             }
             break;
 
+        case type === 'logOut':
+            console.log(123);
+            logOut();
         default:
             break;
     }
@@ -61,5 +65,7 @@ export function clickAction(event) {
         actionManagement(event, 'changeTab', '-');
     } else if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && shopProp.isOpen) {
         actionManagement(event, 'closeShop', null);
+    } else if (event.layerX > 350 && event.layerX < 390 && event.layerY > 40 && event.layerY < 80 && !shopProp.isOpen) {
+        actionManagement(event, 'logOut', null);
     }
-}
+};

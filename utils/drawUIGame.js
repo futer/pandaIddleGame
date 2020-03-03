@@ -8,6 +8,8 @@ export function drawAllBackgroundImage(ctx) {
 
         drawImage(ctx, 'coin', 14, 3, 25, 25, null);
         drawImage(ctx, 'attack', 280, 3, 25, 25, null);
+
+        drawImage(ctx, 'logout_button', 350, 40, 40, 40, null);
 }
 
 export function drawAllText(ctx, canvas, keyDown) {
