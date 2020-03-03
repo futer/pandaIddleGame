@@ -74,5 +74,7 @@ export function clickAction(event) {
         actionManagement(event, 'logOut', null);
     } else if (event.layerX > 300 && event.layerX < 340 && event.layerY > 40 && event.layerY < 80) {
         actionManagement(event, 'toggleAchivmentMenu', null);
+    } else if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && achivmentProps.isOpen) {
+        actionManagement(event, 'toggleAchivmentMenu', null);
     }
-};
+}
