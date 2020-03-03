@@ -1,5 +1,7 @@
-export function loadAchivmentToGame() {
+import { achievementList } from './achivmentList.js';
 
+export function loadAchivmentToGameAndPlayer() {
+    console.log(achievementList);
 };
 
 export function checkAchivmentAsComplete() {
@@ -7,10 +9,6 @@ export function checkAchivmentAsComplete() {
 };
 
 export function countSpecificAchivment() {
-
-};
-
-function resetSpecificAchivment() {
 
 };
 
@@ -23,5 +21,9 @@ export function showAchivmentMenu() {
 };
 
 export function showAchivmenList() {
+
+};
+
+function resetSpecificAchivment() {
 
 };

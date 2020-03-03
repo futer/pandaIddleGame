@@ -187,6 +187,11 @@ export const background_images = [
         image_name: 'logout_button',
         image_format: 'png',
         image_url: generateUrlToFile('logout_button', 'png'),
+    }, 
+    {
+        image_name: 'achivment',
+        image_format: 'png',
+        image_url: generateUrlToFile('achivment', 'png'),
     },
 ];
 

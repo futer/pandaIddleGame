@@ -49,7 +49,6 @@ export function actionManagement(action, type, param, ctx) {
             break;
 
         case type === 'logOut':
-            console.log(123);
             logOut();
         default:
             break;
