@@ -20,7 +20,7 @@ export function showAchivmentMenu() {
 
 };
 
-export function showAchivmenList() {
+export function showAchivmenList(ctx, canvas) {
 
 };
 
