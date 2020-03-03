@@ -15,13 +15,13 @@ export const achievementList =  {
             isHidden: false,
         },
     ],
-    2: [
-        {
-            name: 'GoldColectionLevel3',
-            prizeType: 'gold',
-            prizeValue: 400,
-            target: 200,
-            isHidden: false,
-        },
-    ]
+    // 2: [
+    //     {
+    //         name: 'GoldColectionLevel3',
+    //         prizeType: 'gold',
+    //         prizeValue: 400,
+    //         target: 200,
+    //         isHidden: false,
+    //     },
+    // ]
 };

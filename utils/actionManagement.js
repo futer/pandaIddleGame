@@ -2,6 +2,7 @@ import { monsterProps } from './drawMonster.js';
 import { drawImage } from './drawFunctions.js';
 import { playerOptions } from './playerOptions.js';
 import { shopProp } from './shopMenu.js';
+import { toggleAchivmentMenu } from './achivmentActions.js';
 import { achivmentProps } from './achivmentActions.js';
 import { itemsList } from './itemsList.js';
 import { logOut } from './authActions.js';
@@ -50,7 +51,7 @@ export function actionManagement(action, type, param, ctx) {
             break;
 
         case type === 'toggleAchivmentMenu':
-            achivmentProps.isOpen = true;
+            toggleAchivmentMenu();
             break;
 
         case type === 'logOut':
@@ -72,6 +73,6 @@ export function clickAction(event) {
     } else if (event.layerX > 350 && event.layerX < 390 && event.layerY > 40 && event.layerY < 80 && !shopProp.isOpen) {
         actionManagement(event, 'logOut', null);
     } else if (event.layerX > 300 && event.layerX < 340 && event.layerY > 40 && event.layerY < 80) {
-        actionManagement(event, 'toggleAchivmentMenu', ctx);
+        actionManagement(event, 'toggleAchivmentMenu', null);
     }
 };

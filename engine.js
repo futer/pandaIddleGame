@@ -6,6 +6,7 @@ import { showShopMenu, drawShopButton, shopProp } from './utils/shopMenu.js';
 import { notificationText, showNotification } from './utils/notification.js';
 import { generateButton, keyDown, drawKeyButton } from './utils/monsterAction.js';
 import { drawMonster } from './utils/drawMonster.js';
+import { showAchivmenMenu, achivmentProps } from './utils/achivmentActions.js';
 
 export let gameEnd = false;
 export let isKilled = false;
@@ -40,6 +41,11 @@ export class GameEngine {
 
             drawShopButton(ctx);
             drawKeyButton(ctx);
+
+            if(achivmentProps.isOpen) {
+                showAchivmenMenu(ctx);
+            }
+
 
             if (shopProp.isOpen) {
                 showShopMenu(ctx, canvas);

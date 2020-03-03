@@ -1,7 +1,9 @@
 import { achievementList } from './achivmentList.js';
+import { drawImage } from './drawFunctions.js';
 
 export const achivmentProps = {
-    isOpen = false,
+    isOpen: false,
+    tab: 1,
 };
 
 export function loadAchivmentToGameAndPlayer() {
@@ -25,8 +27,17 @@ export function toggleAchivmentMenu() {
     console.log(achivmentProps);
 };
 
-export function showAchivmenList(ctx, canvas) {
+export function showAchivmenMenu(ctx) {
+    drawImage(ctx, 'shopTable', 50, 90, 300, 500, null);
+    drawImage(ctx, 'closeCircleButton', 300, 90, 50, 50, null);
 
+    if (achivmentProps.tab !== 1) {
+        drawImage(ctx, 'prev', 70, 510, 50, 50, null);
+    }
+
+    if (typeof achievementList[achivmentProps.tab + 1] !== "undefined") {
+        drawImage(ctx, 'next', 270, 510, 50, 50, null);
+    }
 };
 
 function resetSpecificAchivment() {
