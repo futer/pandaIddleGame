@@ -2,8 +2,8 @@ import { GameEngine } from './engine.js';
 import { LoadImages, gameImages } from './utils/loadImages.js';
 import { background_images } from './utils/images_list.js';
 import { firebase_config } from './config.js';
-import { createLoginPage } from './utils/loginPage.js';
-import { isLogged, hideForms } from './utils/loginPage.js';
+import { createLoginPage } from './utils/authActions.js';
+import { isLogged, hideForms } from './utils/authActions.js';
 import { getFromLocalStorage } from './utils/localStorage.js';
 
 class InitGame {
@@ -12,11 +12,7 @@ class InitGame {
         let isCurrentLogged = isLogged
         firebase.initializeApp(firebase_config);
         firebase.analytics();
-        // firebase.auth().signOut().then(function() {
-        //     // Sign-out successful.
-        //   }).catch(function(error) {
-        //     // An error happened.
-        //   });
+
         if (userEmail === null) {
             createLoginPage();
         } else {
@@ -42,7 +38,6 @@ class InitGame {
 
             if(isLogged) {
                 isCurrentLogged = true;
-                console.log(isCurrentLogged)
                 clearInterval(checkIfItIsLogged);
             }
         }, 500)

@@ -56,6 +56,14 @@ export function createLoginPage() {
     })
 }
 
+export function logOut() {
+    firebase.auth().signOut().then(function () {
+        alert('You are logout from game')
+    }).catch(function (error) {
+        console.error(error);
+    });
+}
+
 export function hideForms() {
     const forms = document.getElementsByClassName('container')[0];
     forms.style.display = 'none';
