@@ -10,7 +10,8 @@ export function saveToLocalStorage(varNam, varValue) {
 }
 
 export function getPlayerName() {
-    console.log(localStorage.getItem('user'));
+    return 'asd';
+    // console.log(localStorage.getItem('user'));
 
     // return localStorage.getItem('user');
 }

@@ -8,7 +8,8 @@ export const achivmentProps = {
 };
 
 export function saveAchivmentsInPlayerAccount() {
-    const user = getPlayerName();
+    console.log(3123);
+    let user = getPlayerName();
     console.log(user);
     // if (user !== null || user !== undefined) {
     //     savetToDB(user, achievementList)
