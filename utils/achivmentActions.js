@@ -1,19 +1,17 @@
 import { achievementList } from './achivmentList.js';
 import { drawImage } from './drawFunctions.js';
-import { getPlayerName, savetToDB, getFromDBPlayerData } from './localStorage.js';
+import { getPlayerName, savePlayerachievement, getFromDBPlayerData } from './localStorage.js';
 
 export const achivmentProps = {
     isOpen: false,
     tab: 1,
 };
 
-export function saveAchivmentsInPlayerAccount() {
-    console.log(3123);
-    let user = getPlayerName();
-    console.log(user);
-    // if (user !== null || user !== undefined) {
-    //     savetToDB(user, achievementList)
-    // }
+export function saveAchivmentsInPlayerAccount(achievement) {
+    const user = getPlayerName();
+    if (user !== null || user !== undefined) {
+        savePlayerachievement(user, achievement);
+    }
 }
 
 export function getAchivmentListFromPlayer() {
@@ -51,7 +49,16 @@ export function showAchivmenMenu(ctx) {
     if (typeof achievementList[achivmentProps.tab + 1] !== "undefined") {
         drawImage(ctx, 'next', 270, 510, 50, 50, null);
     }
+
+    drawAchievementsInList(ctx);
 };
+
+function drawAchievementsInList(ctx) {
+    console.log(achievementList[achivmentProps.tab]);
+    achievementList[achivmentProps.tab].forEach((achi) => {
+        console.log(achi);
+    });
+}
 
 function resetSpecificAchivment() {
 

@@ -40,9 +40,17 @@ export function getFromDBPlayerData() {
     });
 }
 
+export function savePlayerachievement(user, achievement) {
+    firebase.database().ref('players/' + user + '/achievement').set(achievement, (error) => {
+        if (error) {
+            alert('Conntection losts');
+        }
+    });
+}
+
 export function isDataExistOnPlayerAccount() {
     const userId = getPlayerName();
-    const ref = firebase.database().ref("players/" + userId + '/');
+    const ref = firebase.database().ref("players/" + userId + '/achievement');
     ref.once("value")
         .then(function (snapshot) {
             console.log(snapshot);
