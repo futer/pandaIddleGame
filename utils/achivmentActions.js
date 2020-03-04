@@ -1,5 +1,5 @@
 import { achievementList } from './achivmentList.js';
-import { drawImage } from './drawFunctions.js';
+import { drawImage, drawOnlyText } from './drawFunctions.js';
 import { getPlayerName, savePlayerachievement, getFromDBPlayerData } from './localStorage.js';
 
 export const achivmentProps = {
@@ -56,7 +56,11 @@ export function showAchivmenMenu(ctx) {
 function drawAchievementsInList(ctx) {
     console.log(achievementList[achivmentProps.tab]);
     achievementList[achivmentProps.tab].forEach((achi) => {
-        console.log(achi);
+        let posY = 200;
+        drawImage(ctx, 'button', 75, posY, 240, 50, null);
+        drawOnlyText(ctx, 110, posY, achi.name, 'white', 'Bubbleboddy', 14, false);
+        posY += 50;
+        console.log(posY)
     });
 }
 

@@ -1,6 +1,7 @@
 export const achievementList = {
-    1: {
-        'GoldColectionLevel1': [{
+    1: [
+        {
+            id: 'GoldColectionLevel1',
             name: 'Collect 50 gold',
             prizeType: 'gold',
             prizeValue: 50,
@@ -8,8 +9,9 @@ export const achievementList = {
             targetValue: 50,
             isComplete: false,
             isHidden: false,
-        }],
-        'GoldColectionLevel2': [{
+        },
+        {
+            id: 'GoldColectionLevel2',
             name: 'Collect 200 gold',
             prizeType: '200',
             prizeValue: 100,
@@ -17,8 +19,8 @@ export const achievementList = {
             targetValue: 200,
             isComplete: false,
             isHidden: false,
-        }],
-    },
+        },
+    ],
     // 2: [
     //     {
     //         name: 'GoldColectionLevel3',
