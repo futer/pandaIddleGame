@@ -11,6 +11,12 @@ export const enemies_list = [
         monster_name: 'goblin_2',
         isBlood: false,
     },
+    {
+        width: 300,
+        height: 206.33,
+        monster_name: 'goblin_3',
+        isBlood: false,
+    },
 ];
 
 
