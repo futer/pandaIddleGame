@@ -14,7 +14,6 @@ export function createLoginPage() {
             .signInWithEmailAndPassword(login, password)
             .then((data) => {
                 let user = firebase.auth().currentUser;
-
                 saveToLocalStorage('user', user.uid);
                 isLogged = true;
                 hideForms();
@@ -42,6 +41,7 @@ export function createLoginPage() {
                         isLogged = true;
                         hideForms();
                         saveToLocalStorage('user', user.user.uid);
+                        saveAchivmentsInPlayerAccount();
                     }
                 })
                 .catch(function (error) {

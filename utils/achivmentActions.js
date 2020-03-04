@@ -1,10 +1,18 @@
 import { achievementList } from './achivmentList.js';
 import { drawImage } from './drawFunctions.js';
+import { getPlayerName, savetToDB } from './localStorage.js';
 
 export const achivmentProps = {
     isOpen: false,
     tab: 1,
 };
+
+export function saveAchivmentsInPlayerAccount() {
+    const user = getPlayerName();
+    if (user !== null || user !== undefined) {
+        savetToDB(user, achievementList)
+    }
+}
 
 export function loadAchivmentToGameAndPlayer() {
     console.log(achievementList);
@@ -24,7 +32,6 @@ export function resetAllAchivment() {
 
 export function toggleAchivmentMenu() {
     achivmentProps.isOpen = !achivmentProps.isOpen;
-    console.log(achivmentProps);
 };
 
 export function showAchivmenMenu(ctx) {

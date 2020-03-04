@@ -9,6 +9,10 @@ export function saveToLocalStorage(varNam, varValue) {
     }
 }
 
+export function getPlayerName() {
+    localStorage.getItem('user');
+}
+
 export function removeFromLocalStorage(varName) {
     localStorage.removeItem(varName);
 }
