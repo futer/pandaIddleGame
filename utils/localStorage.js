@@ -10,10 +10,7 @@ export function saveToLocalStorage(varNam, varValue) {
 }
 
 export function getPlayerName() {
-    return 'asd';
-    // console.log(localStorage.getItem('user'));
-
-    // return localStorage.getItem('user');
+    return localStorage.getItem('user');
 }
 
 export function removeFromLocalStorage(varName) {

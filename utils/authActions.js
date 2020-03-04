@@ -1,4 +1,5 @@
 import { saveToLocalStorage } from './localStorage.js';
+import { saveAchivmentsInPlayerAccount } from './achivmentActions.js';
 
 export let isLogged = false;
 export let isCurrenty
@@ -50,7 +51,7 @@ export function createLoginPage() {
                     var errorCode = error.code;
                     var errorMessage = error.message;
 
-                    window.alert("There went something wrong : " + errorCode + ')' + errorMessage);
+                    window.alert("There went something wrong : " + errorCode + ':' + errorMessage);
                 });
         } else {
             alert('passwords are not the same');
