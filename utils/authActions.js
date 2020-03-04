@@ -41,8 +41,10 @@ export function createLoginPage() {
                         isLogged = true;
                         hideForms();
                         saveToLocalStorage('user', user.user.uid);
-                        saveAchivmentsInPlayerAccount();
                     }
+                })
+                .then(() => {
+                    saveAchivmentsInPlayerAccount();
                 })
                 .catch(function (error) {
                     var errorCode = error.code;
