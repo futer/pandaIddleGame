@@ -10,7 +10,9 @@ export function saveToLocalStorage(varNam, varValue) {
 }
 
 export function getPlayerName() {
-    localStorage.getItem('user');
+    console.log(localStorage.getItem('user'));
+
+    // return localStorage.getItem('user');
 }
 
 export function removeFromLocalStorage(varName) {
@@ -32,7 +34,7 @@ export function savetToDB(user, playerData) {
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
-        if(snapshot.val() === null) {
+        if (snapshot.val() === null) {
             saveToLocalStorage('player_data', JSON.stringify(playerOptions));
         } else {
             saveToLocalStorage('player_data', snapshot.val());
@@ -40,4 +42,14 @@ export function getFromDBPlayerData() {
     });
 }
 
+export function isDataExistOnPlayerAccount() {
+    const userId = getPlayerName();
+    const ref = firebase.database().ref("players/" + userId + '/');
+    ref.once("value")
+        .then(function (snapshot) {
+            console.log(snapshot);
+            var a = snapshot.exists();  // true
+
+        });
+}
 

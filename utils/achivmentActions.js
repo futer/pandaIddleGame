@@ -10,9 +10,9 @@ export const achivmentProps = {
 export function saveAchivmentsInPlayerAccount() {
     const user = getPlayerName();
     console.log(user);
-    if (user !== null || user !== undefined) {
-        savetToDB(user, achievementList)
-    }
+    // if (user !== null || user !== undefined) {
+    //     savetToDB(user, achievementList)
+    // }
 }
 
 export function getAchivmentListFromPlayer() {
