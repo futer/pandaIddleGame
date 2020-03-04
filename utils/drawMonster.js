@@ -6,7 +6,6 @@ import { gameImages } from './loadImages.js';
 import { drawImage, drawOnlyText } from './drawFunctions.js';
 import { saveToLocalStorage } from './localStorage.js';
 import { getGamaData } from './gameData.js';
-import { addPlayerAttack, setPlayerGold } from './playerOptions.js';
 
 let monsterName = null;
 let isGeneratedMMonsterName = false;
@@ -18,6 +17,7 @@ export const frameWidth = 400;
 export const frameHeight = 400;
 export const totalFrames = 6;
 export let currentFrame = 0;
+export let killBossAttackReward = 5;
 
 export function drawMonster(ctx) {
     if (!isGeneratedMMonsterName) {
@@ -65,7 +65,8 @@ function killMonster() {
     saveToLocalStorage('player_data', JSON.stringify({
         ...playerData,
         level: playerOptions.level = parseInt(playerOptions.level) + 1,
-        gold: playerOptions.gold,
+        gold: playerOptions.gold + setPlayerGold(monsterProps.min_gold, monsterProps.max_gold),
+        attack: monsterProps.bossFight ? attack + killBossAttackReward : false
     }));
     getGamaData();
 }
@@ -73,7 +74,6 @@ function killMonster() {
 function nextLevel() {
     generateRandomLevel();
     monsterProps.bossFight ? addPlayerAttack() : false;
-    setPlayerGold(monsterProps.min_gold, monsterProps.max_gold);
     killMonster();
 };
 
@@ -84,5 +84,6 @@ function drawBlood(ctx) {
     }, 100);
 }
 
-
-
+function setPlayerGold(minGold, maxGold) {
+    return gold = Math.floor(Math.random() * maxGold) + minGold;
+}
