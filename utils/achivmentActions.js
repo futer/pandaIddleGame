@@ -55,11 +55,16 @@ export function showAchivmenMenu(ctx) {
 
 function drawAchievementsInList(ctx) {
     console.log(achievementList[achivmentProps.tab]);
-    achievementList[achivmentProps.tab].forEach((achi) => {
-        let posY = 200;
-        drawImage(ctx, 'button', 75, posY, 240, 50, null);
-        drawOnlyText(ctx, 110, posY, achi.name, 'white', 'Bubbleboddy', 14, false);
-        posY += 50;
+    let posY = 140;
+
+    achievementList[achivmentProps.tab].forEach((achi, index) => {
+        drawImage(ctx, 'table', 75, posY, 240, 50, null);
+        drawOnlyText(ctx, 90, posY + 30, achi.name, 'white', 'Bubbleboddy', 18, false);
+        drawOnlyText(ctx, 260, posY + 30, `${achi.currectValue}/${achi.targetValue}`, 'white', 'Bubbleboddy', 18, true);
+        if(achi.isComplete) {
+            drawImage(ctx, 'button_true', 290, posY + 5, 40, 40, null);
+        }
+        posY += 60;
         console.log(posY)
     });
 }

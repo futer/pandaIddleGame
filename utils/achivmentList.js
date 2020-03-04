@@ -7,7 +7,7 @@ export const achievementList = {
             prizeValue: 50,
             currectValue: 0,
             targetValue: 50,
-            isComplete: false,
+            isComplete: true,
             isHidden: false,
         },
         {
