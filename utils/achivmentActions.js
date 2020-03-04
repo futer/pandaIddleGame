@@ -1,6 +1,6 @@
 import { achievementList } from './achivmentList.js';
 import { drawImage } from './drawFunctions.js';
-import { getPlayerName, savetToDB } from './localStorage.js';
+import { getPlayerName, savetToDB, getFromDBPlayerData } from './localStorage.js';
 
 export const achivmentProps = {
     isOpen: false,
@@ -9,9 +9,14 @@ export const achivmentProps = {
 
 export function saveAchivmentsInPlayerAccount() {
     const user = getPlayerName();
+    console.log(user);
     if (user !== null || user !== undefined) {
         savetToDB(user, achievementList)
     }
+}
+
+export function getAchivmentListFromPlayer() {
+    getFromDBPlayerData();
 }
 
 export function loadAchivmentToGameAndPlayer() {
