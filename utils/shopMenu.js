@@ -102,6 +102,11 @@ function drawAllItems(ctx) {
     let newRow = 130;
     let x = 85;
 
+    if(playerOptions.items === undefined) {
+        console.log(123);
+        playerOptions.items = [];
+    }
+
     itemsList[shopProp.tab].forEach((ele, index) => {
         playerOptions.items.forEach((ele2) => {
             if (ele2.isBought && ele.name === ele2.name) {

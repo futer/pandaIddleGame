@@ -50,12 +50,10 @@ export function saveTestDB() {
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
-        console.log(snapshot.val());
-        const completeData = [...snapshot.val(), {items: []}]
         if (snapshot.val() === null) {
-            saveToLocalStorage('player_data', JSON.stringify(completeData));
+            saveToLocalStorage('player_data', JSON.stringify(playerOptions));
         } else {
-            saveToLocalStorage('player_data', JSON.stringify(completeData));
+            saveToLocalStorage('player_data', JSON.stringify(snapshot.val()));
         }
     });
 }

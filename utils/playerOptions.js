@@ -4,7 +4,7 @@ export let playerOptions = {
     attack: 200,
     gold: 2250,
     level: 0,
-    achievement: achievementList,
-    items: [],
+    achievement: undefined,
+    items: undefined,
     background: 'background_1',
 };
