@@ -6,6 +6,7 @@ import { toggleAchivmentMenu } from './achivmentActions.js';
 import { achivmentProps } from './achivmentActions.js';
 import { itemsList } from './itemsList.js';
 import { logOut } from './authActions.js';
+import { saveTestDB } from './localStorage.js';
 
 export function actionManagement(action, type, param, ctx) {
 
@@ -73,6 +74,7 @@ export function clickAction(event) {
     } else if (event.layerX > 350 && event.layerX < 390 && event.layerY > 40 && event.layerY < 80 && !shopProp.isOpen) {
         actionManagement(event, 'logOut', null);
     } else if (event.layerX > 300 && event.layerX < 340 && event.layerY > 40 && event.layerY < 80) {
+        saveTestDB();
         actionManagement(event, 'toggleAchivmentMenu', null);
     } else if (event.layerX > 300 && event.layerX < 350 && event.layerY > 90 && event.layerY < 140 && achivmentProps.isOpen) {
         actionManagement(event, 'toggleAchivmentMenu', null);

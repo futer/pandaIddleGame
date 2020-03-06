@@ -28,6 +28,16 @@ export function savetToDB(user, playerData) {
     });
 }
 
+export function saveTestDB() {
+    let user = 'test_user';
+    firebase.database().ref('players/' + user + '/attack').set(200);
+    firebase.database().ref('players/' + user + '/gold').set(200);
+    firebase.database().ref('players/' + user + '/level').set(200);
+    firebase.database().ref('players/' + user + '/achievement').set([200]);
+    firebase.database().ref('players/' + user + '/items').set([400, 200]);
+    firebase.database().ref('players/' + user + '/background').set('background_1');
+}
+
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {

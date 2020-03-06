@@ -26,7 +26,7 @@ export function checkAchivmentAsComplete() {
 
 };
 
-export function countSpecificAchivment() {
+export function countSpecificAchivment(achievementName, value) {
 
 };
 
