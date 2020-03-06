@@ -101,8 +101,8 @@ export function showShopMenu(ctx, canvas) {
 function drawAllItems(ctx) {
     let newRow = 130;
     let x = 85;
-
-    if(playerOptions.items === undefined) {
+    console.log(playerOptions.items);
+    if(typeof playerOptions.items === undefined) {
         console.log(123);
         playerOptions.items = [];
     }
