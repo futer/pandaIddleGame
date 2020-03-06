@@ -21,7 +21,8 @@ export function getFromLocalStorage(varName) {
 }
 
 export function savetToDB(user, playerData) {
-    firebase.database().ref('players/' + user).set(JSON.playerData, (error) => {
+    console.log(1 + ': ' + playerData);
+    firebase.database().ref('players/' + user).set(playerData, (error) => {
         if (error) {
             alert('Conntection losts');
         }
@@ -29,13 +30,21 @@ export function savetToDB(user, playerData) {
 }
 
 export function saveTestDB() {
-    let user = 'test_user';
-    firebase.database().ref('players/' + user + '/attack').set(200);
-    firebase.database().ref('players/' + user + '/gold').set(200);
-    firebase.database().ref('players/' + user + '/level').set(200);
-    firebase.database().ref('players/' + user + '/achievement').set([200]);
-    firebase.database().ref('players/' + user + '/items').set([400, 200]);
-    firebase.database().ref('players/' + user + '/background').set('background_1');
+    let user = 'test_user1';
+    firebase.database().ref('players/' + user).set({
+        attack: 200,
+        gold: 200,
+        level: 200,
+        background: 'background_1',
+        items: [],
+        achievement: [],
+    });
+    // firebase.database().ref('players/' + user + '/attack').set(200);
+    // firebase.database().ref('players/' + user + '/gold').set(200);
+    // firebase.database().ref('players/' + user + '/level').set(200);
+    // firebase.database().ref('players/' + user + '/achievement').set([200]);
+    // firebase.database().ref('players/' + user + '/items').set([400, 200]);
+    // firebase.database().ref('players/' + user + '/background').set('background_1');
 }
 
 export function getFromDBPlayerData() {

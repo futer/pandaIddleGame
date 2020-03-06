@@ -85,5 +85,5 @@ function drawBlood(ctx) {
 }
 
 function setPlayerGold(minGold, maxGold) {
-    return gold = Math.floor(Math.random() * maxGold) + minGold;
+    return Math.floor(Math.random() * maxGold) + minGold;
 }
