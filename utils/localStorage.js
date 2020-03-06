@@ -1,5 +1,4 @@
 import { playerOptions } from './playerOptions.js';
-export const userData = [];
 
 export function saveToLocalStorage(varNam, varValue) {
     localStorage.setItem(varNam, varValue);
@@ -22,7 +21,7 @@ export function getFromLocalStorage(varName) {
 }
 
 export function savetToDB(user, playerData) {
-    firebase.database().ref('players/' + user).set(playerData, (error) => {
+    firebase.database().ref('players/' + user).set(JSON.playerData, (error) => {
         if (error) {
             alert('Conntection losts');
         }
