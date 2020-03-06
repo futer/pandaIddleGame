@@ -1,5 +1,4 @@
 import { saveToLocalStorage } from './localStorage.js';
-import { saveAchivmentsInPlayerAccount } from './achivmentActions.js';
 
 export let isLogged = false;
 export let isCurrenty
@@ -43,9 +42,6 @@ export function createLoginPage() {
                         hideForms();
                         saveToLocalStorage('user', user.user.uid);
                     }
-                })
-                .then(() => {
-                    saveAchivmentsInPlayerAccount();
                 })
                 .catch(function (error) {
                     var errorCode = error.code;
