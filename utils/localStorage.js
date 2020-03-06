@@ -21,8 +21,8 @@ export function getFromLocalStorage(varName) {
 }
 
 export function savetToDB(user, playerData) {
-    console.log(1 + ': ' + playerData);
-    firebase.database().ref('players/' + user).set(playerData, (error) => {
+    // console.log(1 + ': ' + JSON.parse(playerData));
+    firebase.database().ref('players/' + user).set(JSON.parse(playerData), (error) => {
         if (error) {
             alert('Conntection losts');
         }
@@ -50,10 +50,12 @@ export function saveTestDB() {
 export function getFromDBPlayerData() {
     const userId = getFromLocalStorage('user');
     firebase.database().ref('players/' + userId).once('value', (snapshot) => {
+        console.log(snapshot.val());
+        const completeData = [...snapshot.val(), {items: []}]
         if (snapshot.val() === null) {
-            saveToLocalStorage('player_data', JSON.stringify(playerOptions));
+            saveToLocalStorage('player_data', JSON.stringify(completeData));
         } else {
-            saveToLocalStorage('player_data', snapshot.val());
+            saveToLocalStorage('player_data', JSON.stringify(completeData));
         }
     });
 }
